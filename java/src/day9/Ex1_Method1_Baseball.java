@@ -2,7 +2,7 @@ package day9;
 
 import java.util.Scanner;
 
-public class Ex1_Method1_Array {
+public class Ex1_Method1_Baseball {
 
 	public static void main(String[] args) {
 		/* 1~4사이의 중복되지 않은 3개의 수를 생성하여 배열에 저장하고 출력하는 코드를 작성하세요.
