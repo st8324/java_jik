@@ -1,5 +1,7 @@
 package day9;
 
+import java.util.Scanner;
+
 public class Ex1_Method1_Array {
 
 	public static void main(String[] args) {
@@ -23,10 +25,25 @@ public class Ex1_Method1_Array {
 		}
 		//배열값 출력
 		printArray(com);
-		//사용자가 1~9사이의 정수 3개를 입력
-		int user[] = {1,2,3};
-		System.out.println(getStrike(com, user));
-		System.out.println(getBall(com, user));
+		int user[] = new int[3];
+		int strike = 0, ball = 0;
+		Scanner scan = new Scanner(System.in);
+		do {
+			strike = 0;
+			ball = 0;
+			//사용자가 1~9사이의 정수 3개를 입력
+			System.out.print("입력 : ");
+			for(int i = 0; i<user.length; i++) {
+				user[i] = scan.nextInt();
+			}
+			//스트라이트 갯수 확인
+			strike = getStrike(com, user);
+			//볼의 갯수 확인
+			ball = getBall(com, user);
+			//결과 출력
+			printResult(strike, ball);
+		}while(strike < 3);
+		scan.close();
 	}
 	/* 기능 : 정수형 배열에서 처음부터 n개중에서 정수 num가 있는지 없는지 알려주는 메소드
 	 * 매개변수 : 정수형 배열, 확인할 개수 n, 정수 num => int arr[], int n, int num
@@ -100,4 +117,27 @@ public class Ex1_Method1_Array {
 		//볼의 갯수 : 전체일치하는갯수 - 스트라이크 갯수
 		return ball - getStrike(arr1, arr2);
 	}
+
+	/* 기능 : 스트라이크와 볼의 갯수가 주어지면 결과를 콘솔에 출력하는 메소드
+	 * 1S1B, O, 1S, 2B
+	 * 매개변수 : 스트라이크와 볼의 갯수 => int strike, int ball
+	 * 리턴타입 : 없음 =>void
+	 * 메소드명 : printResult */
+	public static void printResult(int strike, int ball) {
+		if(strike != 0) {
+			System.out.print(strike+"S");
+		}
+		if(ball != 0) {
+			System.out.print(ball+"B");
+		}
+		if(strike == 0 && ball == 0) {
+			System.out.print("O");
+		}
+		System.out.println();
+	}
 }
+
+
+
+
+
