@@ -6,10 +6,10 @@ public class Ex8_Method6_Array {
 		// TODO Auto-generated method stub
 		int arr[] = {1,2,3,4,5};
 		int n = 3;
-		int num = 11;
+		int num = 4;
 		printArray(arr);
-		System.out.println(cotains(arr,num));
-		System.out.println(contains(arr, 7, num));
+		System.out.println(contains(arr, arr.length, num));
+		System.out.println(contains(arr, n, num));
 	}
 
 	/* 기능 : 정수형 배열이 주어졌을 때, 주어진 배열의 값을 콘솔에 출력하는 메소드
@@ -33,7 +33,7 @@ public class Ex8_Method6_Array {
 	 * 리턴타입 : 해당 숫자가 있는지 없는지 => boolean
 	 * 메소드명 : contains
 	 * */
-	public static boolean cotains(int arr[], int num) {
+	public static boolean contains(int arr[], int num) {
 		if(arr == null || arr.length == 0) {
 			return false;
 		}
