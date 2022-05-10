@@ -100,7 +100,8 @@ public class Ex6_Program_Student {
 				grade = scan.nextInt();
 				classNum = scan.nextInt();
 				num = scan.nextInt();
-				int delIndex = -1;
+				int delIndex = -1; //삭제할 학생 정보의 번지
+				//삭제할 위치를 찾음
 				//반복문을 이용하여 0번지부터 index명의 학생을 비교하여 
 				for(int i = 0 ; i<index; i++) {
 					//일치하는 학생 정보가 있으면 delIndex번지이지 기억하고 반복문을 종료
@@ -111,6 +112,7 @@ public class Ex6_Program_Student {
 				}
 				//delIndex가 0이상이면 => 일치하는 학생이 있으면 
 				if(delIndex >= 0) {
+					//삭제하는 부분
 					//반복문을 이용하여 delIndex번지부터 index-2번지까지 다음번지에 있는 정보를 현재 번지에 저장
 					for(int i = delIndex; i < index-1; i++) {
 						std[i] = std[i+1];
