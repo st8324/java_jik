@@ -18,5 +18,11 @@ public class Ex5_Polymorphism {
 		};
 		Car car2 = new Car(tire2);
 		car2.print();
+		System.out.println("----------------");
+		car2.repare(3, new HankookTire(80, 70, "뒤오른쪽"));
+		car2.print();
+		System.out.println("----------------");
+		car2.repare(3, new KumhoTire(80, 100, "뒤오른쪽"));
+		car2.print();
 	}
 }
