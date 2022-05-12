@@ -20,6 +20,8 @@ public class Ex7_Mart {
 		int subMenu, price, amount, capacity, count;
 		String name;
 		Scanner scan = new Scanner(System.in);
+		//바구니 생성. 종류는 최대 30개
+		Product basket[] = new Product[30];
 		do {
 			menu = selectMenu(scan);
 			switch(menu) {
@@ -49,8 +51,31 @@ public class Ex7_Mart {
 				break;
 			case 3:
 				printProductList(list, listCount);
+				/* 제품을 선택
+				 * 수량을 입력
+				 * 바구니에 담아야 함
+				 * 현재 바구니에 담긴 목록을 출력
+				 * */
+				System.out.print("구매할 제품을 선택하세요 : ");
+				int num = scan.nextInt();
+				System.out.print("구매할 제품의 수량을 입력하세요 : ");
+				//입고된 수량
+				amount = scan.nextInt();
+				Product buyProduct = list[num-1];
+				basket[0] = buyProduct;
+				basket[0].setAmount(amount);
 				break;
 			case 4:
+				/* 현재 바구니에 담긴 목록을 출력하고
+				 * 최종 합계를 출력
+				 * 결재 금액을 입력 
+				 * 결재를 진행
+				 *   금액이 부족하면 결재를 취소할건지 물어봄
+				 *     취소하면 장바구니를 비움
+				 *     결재를 취소하지 않으면 장바구니를 보관 
+				 *   결재가 정상적으로 완료되면 
+				 *     거스름돈을 출력하고
+				 *     바구니를 비움*/
 				break;
 			case 5:
 				break;
@@ -66,10 +91,10 @@ public class Ex7_Mart {
 	 * */
 	public static int selectMenu(Scanner scan) {
 		System.out.println("====메뉴====");
-		System.out.println("1. 제품 등록");
-		System.out.println("2. 제품 입고");
-		System.out.println("3. 제품 선택");
-		System.out.println("4. 제품 구매");
+		System.out.println("1. 제품 등록(관리자)");
+		System.out.println("2. 제품 입고(관리자)");
+		System.out.println("3. 제품 선택(고객)");
+		System.out.println("4. 제품 구매(고객)");
 		System.out.println("5. 프로그램 종료");
 		System.out.print("메뉴 선택 : ");
 		int menu = scan.nextInt();

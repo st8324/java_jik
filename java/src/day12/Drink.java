@@ -8,7 +8,10 @@ public class Drink extends Product {
 		super(name, price, amount);
 		this.capacity = capacity;
 	}
-
+	public Drink(Drink product) {
+		this(product.getName(), product.getPrice(), 
+				product.getAmount(), product.getCapacity());
+	}
 	@Override
 	public void print() {
 		if(capacity<1000) {
