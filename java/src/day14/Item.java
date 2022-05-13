@@ -30,9 +30,9 @@ public class Item {
 	
 	@Override
 	public String toString() {
-		return "내역 [일시 : " + date + " | " + (income?"수입":"지출") 
-				+ " | 결재방식 : " + payment + " | 상세 : " + content
-				+ " | 가격 : " + price + "]";
+		return "내역 [" + date + " | " + (income?"수입":"지출") 
+				+ " | " + payment + " | " + content
+				+ " | " + price + "원]";
 	}
 
 
