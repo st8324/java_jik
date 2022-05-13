@@ -82,7 +82,20 @@ public class AccountBookManager implements ConsoleProgram{
 	}
 	
 	public void readAccountBook() {
-		abook.readItems();
+		System.out.print("전체[1], 날짜[2] 선택 : ");
+		int subMenu = scan.nextInt();
+		switch(subMenu) {
+		case 1:
+			abook.readItems();
+			break;
+		case 2:
+			System.out.print("날짜 입력(yyyy-MM-dd) : ");
+			String date = scan.next();
+			abook.readItems("date",date);
+			break;
+		default:
+		}
+		
 		System.out.println("=====================");
 	}
 	public boolean insertAccountBook() {

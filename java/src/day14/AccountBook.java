@@ -82,6 +82,17 @@ public class AccountBook {
 		}
 		return items[index].clone();
 	}
+	public void readItems(String type, String date) {
+		switch(type) {
+		case "date":
+			for(int i = 0; i<count; i++) {
+				if(items[i].getDate().equals(date)) {
+					System.out.println(i+1+". " + items[i]);
+				}
+			}
+			break;
+		}
+	}
 }
 
 
