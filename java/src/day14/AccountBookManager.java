@@ -34,22 +34,10 @@ public class AccountBookManager implements ConsoleProgram{
 	public void excute(int menu) {
 		switch(menu) {
 		case 1:
-			abook.readItems();
-			System.out.println("=====================");
+			readAccountBook();
 			break;
 		case 2:
-			System.out.print("날짜 : ");
-			String date = scan.next();
-			System.out.print("수입(true)/지출(false) : ");
-			boolean income = scan.nextBoolean();
-			System.out.print("결재 방식 : ");
-			String payment = scan.next();
-			System.out.print("항목 : ");
-			String content = scan.next();
-			System.out.print("금액 : ");
-			int price = scan.nextInt();
-			Item item = new Item(date, income, payment, content, price);
-			if(abook.insertItem(item)) {
+			if(insertAccountBook()) {
 				System.out.println("내역을 추가했습니다.");
 			}else {
 				System.out.println("내역 추가에 실패했습니다.");
@@ -57,41 +45,7 @@ public class AccountBookManager implements ConsoleProgram{
 			System.out.println("=====================");
 			break;
 		case 3:
-			abook.readItems();
-			System.out.print("수정할 항목(정수) : ");
-			int modIndex = scan.nextInt();
-			System.out.println("=====================");
-			System.out.print("수입(true)/지출(false)[필수] : ");
-			boolean income2 = scan.nextBoolean();
-			System.out.print("날짜를 수정하겠습니까?[예:true/아니오:false] : ");
-			boolean ok = scan.nextBoolean();
-			String date2 = null;
-			if(ok) {
-				System.out.print("날짜 : ");
-				date2 = scan.next();
-			}
-			System.out.print("경제방식을 수정하겠습니까?[예:true/아니오:false] : ");
-			ok = scan.nextBoolean();
-			String payment2 = null;
-			if(ok) {
-				System.out.print("결재방식 : ");
-				payment2 = scan.next();
-			}
-			System.out.print("항목을 수정하겠습니까?[예:true/아니오:false] : ");
-			ok = scan.nextBoolean();
-			String content2 = null;
-			if(ok) {
-				System.out.print("항목 : ");
-				payment2 = scan.next();
-			}
-			System.out.print("금액을 수정하겠습니까?[예:true/아니오:false] : ");
-			ok = scan.nextBoolean();
-			int price2 = -1;
-			if(ok) {
-				System.out.print("금액 : ");
-				price2 = scan.nextInt();
-			}
-			if(abook.modifyItem(modIndex-1, date2, income2, payment2, content2, price2)) {
+			if(modifyAccountBook()) {
 				System.out.println("수정에 성공했습니다.");
 			}else {
 				System.out.println("수정에 실패했습니다.");
@@ -99,11 +53,8 @@ public class AccountBookManager implements ConsoleProgram{
 			System.out.println("=====================");
 			break;
 		case 4:
-			abook.readItems();
-			System.out.print("삭제할 항목(정수) : ");
-			int delIndex = scan.nextInt();
+			Item delItem = deleteAccountBook();
 			System.out.println("=====================");
-			Item delItem = abook.deleteItem(delIndex-1);
 			if(delItem != null) {
 				System.out.println(delItem);
 				System.out.println("위 항목이 삭제되었습니다.");
@@ -128,6 +79,68 @@ public class AccountBookManager implements ConsoleProgram{
 		}while(menu != exitMenu);	
 		System.out.println("가계부가 종료되었습니다.");
 		System.out.println("=====================");
+	}
+	
+	public void readAccountBook() {
+		abook.readItems();
+		System.out.println("=====================");
+	}
+	public boolean insertAccountBook() {
+		System.out.print("날짜 : ");
+		String date = scan.next();
+		System.out.print("수입(true)/지출(false) : ");
+		boolean income = scan.nextBoolean();
+		System.out.print("결재 방식 : ");
+		String payment = scan.next();
+		System.out.print("항목 : ");
+		String content = scan.next();
+		System.out.print("금액 : ");
+		int price = scan.nextInt();
+		Item item = new Item(date, income, payment, content, price);
+		return abook.insertItem(item);
+	}
+	public boolean modifyAccountBook() {
+		abook.readItems();
+		System.out.print("수정할 항목(정수) : ");
+		int modIndex = scan.nextInt();
+		System.out.println("=====================");
+		System.out.print("수입(true)/지출(false)[필수] : ");
+		boolean income2 = scan.nextBoolean();
+		System.out.print("날짜를 수정하겠습니까?[예:true/아니오:false] : ");
+		boolean ok = scan.nextBoolean();
+		String date2 = null;
+		if(ok) {
+			System.out.print("날짜 : ");
+			date2 = scan.next();
+		}
+		System.out.print("경제방식을 수정하겠습니까?[예:true/아니오:false] : ");
+		ok = scan.nextBoolean();
+		String payment2 = null;
+		if(ok) {
+			System.out.print("결재방식 : ");
+			payment2 = scan.next();
+		}
+		System.out.print("항목을 수정하겠습니까?[예:true/아니오:false] : ");
+		ok = scan.nextBoolean();
+		String content2 = null;
+		if(ok) {
+			System.out.print("항목 : ");
+			payment2 = scan.next();
+		}
+		System.out.print("금액을 수정하겠습니까?[예:true/아니오:false] : ");
+		ok = scan.nextBoolean();
+		int price2 = -1;
+		if(ok) {
+			System.out.print("금액 : ");
+			price2 = scan.nextInt();
+		}
+		return abook.modifyItem(modIndex-1, date2, income2, payment2, content2, price2);
+	}
+	public Item deleteAccountBook() {
+		abook.readItems();
+		System.out.print("삭제할 항목(정수) : ");
+		int delIndex = scan.nextInt();
+		return abook.deleteItem(delIndex-1);
 	}
 }
 
