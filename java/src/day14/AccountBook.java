@@ -76,6 +76,12 @@ public class AccountBook {
 		items[modIndex].modify(date, income, payment, content, price);
 		return true;
 	}
+	public Item getItem(int index) {
+		if(index < 0 || index >= count) {
+			return null;
+		}
+		return items[index].clone();
+	}
 }
 
 

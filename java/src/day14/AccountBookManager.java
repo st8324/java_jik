@@ -104,10 +104,23 @@ public class AccountBookManager implements ConsoleProgram{
 		System.out.print("수정할 항목(정수) : ");
 		int modIndex = scan.nextInt();
 		System.out.println("=====================");
+		//가계부에서 수정하려고 한 내역을 출력
+		Item tmp = abook.getItem(modIndex-1);
+		if(tmp != null) {
+			System.out.println(modIndex+". " + tmp);
+		}else {
+			return false;
+		}
+		System.out.println("=====================");
+		System.out.print("선택한 내역은 위 내역입니다. 수정하시겠습니까?[예:true/아니오:false] : ");
+		boolean ok = scan.nextBoolean();
+		if(!ok) {
+			return false;
+		}
 		System.out.print("수입(true)/지출(false)[필수] : ");
 		boolean income2 = scan.nextBoolean();
 		System.out.print("날짜를 수정하겠습니까?[예:true/아니오:false] : ");
-		boolean ok = scan.nextBoolean();
+		ok = scan.nextBoolean();
 		String date2 = null;
 		if(ok) {
 			System.out.print("날짜 : ");
@@ -140,6 +153,19 @@ public class AccountBookManager implements ConsoleProgram{
 		abook.readItems();
 		System.out.print("삭제할 항목(정수) : ");
 		int delIndex = scan.nextInt();
+		//가계부에서 수정하려고 한 내역을 출력
+		Item tmp = abook.getItem(delIndex-1);
+		if(tmp != null) {
+			System.out.println(delIndex+". " + tmp);
+		}else {
+			return null;
+		}
+		System.out.println("=====================");
+		System.out.print("선택한 내역은 위 내역입니다. 삭제하시겠습니까?[예:true/아니오:false] : ");
+		boolean ok = scan.nextBoolean();
+		if(!ok) {
+			return null;
+		}
 		return abook.deleteItem(delIndex-1);
 	}
 }

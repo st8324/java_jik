@@ -1,7 +1,7 @@
 package day14;
 
 //내역
-public class Item {
+public class Item implements Cloneable {
 	//날짜,구분(수입/지출), 구분(결재방식), 상세항목, 금액
 	private String date;
 	private boolean income;//구분(수입/지출)
@@ -9,6 +9,18 @@ public class Item {
 	private String content;//항목
 	private int price;//금액
 
+	@Override
+	public Item clone() {
+		Item obj = null;
+		
+		try {
+			obj = (Item) super.clone();
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		}
+		return obj;
+	}
+	
 	//수정 기능
 	public void modify(String date, boolean income, String payment, String content, int price) {
 		if(date != null) {
