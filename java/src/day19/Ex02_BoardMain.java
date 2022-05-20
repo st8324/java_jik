@@ -125,10 +125,10 @@ public class Ex02_BoardMain {
 				if(num >= 0) {
 					//list에서 게시글을 가져옴(num-1번지)
 					Board tmp = list.get(num-1);
-					//가져온 게시글의 상세 내용을 확인 : detailPrint()를 호출
-					tmp.detailPrint();
 					//조회수 증가
 					tmp.updateView();
+					//가져온 게시글의 상세 내용을 확인 : detailPrint()를 호출
+					tmp.detailPrint();
 				}
 				break;
 			//3번 메뉴를 선택 : 게시글 수정 기능을 실행
