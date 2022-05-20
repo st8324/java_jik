@@ -21,7 +21,7 @@ public class Board {
 	}
 	
 	
-	public Board() {}
+	public Board() { }
 
 	public String getRegisterDate() {
 		if(registerDate == null) {
@@ -62,6 +62,10 @@ public class Board {
 		Board other = (Board) obj;
 		if (num != other.num)				return false;
 		return true;
+	}
+
+	public void updateView() {
+		view++;
 	}
 	
 }
