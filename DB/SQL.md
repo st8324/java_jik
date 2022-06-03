@@ -55,6 +55,7 @@ desc 테이블명;
 
 ```mysql
 insert [into] 테이블명[(속성1, 속성2, ..., 속성n)] values(값1, 값2, ..., 값n), (값1, 값2, ..., 값n);
+insert into 속성명1, ..., 속성명n select 속성명1, ..., 속성명n from 테이블명 where 조건식;
 ```
 
 ```mysql
@@ -199,7 +200,60 @@ select * from 테이블명 where 조건식;
     select distinct 속성 from 테이블명 where 조건식;
     ```
 
+* limit
+
+  * 검색 결과중 원하는 개수를 가져올 때 사용
+
+  * ```mysql
+    -- 시작번지부터 개수만큼 검색 결과를 가져옴. 시작번지는 0이상
+    select * from 테이블명 where 조건식 order by 정렬 limit 시작번지, 개수
+    -- 처음부터 개수만큼 검색 결과를 가져옴
+    select * from 테이블명 where 조건식 order by 정렬 limit 개수
+    ```
+
+  * 웹에서 페이지네이션을 이용할 때 사용
+
+* group by
+
+  * 검색 결과를 속성을 기준으로 묶어주는 역할
+
+  * 기준이 되는 속성은 최소 1개, 여러개가 될 수 있다 
+
+  * 집계함수와 같이 사용
+
+  * ```mysql
+    select * from 테이블명 where 조건식 group by 속성명 order by 속성명 limit 시작번지, 개수;
+    ```
+
+  * having
+
+    * 집계함수를 이용하여 조건을 걸 때 where절이 아니라 having에 조건식을 써야 함
+
+    * ```mysql
+      select * from 테이블명 
+      	where 조건식 
+      	group by 속성명 
+      	having 조건식
+      	order by 속성명 
+      	limit 시작번지, 개수;
+      ```
+
+      
+
+* as
+
+  * 속성의 별명을 만들어주는 역할
+
+  * 주로 검색할 때 속성명 부분에 함수가 들어가서 길어지는 경우 짧게 줄여쓰기 위해 as를 사용 
+
+  * 의미 있는 속성명을 부여하기 위해 사용
+
+  * ```mysql
+    select 속성명 as 속성명 from 테이블명;
+    ```
+
     
+
 
 # DCL
 
