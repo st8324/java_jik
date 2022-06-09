@@ -107,3 +107,70 @@ REFERENCES `employee` (
 	`em_num`
 );
 
+/* 
+부서 정보를 입력
+ - 개발부 	본관 3층 301호
+ - 영업부 	본관 2층 201호
+ - 마켓팅부 	본관 2층 202호
+ - 디자인부	본관 3층 302호 
+ - 기타 
+ 
+직급 정보를 입력
+ - 사원 		240	10
+ - 대리 		280 10
+ - 과장 		320 15
+ - 차장 		370 18
+ - 이사 		400	20
+ - 대표이사	440	30
+*/
+insert into department values('개발부','본관 3층 301호'), ('영업부','본관 2층 201호'),
+('마켓팅부','본관 2층 202호'), ('디자인부','본관 3층 302호 '), ('기타',NULL);
+insert into `rank`(rn_name, rn_base, rn_add) values
+('사원', 240, 10), ('대리', 280, 10), ('과장', 320, 15),
+('차장', 370, 18), ('이사', 400, 20), ('대표이사', 440, 30);
+
+-- 2000001	홍길동	1980-01-01	청주시	010-1234-5678	개발부 	차장 1년차 2000-03-02
+-- 2000002	임꺽정	1980-03-01	청주시	010-1234-5679	개발부 	차장 2년차 2000-03-02
+-- 2020001	이순신	1995-05-01	청주시	010-1254-5678	마켓팅부 	대리 1년차 2020-03-02
+-- 2022001	고길동	1998-12-31	청주시	010-3234-5678	영업부 	사원 0년차 2022-03-02
+insert into employee(em_num, em_name, em_birth, em_addr, em_phone, em_de_name, 
+em_rn_name, em_year, em_enter) values
+(2000001,'홍길동','1980-01-01','청주시','010-1234-5678','개발부','차장',1,'2000-03-02'),
+(2000002,'임꺽정','1980-03-01','청주시','010-1234-5679','개발부','차장',2,'2000-03-02'),
+(2020001,'이순신','1995-05-01','청주시','010-1254-5678','마켓팅부','대리',1,'2020-03-02'),
+(2022001,'고길동','1998-12-31','청주시','010-3234-5678','영업부','사원',0,'2022-03-02');
+-- 2000001	홍길동	1980-01-01	청주시	010-1234-5678	개발부 	차장 1년차 2000-03-02
+-- 2000002	임꺽정	1980-03-01	청주시	010-1234-5679	개발부 	차장 2년차 2000-03-02
+-- 2020001	이순신	1995-05-01	청주시	010-1254-5678	마켓팅부 	대리 1년차 2020-03-02
+-- 2022001	고길동	1998-12-31	청주시	010-3234-5678	영업부 	사원 0년차 2022-03-02
+
+-- 2022년 1월 5일에 등록된 모든 사원들의 월급을 지급했다 (1월 월급을 지급) 
+insert into pay(pa_em_num, pa_date, pa_salary, pa_name, pa_year)  
+	select em_num, '2022-01-05', rn_base + rn_add * em_year, em_rn_name, em_year 
+		from employee
+		join `rank` on em_rn_name = rn_name
+        where em_enter < '2022-01-05';
+
+-- 2022년 2월 5일에 등록된 모든 사원들의 월급을 지급했다 (1월 월급을 지급) 
+insert into pay(pa_em_num, pa_date, pa_salary, pa_name, pa_year)  
+	select em_num, '2022-02-05', rn_base + rn_add * em_year, em_rn_name, em_year 
+		from employee
+		join `rank` on em_rn_name = rn_name
+        where em_enter < '2022-02-05';
+
+-- 2022년 3월 5일에 등록된 모든 사원들의 월급을 지급했다 (1월 월급을 지급) 
+insert into pay(pa_em_num, pa_date, pa_salary, pa_name, pa_year)  
+	select em_num, '2022-03-05', rn_base + rn_add * em_year, em_rn_name, em_year 
+		from employee
+		join `rank` on em_rn_name = rn_name
+        where em_enter < '2022-03-05';
+-- 2022년 4월 5일에 등록된 모든 사원들의 월급을 지급했다 (1월 월급을 지급) 
+insert into pay(pa_em_num, pa_date, pa_salary, pa_name, pa_year)  
+	select em_num, '2022-04-05', rn_base + rn_add * em_year, em_rn_name, em_year 
+		from employee
+		join `rank` on em_rn_name = rn_name
+        where em_enter < '2022-04-05';
+-- 월급 내역에 직급부분에 기입된 개발부 대신 직급이 들어가도록 수정 
+update pay
+	set pa_name = (select em_rn_name from employee where pa_em_num = em_num);
+
