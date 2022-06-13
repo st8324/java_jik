@@ -67,8 +67,7 @@ CREATE TABLE `screen` (
 	`sc_ci_num`	int	NOT NULL,
 	`sc_start_time`	datetime	NULL,
 	`sc_pos_seat`	int	NULL,
-	`sc_end_time`	datetime	NULL,
-	`Field`	VARCHAR(255)	NULL
+	`sc_end_time`	datetime	NULL
 );
 
 DROP TABLE IF EXISTS `seat`;
@@ -232,7 +231,7 @@ REFERENCES `seat` (
 -- 브로커 영화에 대한 정보를 추가하는 쿼리, 단 줄거리는 짧게 해도 됨
 -- http://www.cgv.co.kr/movies/detail-view/?midx=85829
 -- 영화 정보 추가
-INSERT INTO `cgv`.`movie` (`mo_title`, `mo_ genre`, `mo_age`, `mo_time`, `mo_open_date`, 
+INSERT INTO `cgv`.`movie` (`mo_title`, `mo_genre`, `mo_age`, `mo_time`, `mo_open_date`, 
 	`mo_detail`, `mo_thumb`) 
 VALUES ('브로커', '드라마', '12세이상', '129', '2022-06-08', 
 	'베이비 박스, 그곳에서 의도치 않게 만난 이들의 예기치 못한 특별한 여정이 시작된다.', 
@@ -249,4 +248,4 @@ insert into appearance(ap_mo_num, ap_mm_num, ap_role)
 -- 감독 정보 추가
 INSERT INTO `cgv`.`movieman` (`mm_name`, `mm_nation`, `mm_job`) VALUES ('고레에다 히로카즈', '일본', '감독');
 -- 감독이 참여한 영화 정보 추가
-INSERT INTO `cgv`.`appearance` (`ap_mo_num`, `ap_mm_num`, `ap_role`) VALUES ('1', '10', '감독');
+INSERT INTO `cgv`.`appearance` (`ap_mo_num`, `ap_mm_num`, `ap_role`) VALUES ('1', '5', '감독');
