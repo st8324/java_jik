@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS `movie`;
 CREATE TABLE `movie` (
 	`mo_num`	int	NOT NULL,
 	`mo_title`	varchar(30)	NULL,
-	`mo_ genre`	varchar(6)	NULL,
+	`mo_genre`	varchar(6)	NULL,
 	`mo_age`	varchar(10)	NULL,
 	`mo_time`	int	NULL,
 	`mo_open_date`	date	NULL,
