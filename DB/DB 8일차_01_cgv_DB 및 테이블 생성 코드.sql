@@ -46,7 +46,7 @@ DROP TABLE IF EXISTS `theater`;
 CREATE TABLE `theater` (
 	`th_name`	varchar(20)	NOT NULL,
 	`th_region`	varchar(10)	NULL,
-	`th_addr`	varchar(20)	NULL
+	`th_addr`	varchar(100)	NULL
 );
 
 DROP TABLE IF EXISTS `cinema`;
