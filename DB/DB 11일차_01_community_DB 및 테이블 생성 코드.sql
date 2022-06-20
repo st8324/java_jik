@@ -162,6 +162,10 @@ REFERENCES `comment` (
 	`co_num`
 );
 
+ALTER TABLE `community`.`board` 
+ADD COLUMN `bd_up` INT NOT NULL DEFAULT 0 AFTER `bd_secret`,
+ADD COLUMN `bd_down` INT NOT NULL DEFAULT 0 AFTER `bd_up`;
+
 -- 최고관리자를 등록하는 쿼리 아이디 : admin123 비번 : admin123, 이름 : 관리자, 번호 : 000-0000-0000
 insert into user(us_id, us_pw, us_name, us_phone, us_authority)
 	values('admin123','admin123', '관리자','000-0000-0000', 10);
