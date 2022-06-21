@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>label 예제</title>
+</head>
+<body>
+	<form>
+		<!-- 
+			- 텍스트를 클릭 했을 때 radio나 checkbox가 선택되게 하는 방법1 
+				- input태그를 label태그로 감싼다
+		-->
+		당신의 취미는? <br>
+		<label><input type="checkbox" name="hobby" value="book"> 독서 </label><br>
+		<label><input type="checkbox" name="hobby" value="music"> 음악감상 </label><br>
+		<label><input type="checkbox" name="hobby" value="movie"> 영화감상 </label><br>
+		<label><input type="checkbox" name="hobby" value="run"> 달리기 </label><br>
+		<!-- 
+			- 텍스트를 클릭 했을 때 radio나 checkbox가 선택되게 하는 방법1 
+				- input태그에 id를 지정한 후, 텍스트를 label로 감싸고, label속성 for에 input태그의
+				  id를 입력하여 활용
+		-->
+		당신의 성별은? <br>
+		<input type="radio" name="gender" id="male" value="male">
+		<label for="male">남성</label> <br>
+		<input type="radio" name="gender" id="female" value="female">
+		<label for="female">여성</label><br>
+	</form>
+</body>
+</html>
