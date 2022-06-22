@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>박스 모델 예제</title>
+	<style>
+		.box1{
+			box-sizing: content-box; color: white;
+			width: 100px; height: 100px; background-color: red;
+			padding: 10px 5px 20px 30px;
+			border-width: 5px;
+			border-color: green;
+			border-style: double;
+		}
+		.box2{
+			box-sizing: border-box; color: #fff;
+			width: 100px; height: 100px; background-color: blue;
+			padding: 10px 5px 20px 30px;
+			border: 5px dotted purple;
+			border-left-style: solid;
+		}
+	</style>
+</head>
+<body>
+	<div class="box1">1</div>
+	<div class="box2">2</div>
+</body>
+</html>
