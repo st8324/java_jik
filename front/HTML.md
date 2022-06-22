@@ -610,7 +610,213 @@
     <button type="button|submit|reset" >버튼명</button>
     ```
 
-    
+* `<form></form>`
+
+  * 입력한 정보들을 서버에 보내기 위한 태그
+
+  * action 속성
+
+    * 데이터를 보낼 경로
+    * URI을 입력
+    * action을 생략하면 현재 URI가 자동으로 입력
+
+  * method 속성
+
+    * get
+      * 서버에 보낼 데이터를 URI에 추가해서 전송
+        * URI뒤에 ?와 &로 서버로 보낼 데이터를 전송
+        * URI경로?변수명=값&변수명=값
+
+      * URI에 데이터가 노출되도 문제 없는 경우 사용
+      * 뉴스상세
+      * 카페 게시글목록
+
+    * post
+      * header에 정보를 담아서 전송
+      * URI에 정보가 노출되지 않음
+      * 로그인, 회원가입
+      * 전송되는 데이터가 많은 경우
+        * 게시글 쓰기
+
+      * 첨부파일이 있는 경우
+
+    * method가 생략되면 get방식
+
+  * enctype 속성
+
+    * 데이터를 전송하는 타입
+    * 첨부파일을 업로드할 때 반드시 사용
+      * multiparty/form-data
+      * 첨부파일을 서버에 업로드시 해당 속성값으로 지정하지 않으면 첨부파일명만 전송
+
+  * block태그
+
+  * ```html
+    <form action="URI경로" method="get|post" enctype="값">
+    	<!-- input태그와 select 태그등과 같은 입력 태그들로 구성-->    
+    </form>
+    ```
+
+* `<a></a>`
+
+  * href 속성
+
+    * 이동할 URI를 입력
+
+  * target 속성
+
+    * 이동할 때 이동 방식을 결정
+    * _blank
+      * 새창에서 열기
+
+    * _self
+      * 현재창에서 열기
+
+    * _parent
+      * 부모창에서 열기
+
+    * _top
+      * 최고 조상창에서 열기
+
+  * 다른페이지로 이동하는 기능(하이퍼링크)
+
+    * ```html
+      <a href="URI주소" target="_blank|_self|_parent|_top">요소</a>
+      ```
+
+  * 현재페이지내에서 특정 위치로 이동하는 기능(앵커)
+
+    * ```html
+      <a href="#아이디명">요소</a>
+      
+      <elemnt id="아이디명">요소</elemnt>
+      ```
+
+  * 파일 다운로드
+
+    * ```html
+      <a href="파일경로/파일명" download>텍스트</a>
+      ```
+
+    * download 속성을 이용하여 클릭시 파일을 다운로드하게 함
+
+  * a태그로 이루어져 있지만 이동하지 않게 하는 방법
+
+    * ```html
+      <a href="javascript:0">요소</a>
+      ```
+
+  * inline 태그
+
+  * a태그 색상
+
+    * 파란색
+      * 방문한적이 없는 링크
+
+    * 보라색
+      * 방문한적이 있는 링크
+
+    * 빨간색
+      * 누르고 있을 때
+
+    * css를 통해 색상을 변경할 수 있다
+
+
+* `<iframe></iframe>`
+
+  * 사용 예시
+
+    * 사이트에서 유튜브 영상 가져올 때 사용
+    * 네이버 광고
+
+  *  
+
+  * ```html
+    <iframe 
+            src="URI" 
+            srcdoc="HTML 문서 텍스트로 출력될 내용" 
+            name="프레임 윈도우 이름"
+            width="프레임 폭"
+            height="프레임 높이">
+        iframe을 다루지 않은 브라우저에 의해 대신 출력될 텍스트
+    </iframe>
+    ```
+
+    * width : 기본 300
+    * heigth : 기본 150
+    * scrdoc이 있는 경우 src는 무시됨
+
+  * iframe을 이용하여 화면을 가져오면 iframe이 자식창이 됨
+
+* 미디어 태그
+
+  * audio, video태그
+
+  * `<video></video>`
+
+    * 비디오 영상을 추가하는 태그
+
+    * ```html
+      <video src="파일명" width="가로길이" height="세로길이" controls autoplay></video>
+      
+      <video width="가로길이" height="세로길이" controls autoplay>
+      	<source src="파일명" type="비디오타입">
+          브라우저가 video 태그를 지원하지 않습니다.
+      </video>
+      ```
+
+      * controls
+        * 비디오 영상을 컨트롤할 수 있는 컨트롤러를 보여줄지 말지를 결정
+      * autoplay
+        * 자동 재생 여부
+
+    * 비디오타입(MIME Type)
+
+      * MP4 : video/mp4
+      * WebM : video/webm
+      * Ogg : video/ogg
+
+  * `<audio></audio>` 
+
+    * 오디오를 추가하는 태그
+
+    * ```html
+      <audio scr="파일명" controls autoplay></audio>
+      
+      <audio width="가로길이" height="세로길이" controls autoplay>
+      	<source src="파일명" type="비디오타입">
+          브라우저가 video 태그를 지원하지 않습니다.
+      </audio>
+      ```
+
+  * `<div></div>`
+
+    * block태그
+    * 별다른 기능은 없음
+    * 요소들을 묶어서 관리할 때 사용
+
+  * `<span></span>`
+
+    * inline 태그
+    * 별다른 기능은 없음
+    * 요소 일부에 스타일을 적용할 때 사용
+
+* 시맨틱 태그
+  * 기능은 없음(div태그와 같음)
+  * 의미만 부여
+  * `<nav></nav>`, `<footer></footer>`, `<article></article>` 등
+
+### block vs inline vs inlie-block
+
+* block
+  * 새 라인에서 시작
+  * 가로, 세로 크기를 조절할 수 있음
+* inline
+  * 현재 라인에서 시작
+  * 가로, 세로 크기를 조절할 수 없음
+* inline-block
+  * 현재 라인에서 시작
+  * 가로, 세로 크기를 조절할 수 있음
 
 
 
