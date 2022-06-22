@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스타일 상속 예제</title>
+	<style>
+		/* 
+			- p태그 안에 있는 모든 요소들에 글자색이 빨강이 되도록
+			  상속이 됨 */
+		p{
+			color : red;
+		}
+	</style>
+</head>
+<body>
+	<p>
+		안녕하세요. <br>
+		<span>홍길동</span> <br>
+		<!-- 
+			- p태그에게 글자색을 상속 받은 후, a태그에 있는 글자색으로
+			  오버라이딩을 함
+		 -->
+		<a href="#">이동</a>
+	</p>
+</body>
+</html>

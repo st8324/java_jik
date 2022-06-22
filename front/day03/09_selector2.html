@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>선택자 관계</title>
+	<style>
+		/* div태그의 자식 요소들중에서 b태그를 선택 */
+		div>b{
+			color:purple;
+		}
+		/* div태그의 자손 요소들 중에서 b태그를 선택*/
+		div b{
+			color: red;
+		}
+		div.name{
+			color:blue;
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		div태그의 자식 요소들은?
+		 - p태그
+		div태그의 자손 요소들은?
+		 - p,b태그
+		p태그의 부모 요소은?
+		 - div태그
+		p태그의 조상 요소들은?
+		 - div, body, html 태그
+		b태그의 부모 요소은?
+		 - p태그
+		b태그의 조상 요소들은?
+		 - p, div, body, html 태그
+	 -->
+
+	<div class="name">
+		인사말
+		<p>
+			안녕하세요. 제 이름은 <b>홍길동</b>입니다. 
+			만나서 반갑습니다.
+		</p>
+	</div>
+	<a href="#">홈으로</a>
+</body>
+</html>
