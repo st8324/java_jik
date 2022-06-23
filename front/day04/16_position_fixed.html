@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>fixed 예제</title>
+	<style>
+		*{ margin: 0; padding: 0;}
+		.box{
+			height: 1000px;
+		}
+		.up{
+			width: 50px; height: 50px;
+			display: block;
+			background: yellow;
+			text-align: center;
+			line-height: 50px;
+			text-decoration: none;
+			color: #000;
+			border-radius: 50%;
+			position: fixed; bottom: 20px;
+			right: 20px;
+		}
+	</style>
+</head>
+<body id="up">
+	<div class="box" ></div>
+	<a href="#up" class="up">up</a>
+</body>
+</html>
