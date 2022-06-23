@@ -493,13 +493,88 @@
     * box-shadow
 
       * ```css
-        box-shadow : 수평 수직 번짐 크기 색상|none|inset;
+        box-shadow : 수평 수직 번짐 크기 색상|none inset;
         ```
 
         * 크기 : 그림자 크기, 기본은 0, 생략 가능
         * inset : 음각 박스로 보이게 하는 값
 
       * ,를 이용하여 여러 그림자 효과를 한번에 줄 수 있다
+
+  * 마우스 커서
+
+    * cursor
+
+    * 마우스 모양을 제어
+
+    * ```css
+      cursor : auto|crosshair|default|pointer|move|...|url;
+      ```
+
+  * 글자 관련 속성
+
+    * line-height
+      * 글자의 높이를 지정하는 속성
+      * 요소의 height가 지정되어있지 않으면 line-height를 이용하여 높이를 계산
+      * 글자를 위아래로 가운데 정렬할 때 사용
+
+    * white-space
+      * 공백 처리하는 방법
+      * normal
+        * 기본값
+        * 연속 공백(엔터포함)을 하나로 함침. 한줄이 길어서 넘치면 자동으로 줄바꿈
+
+      * nowrap
+        * 연속 공백(엔터포함)을 하나로 함침. 줄바꿈은 br태그로만 일어남
+
+      * pre
+        * 연속 공백 유지. 줄 바꿈은 br태그와 엔터로 일어남
+
+      * pre-wrap
+        * 연속 공백 유지. 줄 바꿈은 br태그와 엔터로 일어남. 한줄이 길어서 넘치면 자동으로 줄바꿈
+
+      * pre-line
+        * 연속 공백을 하나로 함침. 줄바꿈은 br태그와 엔터로 일어남. 한줄이 길어서 넘치면 자동으로 줄바꿈
+
+      * break-spaces
+        * pre-wrap과 동일. 단, 아래 차이점을 제외
+          * 연속 공백이 줄의 끝에 위치해도 공백을 차지
+          * 연속 공백 중간과 끝에도 자동으로 줄을 바꿈
+
+    * letter-spacing
+      * 글자 사이의 간격
+
+  * display
+
+    * 요소의 display 설정하는 속성
+    * inline, block, inline-block, flex 등
+    * 태그의 기본 종류(inline, block, inline-block)와 상관없이 다른 종류로 설정해줄 수 있다.
+
+  * position
+
+    * 요소를 배치하는 방식을 설정
+    * 요소 배치는 기본적으로 웹페이지에 나타난 순서대로 배치 됨
+    * 이를 position을 통해 바꿀 수 있다
+    * static 
+      * 기본값
+
+    * relative
+      * 상대 배치
+      * 원래 있어야 할 위치를 기준으로 상대위치를 계산해여 배치
+      * top, bottom, left, right와 같이 사용 됨
+      * absolute와 같이 사용됨
+        * 자손 요소 중에 absoulte가 있고, 요소가 기준이 될 때 기준이 되는 조상 요소를 relative로 설정
+
+    * absolute
+      * 절대 배치
+      * 웹페이지 특정 위치에 고정
+      * 조상 요소 중에 position이 absolute나 relative가 없으면 브라우저를 기준으로 배치
+      * 있으면 가장 가까운 조상요소를 기준으로 배치
+
+    * fixed
+      * 고정 배치
+      * 브라우저 특정 위치에 고정
+      * 위로가기 버튼
 
 
 ### 표준단위
@@ -530,3 +605,11 @@
 
 * url 경로나 파일 경로를 가져오는 함수
 * '' 또는 ""를 써도 되고 생략해도 됨
+
+
+
+### inline-block 요소
+
+* inline-block 요소가 나열되어 있을 때 안에 있는 컨텐츠가 다른 경우 어긋날 수 있다
+  * 이를 해결하기 위해 float을 이용
+* inlie-block 요소가 나열되어 있을 때 엔터에 의한 공백이 생김
