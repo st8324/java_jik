@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>그림자 예제</title>
+	<style>
+		.text-shadow1{
+			color: red; font-size: 30px; font-weight: bold;
+			text-shadow: 3px 3px 5px black;
+		}
+		.text-shadow2{
+			color: #fff; font-size: 30px; font-weight: bold;
+			text-shadow: 0px 0px 3px black;
+		}
+		.text-shadow3{
+			color: #fff; font-size: 30px; font-weight: bold;
+			text-shadow: 2px 2px 3px black;
+		}
+		.text-shadow4{
+			color: #fff; font-size: 30px; font-weight: bold;
+			text-shadow: 2px 2px 2px black, 0 0 20px blue, 0 0 5px darkblue;
+		}
+		.box-shadow1{
+			border: 5px solid black; height: 50px; width: 300px;
+			box-shadow: 10px 10px 5px 1px gray;
+		}
+		.box-shadow2{
+			border: 1px solid black; height: 50px; width: 300px;
+			box-shadow: 2px 2px 2px black, 
+				0 0 25px blue,
+				0 0 5px darkblue;
+		}
+		.box-shadow3{
+			border: 5px solid black; height: 50px; width: 300px;
+			box-shadow: 10px 10px 5px 1px yellow inset;
+		}
+		.box-shadow4{
+			height: 50px; border-top: 1px solid black;
+			box-shadow: 0px 2px 2px 0px gray;
+		}
+	</style>
+</head>
+<body>
+	<p class="text-shadow1">안녕하세요.</p>
+	<p class="text-shadow2">안녕하세요.</p>
+	<p class="text-shadow3">안녕하세요.</p>
+	<p class="text-shadow4">안녕하세요.</p>
+	<p class="box-shadow1">안녕하세요.</p>
+	<p class="box-shadow2">안녕하세요.</p>
+	<p class="box-shadow3">안녕하세요.</p>
+	<!-- 
+		윗줄은 선명하고, 아래줄은 흐릿하도록 스타일을 적용
+	 -->
+	 <p class="box-shadow4">안녕하세요.</p>
+</body>
+</html>
