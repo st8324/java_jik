@@ -77,7 +77,7 @@
 
     * 해당 아이디와 일치하는 요소에 적용
 
-    * 아이디가 같은 요소는 1개이어야 함
+    * 동일한 아이디를 가진 요소는 1개이하이어야 한다
 
     * #아이디명
 
@@ -123,7 +123,8 @@
         * 요소가 활성화됨. input태그들
       * :nth-child(n), :nth-of-type(n)
         * n번째 요소를 선택
-
+        * first-child, last-child, first-of-type, last-of-type
+    
     * ```css
       :가상클래스명{
           속성명 : 값;
@@ -246,6 +247,7 @@
     * 배경색
   * border-color
     * 테두리색
+
 * 텍스트 관련 속성들
   * text-indent
     * 들여쓰기
@@ -364,8 +366,10 @@
       
       padding: 크기1 크기2 크기3 크기4;
       /* 오른쪽과 왼쪽이 대칭인 경우(크기2) */
+      padding : 크기1 크기2 크기3 크기2;
       padding : 크기1 크기2 크기3;
       /* 오른쪽과 왼쪽이 대칭이고, 위와 아래가 대칭인 경우*/
+      padding : 크기1 크기2 크기1 크기2;
       padding : 크기1 크기2;
       /* 모든 패딩이 같은 경우 */
       padding : 크기1;
@@ -374,7 +378,7 @@
       padding : 크기1;
       padding-right : 크기2;
       ```
-
+      
     * 패딩 색은 지정할 수 없음
 
     * 패딩 색은 컨텐츠 색과 동일(background-color)
@@ -395,15 +399,134 @@
     * border
       * 모든 테두리 굵기, 종류, 색상을 한번에 지정
 
+  * margin
+
+    * 테두리 밖 여백
+
+    * 요소의 위치를 지정
+
+    * margin-top, margin-right, margin-bottom, margin-left
+
+    * margin
+
+      * margin-top, margin-right, margin-bottom, margin-left를 순서대로 한번에 적용
+
+    * 두 요소의 margin이 겹치면 하나만 적용
+
+    * auto라는 값을 넣을 수 있다
+
+      * 조건
+
+        1. block태그인 경우
+
+        2. 가로가 지정
+
+      * block태그는 한 라인 전체에 공간을 할당
+
+        * width가 지정된 경우, width를 제외한 나머지 길이가 margin으로 잡힘
+        * auto로 지정하면 전체 가로에서 width를 제외한 나머지 여백을 반으로 나누어서 margin-left와 margin-right에 자동으로 할당
+
+    * 요소 좌우 가운데 정렬
+
+      * width 지정 후, margin : 0 auto;
+
+* 둥근 테두리
+
+  * 박스의 테두리를 둥글게 만드는 속성
+  * border-top-left-radius, border-top-right-radius, border-bottom-right-radius, border-bottom-left-radius
+  * border-radius
+  * 버튼 생성할 때 많이 활용
+  * border-radius는 길이의 반을 넘어가면 반으로 계산됨
+
+* 이미지 테두리
+
+  * 테두리를 이미지로 지정하는 속성
+
+  * border-image
+
+  * ```
+    border-image : url(파일경로/파일명) 테두리이미지크기 타입;
+    ```
+
+* 배경
+
+  * 배경색
+    * background-color
+
+  * 배경 이미지
+    * background-image
+
+  * 배경이미지 시작 위치
+    * background-position
+
+  * 배경 이미지 반복 여부
+    * background-repeat
+
+  * 배경 이미지 크기
+    * background-size
+
+  * background
+    * 배경과 관련된 속성들을 한번에 사용하는 단축 속성
+    * 배경색 배경이미지 배경위치/배경사이즈 배경반복
+
+* 그림자
+
+  * 텍스트 그림자
+
+    * text-shadow
+
+      * ```css
+        text-shadow : 수평 수직 번짐 색상|none;
+        
+        text-shadow : 수평 수직 번짐 색상|none, 수평 수직 번짐 색상|none;
+        ```
+
+        * 수평 : 글자를 기준으로 x축으로 떨어진 정도
+        * 수직 : 글자를 기준으로 y축으로 떨어진 정도
+        * 번짐(blur) : 그림자를 선명하게 보여줄건지, 흐리게 보여줄건지 결정하는 속성으로, px로 설정
+        * 색상 : 그림자 색상
+
+      * ,를 이용하여 여러 그림자 효과를 한번에 줄 수 있다
+
+  * 박스 그림자
+
+    * box-shadow
+
+      * ```css
+        box-shadow : 수평 수직 번짐 크기 색상|none|inset;
+        ```
+
+        * 크기 : 그림자 크기, 기본은 0, 생략 가능
+        * inset : 음각 박스로 보이게 하는 값
+
+      * ,를 이용하여 여러 그림자 효과를 한번에 줄 수 있다
+
+
 ### 표준단위
 
-* em : 요소의 기본값의 배수, 3em => 기본값의 3배
-* rem : 문서의 기본값의 배수
-* % : 요소의 기본값의 %, 100% => 기본값의 100% => 기본값의 1배
-* px : 픽셀수
+* **em** : 요소의 기본값의 배수, 3em => 기본값의 3배
+* **rem** : 문서의 기본값의 배수
+* **%** : 요소의 기본값의 %, 100% => 기본값의 100% => 기본값의 1배
+* **px** : 픽셀수
 * cm : 센티미터
 * mm : 밀리미터
 * in : 인치, 96px
 * pt : 포인터, 1/72인치
 * pc : 피카소, 12pt
 * deg : 각도
+* vh : view height. 브라우저 화면의 높이를 100으로 나눈 값. 100vh 브라우저 화면의 높이
+* vw : view width. 브라우저 화면의 너비를 100으로 나눈 값. 100vw 브라우저 화면의 너비
+
+
+
+### calc()함수
+
+* 단위가 다른 값들을 계산할 때 사용
+* 연산자 앞 뒤로 무조건 공백을 넣어야함
+  * 연산자 앞 뒤로 공백을 넣지 않으면 계산을 못함
+  * 예 : calc(50% - 200px)
+
+### url 함수
+
+* url 경로나 파일 경로를 가져오는 함수
+* '' 또는 ""를 써도 되고 생략해도 됨
