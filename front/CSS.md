@@ -599,8 +599,67 @@
       }
       ```
 
-  * 
+* display : flex
 
+  * 부모 요소에 display : flex
+    * 자식 요소들 가로 크기의 합이 부모 가로보다 크면 자식 요소들 가로가 비율에 맞게 부모 크기로 변경
+    * 부모 width : 300px
+      * 자식요소 3개 각 width : 200px, 나열
+      * 자식요소 3개 각 width가 100px로 비율에 맞게 변경
+      * 1 : 1 : 1
+
+    * 부모 width : 300px
+      * 자식요소1 width : 300px
+      * 자식요소2 width : 100px
+      * 자식요소3 width : 200px
+      * 자식요소1 width : 150px로 변경
+      * 자식요소2 width : 50px로 변경
+      * 자식요소3 width : 100px로 변경
+      * 3 : 1 : 2
+
+* z-index
+
+  * 요소들이 겹쳐있을 때 누가 위로가고 아래로 갈건지를 결정해주는 속성
+  * 숫자가 높을수록 위로 감
+  * 숫자가 같으면 배치한(HTML 코드 순서) 순서대로 적용
+
+* overflow
+
+  * 컨텐츠 내용이 크기를 벗어난 경우 어떻게 처리할지를 결정하는 속성
+  * visible
+    * 기본값, 넘어가면 넘어가는대로 보여줌
+  * hidden
+    * 넘어가면 넘어간부분을 안보이게 감춤
+  * scroll
+    * 스크롤을 추가하여 넘어간 부분을 스크롤을 통해 확인가능
+  * auto
+    * 크기를 넘어가지 않으면 신경쓰지않고, 넘어가면 scroll이 적용
+
+* display : none
+
+  * 이벤트를 통해 특정 상황에서 요소를 보여주기전 감출 때 사용
+  * 요소 자체가 공간을 차지하지 않음
+
+* visibility : hidden
+
+  * 요소를 안보이게 함
+  * 요소가 공간을 차지함
+
+* 리스트
+
+  * list-style-type
+    * 마커 타입 지정
+
+  * list-style-image
+    * 마커 이미지를 지정
+    * 기본 마커대신 이미지로 마커를 대체
+
+  * list-style-position
+    * 마커 출력 위치를 지정
+    * 기본 밖
+
+  * list-style
+    * list-style-type, list-style-image, list-style-position을 한번에 지정하는 속성
 
 
 ### 표준단위
