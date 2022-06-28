@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>분할 예제</title>
+	<style>
+		body{margin: 0;}
+		.container{ 
+			padding: 10px;box-sizing: border-box; background: blue;
+		}
+		.container::after{
+			display: block; content: ''; clear: both;
+		}
+
+		.left-container,
+		.right-container{
+			width: calc((100% - 10px) / 2); height: 100%;
+			background: yellow; float: left;
+		}
+		.right-container{
+			margin-left: 10px;
+		}
+		.box{
+			background: red;
+		}
+		.box.bottom{
+			margin-top: 10px;
+		}
+		.left-container>.box:nth-child(1){
+			height: 300px;
+		}
+		.left-container>.box.bottom{
+			height: 400px;
+		}
+		.right-container>.box:nth-child(1){
+			height: 300px;
+		}
+		.right-container>.box.bottom{
+			height: 250px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="left-container">
+			<div class="box">1</div>
+			<div class="box bottom">2</div>
+		</div>
+		<!-- 왼쪽 박스 종료 -->
+		<div class="right-container">
+			<div class="box">3</div>
+			<div class="box bottom">4</div>
+		</div>
+		<!-- 오른쪽 박스 종료 -->
+	</div>
+	<!-- 컨테이너 종료 -->
+</body>
+</html>

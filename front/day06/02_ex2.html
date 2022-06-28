@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>분할 예제</title>
+	<style>
+		body{ margin: 0;}
+		.black-box{
+			height: 100vh; background: yellow;
+			padding: 10px; box-sizing: border-box;
+		}
+		.red-box{
+			height: 100%; width: calc((100% - 10px * 2) / 3);
+			background: red; float: left;
+		}
+		.box2{
+			margin: 0 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="black-box">
+		<div class="red-box box1">1</div>
+		<div class="red-box box2">2</div>
+		<div class="red-box box3">3</div>
+	</div>
+</body>
+</html>
