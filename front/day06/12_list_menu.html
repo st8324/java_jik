@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>리스트 메뉴 예제</title>
+	<style>
+		*{ padding: 0; margin: 0;}
+		ul, ol, li{ list-style: none;}
+		.menu li{ width: 100%;}
+		.menu{ display: flex;}
+		.menu-link{
+			display: block; text-align: center;
+			height: 50px; line-height: 44px; color: red;
+			font-weight: bold; font-size: 20px; text-decoration: none;
+			border: 3px solid red;
+		}
+		.menu li{
+			margin-left: -3px;
+		}
+		.menu li:first-child{
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="menu">
+			<li><a href="#" class="menu-link">메뉴1</a></li>
+			<li><a href="#" class="menu-link">메뉴2</a></li>
+			<li><a href="#" class="menu-link">메뉴3</a></li>
+		</ul>
+	</nav>
+</body>
+</html>
