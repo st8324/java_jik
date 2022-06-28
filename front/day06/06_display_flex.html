@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>flex 예제</title>
+	<style>
+		.menu{
+			display: flex;
+		}
+		.menu-list{
+			width: 100%; box-sizing: border-box;
+			border: 3px solid red;
+			height: 50px; text-align: center;
+			line-height: 44px;
+			text-decoration: none;
+			font-weight: bold; color: red;
+			margin-left: -3px;
+		}
+		.menu-list:first-child{
+			margin-left: 0;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<div class="menu">
+			<a href="" class="menu-list">메뉴1</a>
+			<a href="" class="menu-list">메뉴2</a>
+			<a href="" class="menu-list">메뉴3</a>
+		</div>
+	</nav>
+</body>
+</html>
