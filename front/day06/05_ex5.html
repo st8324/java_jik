@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴 예제</title>
+	<style>
+		body{ margin: 0;}	
+		a{ text-decoration: none;}
+		.menu{ background: yellow;}
+		.menu::after{
+			display: block; content: ''; clear: both;
+		}
+		.menu-l, .menu-list{
+			height: 50px; width: calc(100% / 3);
+			border: 3px solid red; box-sizing: border-box;
+			float: left; text-align: center; line-height: 44px;
+			font-weight: bold; color: red;
+		}
+		.menu-link{
+			display: block; height: 100%; color: red;
+		}
+		.menu-list{
+			border-left: none;
+		}
+ 	</style>
+</head>
+<body>
+	<nav>
+		<div class="menu">
+			<div class="menu-l"><a href="#" class="menu-link">메뉴1</a></div>
+			<a href="#" class="menu-list">메뉴2</a>
+			<a href="#" class="menu-list">메뉴3</a>
+		</div>
+	</nav>
+</body>
+</html>
