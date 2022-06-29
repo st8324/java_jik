@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>우측 메뉴</title>
+	<style>
+		ul,ol,li{ list-style: none; padding: 0; margin: 0;}
+		.nav{
+			position: fixed; right: 0; top: 0; bottom: 0;
+			box-shadow: 0 -2px 5px 2px rgba(0,0,0,0.2); background: #fff;
+		}
+		.menu-item{
+			height: 40px; width: 200px; text-align: center; line-height: 40px;
+			border-bottom: 1px solid rgba(0,0,0,0.2);
+		}
+		.menu-link{
+			text-decoration: none; color: #000;
+		}
+		.contents{
+			height: 500px; background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<nav class="nav">
+		<ul class="menu">
+			<li class="menu-item"><a href="#" class="menu-link">메뉴1</a></li>
+			<li class="menu-item"><a href="#" class="menu-link">메뉴2</a></li>
+			<li class="menu-item"><a href="#" class="menu-link">메뉴3</a></li>
+			<li class="menu-item"><a href="#" class="menu-link">메뉴4</a></li>
+			<li class="menu-item"><a href="#" class="menu-link">메뉴5</a></li>
+		</ul>
+	</nav>
+	<div class="contents"></div>
+</body>
+</html>
