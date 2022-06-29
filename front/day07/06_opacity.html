@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>opacity 예제</title>
+	<style>
+		*{padding: 0; margin: 0;}
+		.container{
+			background: url(../img/cat.jpg);
+			width: 100%; height: 100vh;
+		}
+		.box{
+			height: calc(100vh / 3); background: yellow;
+			font-size: 30px; text-align: center;
+		}
+		.box2{
+			background: blue; opacity: 0.5;
+		}
+		.box3{
+			background: rgba(0,255,0,0.5); 
+		}
+		.text{ opacity: 1;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="box box1"><span class="text">안녕하세요.</span></div>
+		<div class="box box2"><span class="text">안녕하세요.</span></div>
+		<div class="box box3"><span class="text">안녕하세요.</span></div>
+	</div>
+</body>
+</html>
