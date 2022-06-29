@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴 예제</title>
+	<style>
+		.menu-item{
+			width: 100px; height: 50px;
+		}
+		.menu-link{
+			display: block; width: 100%; height: 100%;
+			box-sizing: border-box; border: 1px solid red;
+			text-align: center; line-height: 48px; 
+			text-decoration: none; color: black;
+		}
+		.sub-menu{
+			width: 100%; height: 200px; border: 1px solid blue;
+			box-sizing: border-box; margin-top: -1px;
+			display: none;
+		}
+		.menu-item:hover .sub-menu{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="menu-item">
+		<a href="#" class="menu-link">메뉴1</a>
+		<div class="sub-menu"></div>
+	</div>
+</body>
+</html>

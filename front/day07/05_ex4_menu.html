@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴 예제</title>
+	<style>
+		*{ padding: 0; margin: 0; color: #000;}
+		ul, ol{ list-style: none;}
+		a{ text-decoration: none;}
+		.menu>.menu-item{ float: left;}
+		.menu>.menu-item:first-child ~ .menu-item{
+			margin-left: -1px;
+		}
+		.menu>.menu-item{
+			width: 100px; height: 50px; line-height: 50px;
+			text-align: center; box-sizing: border-box;
+		}
+		.menu>.menu-item>.menu-link{
+			width: 100%; height: 100%; border: 1px solid #000;
+			display: block; font-weight: bold;
+			box-sizing: border-box;
+		}
+		.sub-menu>.menu-item{
+			height: 50px; border: 1px solid #000;
+			width: 100%; margin-top: -1px; 
+			box-sizing: border-box;
+		}
+		.sub-menu{
+			display: none;
+		}
+		.menu>.menu-item:hover .sub-menu{
+			display: block;
+		}
+		.sub-menu .menu-link{
+			width: 100%; height: 100%; display: block;
+		}
+		.menu .menu-link:hover{
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="menu">
+			<li class="menu-item">
+				<a href="#" class="menu-link">메뉴1</a>
+				<ul class="sub-menu">
+					<li class="menu-item">
+						<a href="#" class="menu-link">메뉴1-1</a>
+					</li>
+					<li class="menu-item">
+						<a href="#" class="menu-link">메뉴1-2</a>
+					</li>
+				</ul>
+			</li>
+			<li class="menu-item">
+				<a href="#" class="menu-link">메뉴2</a>
+				<ul class="sub-menu">
+					<li class="menu-item">
+						<a href="#" class="menu-link">메뉴2-1</a>
+					</li>
+					<li class="menu-item">
+						<a href="#" class="menu-link">메뉴2-2</a>
+					</li>
+				</ul>
+			</li>
+			<li class="menu-item">
+				<a href="#" class="menu-link">메뉴3</a>
+				<ul class="sub-menu">
+					<li class="menu-item">
+						<a href="#" class="menu-link">메뉴3-1</a>
+					</li>
+					<li class="menu-item">
+						<a href="#" class="menu-link">메뉴3-2</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>	
+</body>
+</html>
