@@ -202,6 +202,32 @@
       * 선택자 2개가 모두 아이디인 경우
         * 요소 하나엔 아이디를 최대 1개 지정가능
 
+  * 형제 관계
+
+    * 잘 이용하면 첫번째 요소를 제외한 나머지 요소에 일관된 속성을 적용할 수 있다
+
+    * ~
+
+      * ```css
+        선택자1 ~ 선택자2{
+            속성 : 값;
+        }
+        ```
+
+      * 선택자1을 기준으로 다음 형제 요소중에서 선택자2와 일치하는 요소들
+
+    * +
+
+      * ```css
+        선택자1 + 선택자2{
+        	속성 : 값;
+        }
+        ```
+
+      * 선택자1을 기준으로 다음 형제 요소 중에서 선택자2와 일치하는 첫번째 요소
+
+  
+
 ### 스타일 상속
 
 * 부모 요소에 있는 스타일을 자손 요소들이 상속을 받음
@@ -661,6 +687,22 @@
   * list-style
     * list-style-type, list-style-image, list-style-position을 한번에 지정하는 속성
 
+* opacity
+
+  * 투명도를 설정하는 속성
+  * 0.0 ~ 1.0상이의 실수값을 가짐
+  * 1.0 : 원본(완전불투명)
+  * 0.0 : 투명
+  * 부모 요소에 설정된 opacity에 따라 자식 요소들은 opacity를 수정해도 부모요소보다 진해질수 없다
+    * opacity를 이용하여 부모 요소에 배경을 투명으로 하고, 자식 요소의 글자만 진하게 할 수 없다
+    * 이러한 경우 opacity를 이용하여 부모 요소 배경을 투명으로 하지 말고, rgba()를 이용하여 부모 요소 배경을 투명하게 하면 자식 요소의 opacity를 통해 진하게 할 수 있다
+
+* border-collapse
+
+  * table 태그에서 테두리가 안 테두리와 밖 테두리로 나뉠 때 하나로 합치는 속성
+
+    
+
 
 ### 표준단위
 
@@ -707,3 +749,28 @@
 * content 속성이 반드시 들어가야함
 * display를 이용하여 추가된 속성의 display를 설정할 수 있음
 * width, height를 이용하여 너비, 높이를 display에 따라 지정할 수 있음
+
+
+
+### 아이콘 사용 방법
+
+* [fontawesome 사이트](https://fontawesome.com/)에서 script 연결 코드를 가져와서 연결
+* 사용하고 싶은 아이콘을 가져와서 적용([링크](https://fontawesome.com/search?s=solid%2Cbrands))
+
+* ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  	<meta charset="UTF-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<script src="https://kit.fontawesome.com/발급번호.js" crossorigin="anonymous"></script>
+  	<title>아이콘 예제</title>
+  </head>
+  <body>
+  	<i class="fa-solid fa-bars"></i>
+  </body>
+  </html>
+  ```
+
+  
