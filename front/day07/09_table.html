@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>테이블 관련 속성 예제</title>
+	<style>
+		th, td{
+			border: 1px solid black;
+		}
+		table{
+			border-collapse: collapse;
+			width: 100%;
+			height: 50px; line-height: 50px;
+			text-align: center;
+		}
+		tr>td:nth-child(2){
+			text-align: left;
+		}
+		tr~tr:hover{
+			background: yellow;
+		}
+		td:hover, th:hover{
+			color: red;
+		}
+		table:hover{
+			text-shadow: 0 2px 5px #000;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>조회수</th>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td><a href="#">가입인사</a></td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td><a href="#">잘부탁합니다.</a></td>
+			<td>15</td>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td><a href="#">가입인사입니다.</a></td>
+			<td>25</td>
+		</tr>
+	</table>
+</body>
+</html>
