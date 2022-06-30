@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>애니메이션 예제</title>
+	<style>
+		@keyframes moveBox1 {
+			0%{ margin-left: 0;}
+			50%{ margin-left: 300px;}
+			100%{margin-left: 0;}
+		}
+		@keyframes moveBox2 {
+			0%{ left: 0;}
+			50%{ left: 300px; background: blue;}
+			100%{ left: 0;}
+		}
+		.box{
+			width: 100px; height: 100px; 
+			background: red;
+			animation: moveBox2 3s infinite;
+			position: absolute;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">123</div>
+	123456
+</body>
+</html>
