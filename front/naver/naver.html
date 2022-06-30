@@ -13,10 +13,10 @@
 		.fixed-con{ width: 1190px; margin: 0 auto;}
 		.menu-con, .footer-con{ min-width: 1190px;}
 
-		.search-con{ height: 160px; background: red; position: relative;}
+		.search-con{ height: 160px; position: relative;}
 		.box-search{ 
 			width: 586px; height: 56px; position: absolute;
-			left: 298px; top: 50%; margin-top: -28px;
+			left: 268px; top: 50%; margin-top: -28px;
 		}
 		.box-search-in{
 			height: 100%; box-sizing: border-box; border:2px solid #19ce60;
@@ -37,13 +37,19 @@
 			background-position: -420px 0;
 		}
 
+		.link-naver{
+			width: 222px; height: 52px; position: absolute; 
+			background-position: 0 -158px; top: 50%; margin-top: -32px;
+			left: 21px;
+		}
+
 		.menu-con{ height: 52px; background: orange;}
 		.content-con{ height: 500px; background: skyblue;}
 		.footer-con{ height: 424px; background: purple;}
 
-		.fixed-con{ padding: 0 30px;}
+		.fixed-con{ padding: 0 30px; box-sizing: border-box;}
 
-		.icon-search{
+		.icon-search, .link-naver{
 			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
 			background-size: 457px 434px;
 		}
@@ -66,6 +72,7 @@
 			<!-- btn-submit end(검색버튼) -->
 		</form>
 		<!-- box-search end -->
+		<a href="http://naver.com" class="link-naver"></a>
 	</div>
 	<!-- search-con end -->
 	<div class="menu-con"></div>
