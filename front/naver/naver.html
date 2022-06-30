@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NAVER</title>
+	<style>
+		*{padding: 0; margin: 0;}
+		ul,ol,li{ list-style: none; }
+		a{ text-decoration: none; }
+
+		.fixed-con{ width: 1190px; margin: 0 auto;}
+		.menu-con, .footer-con{ min-width: 1190px;}
+
+		.search-con{ height: 160px; background: red; position: relative;}
+		.box-search{ 
+			width: 586px; height: 56px; position: absolute;
+			left: 298px; top: 50%; margin-top: -28px;
+		}
+		.box-search-in{
+			height: 100%; box-sizing: border-box; border:2px solid #19ce60;
+			border-radius: 2px; background-color: #fff;
+		}
+		.input-search{
+			border: 0; outline: 0; width: 474px; height: 50px; box-sizing: border-box;
+			padding: 13px 15px; margin: 1px; font-size: 18px; line-height: 24px;
+			font-weight: bold; 
+		}
+		.btn-submit{
+			width: 56px; height: 56px; box-sizing: border-box; position: absolute;
+			background-color: #19ce60; border-radius: 0 2px 2px 0;
+			border: 0; outline: 0; cursor: pointer; top: 0; right: 0;
+		}
+		.icon-search{
+			display: inline-block; width: 22px; height: 22px;
+			background-position: -420px 0;
+		}
+
+		.menu-con{ height: 52px; background: orange;}
+		.content-con{ height: 500px; background: skyblue;}
+		.footer-con{ height: 424px; background: purple;}
+
+		.fixed-con{ padding: 0 30px;}
+
+		.icon-search{
+			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+			background-size: 457px 434px;
+		}
+	</style>
+</head>
+<body>
+	<div class="fixed-con search-con" >
+		<form class="box-search" action="https://search.naver.com/search.naver">
+			<div class="box-search-in">
+				<input type="text" class="input-search" name="query">
+				<!-- input-search end(검색창에서 입력칸) -->
+			</div>
+			<!-- box-search-in end(검색창) -->
+			<div class="box-auto"></div>
+			<!-- box-auto end(자동완성) -->
+			<button type="submit" class="btn-submit">
+				<i class="icon-search"></i>
+				<!-- icon-search end(검색 버튼 아이콘) -->
+			</button>
+			<!-- btn-submit end(검색버튼) -->
+		</form>
+		<!-- box-search end -->
+	</div>
+	<!-- search-con end -->
+	<div class="menu-con"></div>
+	<!-- menu-con end -->
+	<div class="fixed-con content-con"></div>
+	<!-- content-con end -->
+	<footer class="footer-con"></footer>
+	<!-- footer-con end -->
+</body>
+</html>
