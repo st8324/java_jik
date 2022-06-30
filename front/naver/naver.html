@@ -14,6 +14,7 @@
 		.menu-con, .footer-con{ min-width: 1190px;}
 
 		.search-con{ height: 160px; position: relative;}
+		/* 검색창 */
 		.box-search{ 
 			width: 586px; height: 56px; position: absolute;
 			left: 268px; top: 50%; margin-top: -28px;
@@ -37,21 +38,51 @@
 			background-position: -420px 0;
 		}
 
+		/* 네이버 로고 */
 		.link-naver{
 			width: 222px; height: 52px; position: absolute; 
 			background-position: 0 -158px; top: 50%; margin-top: -32px;
 			left: 21px;
 		}
 
+		/* 우측 상단 링크들 */
+		.search-con .box-service{
+			position: absolute; top: 12px; right: 27px;
+		}
+		.search-con .link-set-naver{
+			font-size: 11px; color: #404040;
+		}
+		.search-con .box-service>*{
+			float: left;
+		}
+		.search-con .link-set-naver::after{
+			width: 26px; height: 26px; display: inline-block; content: '';
+			background-position: -308px -345px; vertical-align: top;
+			margin: -3px 0 0 3px;
+		}
+		.search-con .link-set-naver:hover{
+			text-decoration: underline;
+		}
+
+
+
 		.menu-con{ height: 52px; background: orange;}
 		.content-con{ height: 500px; background: skyblue;}
 		.footer-con{ height: 424px; background: purple;}
 
+		/* 공용 */
+
 		.fixed-con{ padding: 0 30px; box-sizing: border-box;}
 
-		.icon-search, .link-naver{
+		/* 배경이미지1 공용 */
+		.icon-search, .link-naver, .search-con .link-set-naver::after{
 			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
 			background-size: 457px 434px;
+		}
+
+		/* clearfix 공용 */
+		.search-con .box-service::after{
+			clear: both; display: block; content: '';
 		}
 	</style>
 </head>
@@ -71,8 +102,15 @@
 			</button>
 			<!-- btn-submit end(검색버튼) -->
 		</form>
-		<!-- box-search end -->
+		<!-- box-search end(네이버 검색창) -->
 		<a href="http://naver.com" class="link-naver"></a>
+		<!-- link-naver end(네이버 로고) -->
+		<div class="box-service">
+			<a href="#" class="link-set-naver">네이버를 시작페이지로</a>
+			<i class="bar"></i>
+			<a href="#" class="link-jr-naver"></a>
+			<a href="#" class="link-happybin"></a>
+		</div>
 	</div>
 	<!-- search-con end -->
 	<div class="menu-con"></div>
