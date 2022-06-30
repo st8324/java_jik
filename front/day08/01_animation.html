@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>애니메이션 예제</title>
+	<style>
+		@keyframes scaleFont {
+			0%{
+				font-size: 1em;
+			}
+			50%{
+				font-size: 3em;
+			}
+			100%{
+				font-size: 1em;
+			}
+		}
+		.ani1{
+			animation-name: scaleFont;
+			animation-iteration-count: 2;
+			animation-duration: 3s;
+			font-weight: bold;
+			animation-timing-function: linear;
+		}
+	</style>
+</head>
+<body>
+	<span class="ani1">꽝!</span>
+</body>
+</html>
