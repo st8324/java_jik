@@ -701,7 +701,94 @@
 
   * table 태그에서 테두리가 안 테두리와 밖 테두리로 나뉠 때 하나로 합치는 속성
 
-    
+* 애니메이션
+
+  * @keyframes를 이용하여 시간별로 동작할 속성을 설정하여 애니메이션을 등록
+
+    * ```css
+      @keyframes 애니메이션명{
+          시간비율{
+              속성 : 값;
+          }
+          시간비율{
+              속성 : 값;
+          }
+      }
+      @keyframes 애니메이션명{
+          0%{ /* from으로 대체할 수 있음*/
+              속성 : 값;
+          }
+          100%/* to로 대체할 수 있음 */{
+              속성 : 값;
+          }
+      }
+      ```
+
+  * animation 관련 속성을 이용하여 애니메이션을 적용
+
+    * animation-name 
+      * 실행할 애니메이션을 선택
+
+    * animation-duration
+      * 애니메이션 실행 시간
+
+    * animation-iteration-count
+      * 반복횟수
+      * 무한은 infinite
+
+    * animation-timing-function
+      * 애니메이션 실행 속도와 관련된 함수
+      * 같은 시간에서 비율별로 실행 속도를 다르게 설정
+      * 그래프로 표현
+
+* transition
+
+  * 지정된 속성이 변경된 경우 서서히 변경되도록 하는 속성
+
+  * ```css
+    transition : 속성명 시간;
+    ```
+
+* transform
+
+  * 함수를 이용하여 요소를 다양하게 변경
+
+  * translate
+
+    * 위치이동
+    * translate(x,y)
+    * translateX(n)
+    * translateY(n)
+
+  * scale
+
+    * 확대
+    * scale(w,h)
+    * scaleX(n)
+    * scaleY(n)
+
+  * roate
+
+    * 회전
+    * rotate(angle)
+
+  * skew
+
+    * 기울임
+    * skew(x-angle,y-angle)
+    * skewX(angle)
+    * skewY(angle)
+
+  * ```css
+    transform : 함수();
+    ```
+
+* max-width, min-width / max-height, min-height
+
+  * 최대 너비, 최소 너비/ 최대 높이, 최소 높이
+  * width / height은 다름
+  * 네이버는 min-width를 이용하여 브라우저 화면이 작아져도 크기가 유지되고(스크롤이 생김), 커지면 커진 화면에 맞춰 가운데로 배치
+
 
 
 ### 표준단위
