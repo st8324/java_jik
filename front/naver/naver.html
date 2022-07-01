@@ -63,8 +63,30 @@
 		.search-con .link-set-naver:hover{
 			text-decoration: underline;
 		}
-
-
+		.search-con .bar{
+			width: 1px; height: 10px;
+			background-color: #e4e8eb;
+			margin: 3px 7px;
+		}
+		.icon-jr-naver{
+			display: inline-block; width: 60px; height: 10px;
+			margin: 3px; background-position: -262px -330px;
+			vertical-align: top;
+		}
+		.link-happybin{
+			margin-left: 6px;
+		}
+		.icon-happybin{
+			display: inline-block; width: 34px; height: 11px;
+			margin: 3px 3px 2px; background-position: -369px -299px;
+			vertical-align: top;
+		}
+		.link-jr-naver:hover .icon-jr-naver{
+			background-position: -200px -330px;
+		}
+		.link-happybin:hover .icon-happybin{
+			background-position: -380px -199px;
+		}
 
 		.menu-con{ height: 52px; background: orange;}
 		.content-con{ height: 500px; background: skyblue;}
@@ -75,7 +97,8 @@
 		.fixed-con{ padding: 0 30px; box-sizing: border-box;}
 
 		/* 배경이미지1 공용 */
-		.icon-search, .link-naver, .search-con .link-set-naver::after{
+		.icon-search, .link-naver, .search-con .link-set-naver::after,
+		.icon-jr-naver, .icon-happybin{
 			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
 			background-size: 457px 434px;
 		}
@@ -108,8 +131,12 @@
 		<div class="box-service">
 			<a href="#" class="link-set-naver">네이버를 시작페이지로</a>
 			<i class="bar"></i>
-			<a href="#" class="link-jr-naver"></a>
-			<a href="#" class="link-happybin"></a>
+			<a href="#" class="link-jr-naver">
+				<i class="icon-jr-naver"></i>
+			</a>
+			<a href="#" class="link-happybin">
+				<i class="icon-happybin"></i>
+			</a>
 		</div>
 	</div>
 	<!-- search-con end -->
