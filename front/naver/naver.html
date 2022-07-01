@@ -29,7 +29,7 @@
 			font-weight: bold; 
 		}
 		.btn-submit{
-			width: 56px; height: 56px; box-sizing: border-box; position: absolute;
+			width: 56px; height: 55px; box-sizing: border-box; position: absolute;
 			background-color: #19ce60; border-radius: 0 2px 2px 0;
 			border: 0; outline: 0; cursor: pointer; top: 0; right: 0;
 		}
@@ -88,6 +88,64 @@
 			background-position: -380px -199px;
 		}
 
+		/* 가상 키보드 */
+		.search-con .btn-kbd{
+			position: absolute; top: 0; bottom: 0; width: 36px; right: 84px;
+		}
+		.search-con .icon-kbd{
+			width: 20px; height: 12px; display: inline-block; position: absolute;
+			top: 50%; left: 50%; margin: -6px 0 0 -10px;
+			background-position: -420px -402px;
+		}
+		.search-con .btn-kbd:hover .icon-kbd{
+			background-position:-206px -389px;
+		}
+
+		/* 자동 완성 */
+		.search-con .btn-auto-down{
+			position: absolute; top: 0; bottom: 0; width: 22px; right: 64px;
+		}
+		.search-con .icon-auto{
+			width: 10px; height: 5px; display: inline-block; position: absolute;
+			top: 50%; left: 50%; margin: -2px 0 0 -5px;
+			background-position: -408px -100px;
+		}
+		.search-con .btn-auto-down.up .icon-auto{
+			background-position: -408px -93px;
+		}
+
+		/* 자동완성 */
+		.search-con .box-auto-content{
+			margin-top: -1px; border: 1px solid #e4e7e8;
+			border-radius: 0 0 6px 6px; border-top: 0;
+			box-shadow: 0 2px 3px 0 rgba(0, 1, 3, 0.07);
+			background-color: #fff;
+			display: none;
+		}
+		.search-con .box-auto-footer{
+			height: 40px; box-sizing: border-box; border-top: 1px solid #f1f4f6;
+			border-radius: 0 0 6px 6px; background-color: #f9fafb;
+			line-height: 37px; font-size: 13px;
+		}
+		.search-con .box-auto-footer .box-left{
+			float: left; padding-left: 12px;
+		}
+		.search-con .box-auto-footer .box-right{
+			float: right; padding-right: 12px;
+		}
+		.search-con .box-auto-footer .item{
+			padding: 0 6px; color: gray;	float: left;
+		}
+		.search-con .box-auto-footer .report{
+			color: #03c75a;
+		}
+		.search-con .box-auto-footer .item+.item::before{
+			width: 1px; height: 11px; float: left;
+			margin-top: 14px; content: ''; background-color: #e2e2e2;
+			margin-left: -6px;
+		}
+
+
 		.menu-con{ height: 52px; background: orange;}
 		.content-con{ height: 500px; background: skyblue;}
 		.footer-con{ height: 424px; background: purple;}
@@ -97,8 +155,13 @@
 		.fixed-con{ padding: 0 30px; box-sizing: border-box;}
 
 		/* 배경이미지1 공용 */
-		.icon-search, .link-naver, .search-con .link-set-naver::after,
-		.icon-jr-naver, .icon-happybin{
+		.icon-search, 
+		.link-naver, 
+		.search-con .link-set-naver::after,
+		.icon-jr-naver, 
+		.icon-happybin, 
+		.search-con .icon-kbd,
+		.search-con .icon-auto{
 			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
 			background-size: 457px 434px;
 		}
@@ -117,7 +180,26 @@
 				<!-- input-search end(검색창에서 입력칸) -->
 			</div>
 			<!-- box-search-in end(검색창) -->
-			<div class="box-auto"></div>
+			<a href="javascript:0;" class="btn-kbd">
+				<i class="icon-kbd"></i>
+			</a>
+			<!-- btn-kbd end(가상키보드) -->
+			<div class="box-auto">
+				<a href="javascript:0;" class="btn-auto-down">
+					<i class="icon-auto"></i>
+				</a>
+				<div class="box-auto-content">
+					<div class="box-auto-footer">
+						<div class="box-left">
+							<a href="#" class="item help">도움말</a>
+							<a href="#" class="item report">신고</a>
+						</div>
+						<div class="box-right">
+							<a href="javascript:0" class="item btn-auto-off">자동완성끄기</a>
+						</div>
+					</div>
+				</div>
+			</div>
 			<!-- box-auto end(자동완성) -->
 			<button type="submit" class="btn-submit">
 				<i class="icon-search"></i>
