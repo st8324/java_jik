@@ -195,8 +195,45 @@
 			background-position: -444px -49px; vertical-align: top;
 			margin: 9px 2px 0 0;
 		}
+		/* 더보기 버튼 */
+		.menu-con .btn-more{
+			float: left; margin-left: 17px; line-height: 30px;
+			color: #202020; font-size: 13px;
+		}
+		.menu-con .btn-more::after{
+			width: 11px; height: 7px; margin-left: 7px; 
+			vertical-align: 2px; display: inline-block;
+			content: ''; background-position: -444px -339px;
+		}
+		.menu-con .btn-more:hover{
+			text-decoration: underline;
+		}
+		.menu-con .btn-more.fold{
+			color: #0ecd5a;
+		}
+		.menu-con .btn-more>.title:nth-child(2){
+			display: none; 
+		}
+		.menu-con .btn-more.fold>.title:nth-child(1){
+			display: none;
+		}
+		.menu-con .btn-more.fold>.title:nth-child(2){
+			display: inline; 
+		}
+		.menu-con .btn-more.fold::after{
+			background-position: -444px -330px;
+		}
 
-
+		/* 컨텐츠 박스 */
+		.content-con.fixed-con{
+			padding: 20px 30px; letter-spacing: -.2px;
+		}
+		.content-con .box-left{
+			float: left; width: 750px; height: 100%; background-color: #fff;
+		}
+		.content-con .box-right{
+			float: right; width: 350px; height: 100%; background-color: #fff;
+		}
 
 		.content-con{ height: 500px; background: skyblue;}
 		.footer-con{ height: 424px; background: purple;}
@@ -216,7 +253,8 @@
 		.menu-con .list-menu .mail::before,
 		.menu-con .list-menu .shopping::before,
 		.menu-con .list-menu .shopping-live::before,
-		.menu-con .list-menu .tv::before{
+		.menu-con .list-menu .tv::before,
+		.menu-con .btn-more::after{
 			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
 			background-size: 457px 434px;
 		}
@@ -290,6 +328,7 @@
 					<li class="item-menu"><a href="#" class="link-menu">Pay</a></li>
 					<li class="item-menu"><a href="#" class="link-menu tv">TV</a></li>
 				</ul>
+				<!-- 녹색 메뉴 end -->
 				<ul class="list-menu">
 					<li class="item-menu"><a href="#" class="link-menu">사전</a></li>
 					<li class="item-menu"><a href="#" class="link-menu">뉴스</a></li>
@@ -300,11 +339,20 @@
 					<li class="item-menu"><a href="#" class="link-menu">책</a></li>
 					<li class="item-menu"><a href="#" class="link-menu">웹툰</a></li>
 				</ul>
+				<!-- 검은색 메뉴 end -->
+				<a href="#" class="btn-more">
+					<span class="title">더보기</span>
+					<span class="title">접기</span>
+				</a>
+				<!-- 더보기 버튼 end -->
 			</div>
 		</div>
 	</div>
 	<!-- menu-con end -->
-	<div class="fixed-con content-con"></div>
+	<div class="fixed-con content-con">
+		<div class="box-left"></div>
+		<div class="box-right"></div>
+	</div>
 	<!-- content-con end -->
 	<footer class="footer-con"></footer>
 	<!-- footer-con end -->
