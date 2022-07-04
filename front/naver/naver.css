@@ -1,0 +1,268 @@
+@charset "utf-8";
+
+*{padding: 0; margin: 0;}
+ul,ol,li{ list-style: none; }
+a{ text-decoration: none; }
+
+.fixed-con{ width: 1190px; margin: 0 auto;}
+.menu-con, .footer-con{ min-width: 1190px;}
+
+.search-con{ 
+	height: 160px; position: relative; 
+}
+/* 검색창 */
+.box-search{ 
+	width: 586px; height: 56px; position: absolute;
+	left: 268px; top: 50%; margin-top: -28px;
+}
+.box-search-in{
+	height: 100%; box-sizing: border-box; border:2px solid #19ce60;
+	border-radius: 2px; background-color: #fff;
+}
+.input-search{
+	border: 0; outline: 0; width: 474px; height: 50px; box-sizing: border-box;
+	padding: 13px 15px; margin: 1px; font-size: 18px; line-height: 24px;
+	font-weight: bold; 
+}
+.btn-submit{
+	width: 56px; height: 55px; box-sizing: border-box; position: absolute;
+	background-color: #19ce60; border-radius: 0 2px 2px 0;
+	border: 0; outline: 0; cursor: pointer; top: 0; right: 0;
+}
+.icon-search{
+	display: inline-block; width: 22px; height: 22px;
+	background-position: -420px 0;
+}
+
+/* 네이버 로고 */
+.link-naver{
+	width: 222px; height: 52px; position: absolute; 
+	background-position: 0 -158px; top: 50%; margin-top: -32px;
+	left: 21px;
+}
+
+/* 우측 상단 링크들 */
+.search-con .box-service{
+	position: absolute; top: 12px; right: 27px;
+}
+.search-con .link-set-naver{
+	font-size: 11px; color: #404040;
+}
+.search-con .box-service>*{
+	float: left;
+}
+.search-con .link-set-naver::after{
+	width: 26px; height: 26px; display: inline-block; content: '';
+	background-position: -308px -345px; vertical-align: top;
+	margin: -3px 0 0 3px;
+}
+.search-con .link-set-naver:hover{
+	text-decoration: underline;
+}
+.search-con .bar{
+	width: 1px; height: 10px;
+	background-color: #e4e8eb;
+	margin: 3px 7px;
+}
+.icon-jr-naver{
+	display: inline-block; width: 60px; height: 10px;
+	margin: 3px; background-position: -262px -330px;
+	vertical-align: top;
+}
+.link-happybin{
+	margin-left: 6px;
+}
+.icon-happybin{
+	display: inline-block; width: 34px; height: 11px;
+	margin: 3px 3px 2px; background-position: -369px -299px;
+	vertical-align: top;
+}
+.link-jr-naver:hover .icon-jr-naver{
+	background-position: -200px -330px;
+}
+.link-happybin:hover .icon-happybin{
+	background-position: -380px -199px;
+}
+
+/* 가상 키보드 */
+.search-con .btn-kbd{
+	position: absolute; top: 0; bottom: 0; width: 36px; right: 84px;
+}
+.search-con .icon-kbd{
+	width: 20px; height: 12px; display: inline-block; position: absolute;
+	top: 50%; left: 50%; margin: -6px 0 0 -10px;
+	background-position: -420px -402px;
+}
+.search-con .btn-kbd:hover .icon-kbd{
+	background-position:-206px -389px;
+}
+
+/* 자동 완성 */
+.search-con .btn-auto-down{
+	position: absolute; top: 0; bottom: 0; width: 22px; right: 64px;
+}
+.search-con .icon-auto{
+	width: 10px; height: 5px; display: inline-block; position: absolute;
+	top: 50%; left: 50%; margin: -2px 0 0 -5px;
+	background-position: -408px -100px;
+}
+.search-con .btn-auto-down.up .icon-auto{
+	background-position: -408px -93px;
+}
+
+/* 자동완성 */
+.search-con .box-auto-content{
+	margin-top: -1px; border: 1px solid #e4e7e8;
+	border-radius: 0 0 6px 6px; border-top: 0;
+	box-shadow: 0 2px 3px 0 rgba(0, 1, 3, 0.07);
+	background-color: #fff;
+	display: none;
+}
+.search-con .box-auto-footer{
+	height: 40px; box-sizing: border-box; border-top: 1px solid #f1f4f6;
+	border-radius: 0 0 6px 6px; background-color: #f9fafb;
+	line-height: 37px; font-size: 13px;
+}
+.search-con .box-auto-footer .box-left{
+	float: left; padding-left: 12px;
+}
+.search-con .box-auto-footer .box-right{
+	float: right; padding-right: 12px;
+}
+.search-con .box-auto-footer .item{
+	padding: 0 6px; color: gray;	float: left;
+}
+.search-con .box-auto-footer .report{
+	color: #03c75a;
+}
+.search-con .box-auto-footer .item+.item::before{
+	width: 1px; height: 11px; float: left;
+	margin-top: 14px; content: ''; background-color: #e2e2e2;
+	margin-left: -6px;
+}
+
+/* 메뉴 */
+.menu-con{ 
+	height: 52px; background: #fff;
+	border-top: 1px solid #e4e8eb;
+	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+}
+.menu-con .box-menu{
+	padding: 11px 0; float: left;
+}
+.menu-con .list-menu{
+	font-size: 15px; line-height: 30px; float: left;
+	letter-spacing: -0.3px; font-weight: bold;
+}
+.menu-con .list-menu+.list-menu{
+	margin-left: 12px;
+}
+.menu-con .list-menu .item-menu{
+	float: left;
+}
+.menu-con .list-menu .item-menu+.item-menu{
+	margin-left: 12px;
+}
+.menu-con .list-menu .item-menu .link-menu{
+	color: #000;
+}
+.menu-con .list-menu.fixed .item-menu .link-menu{
+	color: #03c75a;
+}
+.menu-con .list-menu .mail::before{
+	content: ''; display: inline-block; width: 21px; height: 21px;
+	background-position: -420px -73px;
+	vertical-align: top; margin: 3px 9px 0 0;
+}
+.menu-con .list-menu .shopping::before{
+	content: ''; display: block; width: 24px; height: 20px;
+	background-position: -154px -389px;
+	margin-top: 5px;
+}
+.menu-con .list-menu .shopping-live::before{
+	content: ''; display: block; width: 54px; height: 20px;
+	background-position: -202px -299px;
+	margin-top: 5px;
+}
+.menu-con .list-menu .tv::before{
+	content: ''; display: inline-block; width: 12px; height: 14px;
+	background-position: -444px -49px; vertical-align: top;
+	margin: 9px 2px 0 0;
+}
+/* 더보기 버튼 */
+.menu-con .btn-more{
+	float: left; margin-left: 17px; line-height: 30px;
+	color: #202020; font-size: 13px;
+}
+.menu-con .btn-more::after{
+	width: 11px; height: 7px; margin-left: 7px; 
+	vertical-align: 2px; display: inline-block;
+	content: ''; background-position: -444px -339px;
+}
+.menu-con .btn-more:hover{
+	text-decoration: underline;
+}
+.menu-con .btn-more.fold{
+	color: #0ecd5a;
+}
+.menu-con .btn-more>.title:nth-child(2){
+	display: none; 
+}
+.menu-con .btn-more.fold>.title:nth-child(1){
+	display: none;
+}
+.menu-con .btn-more.fold>.title:nth-child(2){
+	display: inline; 
+}
+.menu-con .btn-more.fold::after{
+	background-position: -444px -330px;
+}
+
+/* 컨텐츠 박스 */
+.content-con.fixed-con{
+	padding: 20px 30px; letter-spacing: -.2px;
+}
+.content-con .box-left{
+	float: left; width: 750px; height: 100%; background-color: #fff;
+}
+.content-con .box-right{
+	float: right; width: 350px; height: 100%; background-color: #fff;
+}
+
+/* 왼쪽 1번째 박스(광고) */
+.content-con .box-left1,
+.content-con .box-right1{
+	margin-bottom: 12px;
+}
+.link-ad{
+	display: block; height: 135px;
+}
+
+.content-con{ height: 500px; background: skyblue;}
+.footer-con{ height: 424px; background: purple;}
+
+/* 공용 */
+
+.fixed-con{ padding: 0 30px; box-sizing: border-box;}
+
+/* 배경이미지1 공용 */
+.icon-search, 
+.link-naver, 
+.search-con .link-set-naver::after,
+.icon-jr-naver, 
+.icon-happybin, 
+.search-con .icon-kbd,
+.search-con .icon-auto,
+.menu-con .list-menu .mail::before,
+.menu-con .list-menu .shopping::before,
+.menu-con .list-menu .shopping-live::before,
+.menu-con .list-menu .tv::before,
+.menu-con .btn-more::after{
+	background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+	background-size: 457px 434px;
+}
+
+/* clearfix 공용 */
+.search-con .box-service::after{
+	clear: both; display: block; content: '';
+}
