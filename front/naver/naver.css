@@ -237,6 +237,41 @@ a{ text-decoration: none; }
 .content-con .box-left1 .link-ad{
 	display: block; height: 135px;
 }
+/* 왼쪽 2번째 박스(연합뉴스) */
+.content-con .box-left2{
+	border: 1px solid #dae1e6;
+	padding: 12px 15px 11px 15px; line-height: 24px;
+	background-color: #f7f9fa;
+}
+.content-con .box-left2 .box-issue{
+	float: left;
+}
+.content-con .box-left2 .box-direct{
+	float: right; font-weight: bold;
+}
+.content-con .box-left2 .link-media{
+	float: left; padding-right: 12px; margin-right: 7px;
+	font-size: 13px; font-weight: bold;
+	letter-spacing: -.3px; position: relative; color: #000;
+}
+.content-con .box-left2 .link-media::after{
+	content: ''; width: 6px; height: 10px;
+	position: absolute;
+	top: 7px; background-position: -444px -380px;
+	right: 0;
+}
+.content-con .box-left2 .list-issue{
+	float: left; overflow: hidden;
+	width: 310px; height: 24px;
+}
+.content-con .box-left2 .link-issue{
+	width: 310px; overflow: hidden;
+	text-overflow: ellipsis; white-space: nowrap;
+	font-size: 13px; display: block; color: #202020;
+}
+.content-con .box-left2 .link-issue:hover{
+	text-decoration: underline;
+}
 
 /* 오른쪽 1번째 박스(로그인) */
 .content-con .box-right1{
@@ -324,13 +359,15 @@ a{ text-decoration: none; }
 .menu-con .btn-more::after,
 .content-con .box-right1 .icon-login,
 .content-con .box-right1 .box-sub::before,
-.content-con .box-right1 .link-signup::before{
+.content-con .box-right1 .link-signup::before,
+.content-con .box-left2 .link-media::after{
 	background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
 	background-size: 457px 434px;
 }
 
 /* clearfix 공용 */
 .search-con .box-service::after,
-.content-con .box-right1 .box-sub::after{
+.content-con .box-right1 .box-sub::after,
+.content-con .box-left2::after{
 	clear: both; display: block; content: '';
 }
