@@ -272,6 +272,19 @@ a{ text-decoration: none; }
 .content-con .box-left2 .link-issue:hover{
 	text-decoration: underline;
 }
+.content-con .box-left2 .box-direct>a{
+	float: left; font-size: 13px; color: #202020;
+	margin: 0px 4px 0px 7px;
+}
+.content-con .box-left2 a.link-news-home{
+	color: #3565c9; margin: 0;
+}
+.content-con .box-left2 a.link-news-home::after{
+	content: ''; width: 3px; height: 3px;
+	display: inline-block; vertical-align: 3px;
+	margin-left: 8px; background-color: #c8ccd1;
+	border-radius: 50%;
+}
 
 /* 오른쪽 1번째 박스(로그인) */
 .content-con .box-right1{
@@ -337,7 +350,7 @@ a{ text-decoration: none; }
 	text-decoration: underline;
 }
 
-.content-con{ height: 500px; background: skyblue;}
+
 .footer-con{ height: 424px; background: purple;}
 
 /* 공용 */
@@ -368,6 +381,8 @@ a{ text-decoration: none; }
 /* clearfix 공용 */
 .search-con .box-service::after,
 .content-con .box-right1 .box-sub::after,
-.content-con .box-left2::after{
+.content-con .box-left2::after,
+.content-con::after,
+.fixed-con::after{
 	clear: both; display: block; content: '';
 }
