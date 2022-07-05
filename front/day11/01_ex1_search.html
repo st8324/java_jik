@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#box_search{
+			/* 
+			height, width
+			 - 높이, 너비
+			 - box-sizing에 따라 기준이 달라짐
+			 - box-sizing : content-box(기본값)이면, 컨텐츠의 높이, 너비
+			 - box-sizing : border-box이면, 컨텐츠 + 패딩 + 테두리의 높이, 너비
+
+			*/
+			border: 2px solid green; width: 500px; height: 50px;
+			padding: 10px; position: relative;
+		}
+		#input_search{
+			height: 100%; box-sizing: border-box; width: 350px; 
+			border: 0; /* 테두리 두께를 0으로 */
+			border: none; /* 테두스 스타일을 없음으로 */
+			vertical-align: top;
+		}
+		#input_search:focus{
+			outline: 0;
+		}
+		#btn_submit{
+			width: 74px; height: 74px; background-color: green; border: none;
+			vertical-align: top; position: absolute; top: 0; right: 0; padding: 0;
+			margin-top: -2px; margin-right: -2px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box_search">
+		<input type="text" id="input_search">
+		<button id="btn_submit">버튼</button>
+	</div>
+	
+</body>
+</html>
