@@ -288,6 +288,87 @@ a{ text-decoration: none; }
 	margin-left: 8px; background-color: #c8ccd1;
 	border-radius: 50%;
 }
+/* 왼쪽 3번째 박스(언론사) */
+.content-con .box-left3 .box-group-title{
+	padding: 22px 0 16px;
+	font-size: 14px; line-height: 18px;
+}
+.content-con .box-left3 .box-inner-left{
+	float: left;
+}
+.content-con .box-left3 .box-inner-right{
+	float: right;
+}
+.content-con .box-left3 .link-news-stand{
+	float: left; background: none !important;
+	font-weight: bold; color: #000;
+}
+.content-con .box-left3 .link-news-stand::before{
+	width: 27px; height: 24px; content: '';
+	display: inline-block; vertical-align: top;
+	margin: -6px 1px 0px 0px;
+	background-position: -336px -345px;
+}
+.content-con .box-left3 .link-news-stand::after{
+	width: 7px; height: 11px; content: '';
+	display: inline-block; vertical-align: -1px;
+	margin: 0px 0px 0px 6px;
+	background-position: -444px -317px;
+}
+.content-con .box-left3 .btn-subscribe{
+	margin-left: 10px;
+	color: #505050; font-size: 14px;
+}
+.content-con .box-left3 .btn-subscribe.active,
+.content-con .box-left3 .btn-all.active{
+	color: #000; font-weight: bold;
+}
+.content-con .box-left3 .btn-all{
+	color: #505050; font-size: 14px;
+}
+.content-con .box-left3 .btn-all::before{
+	width: 4px; height: 4px; content: '';
+	display: inline-block; vertical-align: 3px;
+	margin: 0px 8px 0px 4px;
+	border-radius: 50%; background-color: #c7ccd1;
+}
+.content-con .box-left3 .btn-article-view,
+.content-con .box-left3 .btn-article-view~a{
+	padding: 0 9px; float: left;
+}
+.content-con .box-left3 .icon-list{
+	width: 14px; height: 13px;
+	background-position: -49px -419px;
+	opacity: 0.7; display: inline-block;
+	vertical-align: top;
+}
+.content-con .box-left3 .icon-title{
+	width: 13px; height: 13px;
+	background-position: -444px -34px;
+	opacity: 0.7; display: inline-block;
+	vertical-align: top;
+}
+.content-con .box-left3 .icon-set{
+	width: 15px; height: 15px;
+	background-position: 0 -419px;
+	opacity: 0.7; display: inline-block;
+	margin: -1px 0 1px;
+	vertical-align: top;
+}
+.content-con .box-left3 a:hover .icon-list,
+.content-con .box-left3 a:hover .icon-title,
+.content-con .box-left3 a:hover .icon-set{
+	opacity: 1;
+}
+.content-con .box-left3 .active .icon-list{
+	background-position: -17px -419px;
+	opacity: 1;
+}
+.content-con .box-left3 .active .icon-title{
+	background-position: -444px -19px;
+	opacity: 1;
+}
+
 
 /* 오른쪽 1번째 박스(로그인) */
 .content-con .box-right1{
@@ -482,7 +563,10 @@ a{ text-decoration: none; }
 .content-con .box-left2 .link-media::after,
 .content-con .box-right2 .box-stock .rate::before,
 .content-con .box-right2 .box-nav .btn-nav::before,
-.content-con .box-right2 .exchange .name::before{
+.content-con .box-right2 .exchange .name::before,
+.bg-img,
+.bg-img::after,
+.bg-img::before{
 	background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
 	background-size: 457px 434px;
 }
@@ -493,6 +577,7 @@ a{ text-decoration: none; }
 .content-con .box-left2::after,
 .content-con::after,
 .fixed-con::after,
-.content-con .box-right2 .link-timesquare::after{
+.content-con .box-right2 .link-timesquare::after,
+.after::after{
 	clear: both; display: block; content: '';
 }
