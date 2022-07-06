@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>hover 예제</title>
+	<style>
+		.box{
+			width: 125px; height: 65px;
+			box-sizing: border-box;
+			border: 1px solid black;
+			padding: 20px 0; line-height: 25px;
+			font-size: 14px; text-align: center;
+		}
+		.hover{
+			display: none; height: 100%;
+		}
+		.box:hover{
+			background-color: gray;
+		}
+		.box:hover .logo{
+			display: none;
+		}
+		.box:hover .hover{
+			display: block; color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<span class="logo">로고</span>
+		<div class="hover">호버</div>
+	</div>
+</body>
+</html>
