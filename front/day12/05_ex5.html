@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>박스 배치 예제</title>
+	<style>
+		.container1{
+			width: 300px;	height: 150px; box-sizing: border-box;
+			border: 1px solid #000; position: relative;
+		}
+		.row1{
+			height: calc((150px - 2px) / 3);
+		}
+		.box1{
+			height: 100%; width: calc((300px - 2px) / 3);
+			float: left;
+		}
+		.line-top-bottom1{
+			position: absolute; top: -1px; bottom: -1px; width: 1px;
+			background-color: #000; left: 99px;
+		}
+		.line-top-bottom2{
+			position: absolute; top: -1px; bottom: -1px; width: 1px;
+			background-color: #000; left: 198px;
+		}
+		.line-left-right1{
+			position: absolute; left: -1px; right: -1px;
+			top: 49px; height: 1px; background-color: #000;
+		}
+		.line-left-right2{
+			position: absolute; left: -1px; right: -1px;
+			top: 98px; height: 1px; background-color: #000;
+		}
+
+		.container2{
+			width: 300px; height: 150px;
+			border-collapse: collapse;
+			margin: 50px 0;
+		}
+		.box2{
+			width: calc(100% / 3); height: calc(100% / 3);
+			border: 1px solid #000;
+		}
+
+		.container3{
+			width: 300px; height: 150px;
+		}
+		.row3{
+			height: 50px;
+		}
+		.box3{
+			height: 100%; width: 100px; box-sizing: border-box;
+			float: left; border: 1px solid #000;
+		}
+		.row3+.row3 .box3{
+			border-top: 0;
+		}
+		.row3 .box3+.box3{
+			border-left: 0;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container1">
+		<div class="row1">
+			<div class="box1"></div>
+			<div class="box1"></div>
+			<div class="box1"></div>
+		</div>
+		<div class="row1">
+			<div class="box1"></div>
+			<div class="box1"></div>
+			<div class="box1"></div>
+		</div>
+		<div class="row1">
+			<div class="box1"></div>
+			<div class="box1"></div>
+			<div class="box1"></div>
+		</div>
+		<div class="box-line1">
+			<div class="line-top-bottom1"></div>
+			<div class="line-top-bottom2"></div>
+			<div class="line-left-right1"></div>
+			<div class="line-left-right2"></div>
+		</div>
+	</div>
+	<table class="container2">
+		<tr class="row2">
+			<td class="box2"></td>
+			<td class="box2"></td>
+			<td class="box2"></td>
+		</tr>
+		<tr class="row2">
+			<td class="box2"></td>
+			<td class="box2"></td>
+			<td class="box2"></td>
+		</tr>
+		<tr class="row2">
+			<td class="box2"></td>
+			<td class="box2"></td>
+			<td class="box2"></td>
+		</tr>
+	</table>
+	<div class="container3">
+		<div class="row3">
+			<div class="box3"></div>
+			<div class="box3"></div>
+			<div class="box3"></div>
+		</div>
+		<div class="row3">
+			<div class="box3"></div>
+			<div class="box3"></div>
+			<div class="box3"></div>
+		</div>
+		<div class="row3">
+			<div class="box3"></div>
+			<div class="box3"></div>
+			<div class="box3"></div>
+		</div>
+	</div>
+</body>
+</html>
