@@ -618,6 +618,17 @@ a{ text-decoration: none; }
 .content-con .box-right2 .box-nav .btn-next::before{
 	background-position: -451px -392px;
 }
+/* 오른쪽 3번째 광고 */
+.content-con .box-right3{
+	margin-top: 12px;
+}
+.content-con .box-right3 .link-ad{
+	display: block; line-height: 0; 
+}
+.content-con .box-right3 .img-ad{
+	width: 350px; height: 200px;
+}
+
 
 .footer-con{ height: 1000px; background: purple;}
 
