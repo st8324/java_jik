@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>네이버 테마 캐스트</title>
+	<style>
+		*		 {padding: 0; margin: 0; color: #202020; }
+		ul,ol{ list-style: none;}
+		a		 { text-decoration: none;}
+		.container	{ 
+			width: 750px; margin-left: 100px;	letter-spacing: -.25px; font-size: 12px;
+			line-height: 16px;
+		}
+		.top { margin-bottom: 17px;}
+		.top-left		{ float: left; font-size: 0px;}
+		.top-right	{ float: right;}
+		.top::after	{ clear: both; display: block; content: ''; }
+		.top-left1	{ 
+			font-weight: bold; font-size: 14px; 
+			line-height: 16px; 
+		}
+		.top-left2	{ 
+			font-size: 12px; color: gray;
+			line-height: 16px; margin-left: 8px;
+		}
+		.top-right1{ color: gray;}
+		.bold			 { font-weight: bold; color: #000;}
+		.top-right2{ 
+			color: #505050; margin-left: 14px;
+			position: relative;
+		}
+		.top-right2::before{
+			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+			background-size: 457px 434px;
+			content: ''; width: 11px; height: 11px;
+			background-position: -444px -194px;
+			vertical-align: -1px; margin-right: 4px;
+			display: inline-block; opacity: .7;
+		}
+		.top-right2::after{
+			content: ''; width: 1px; height: 12px;
+			position: absolute; background-color: #e4e8eb;
+			top: 2px; left: -8px;
+		}
+		.top-right2:hover{
+			text-decoration: underline;
+		}
+		.top-right2:hover::before{
+			opacity: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="top">
+			<div class="top-left">
+				<span class="top-left1">오늘 읽을만한 글</span>
+				<span class="top-left2">주제별로 분류된 다양한 글 모음</span>
+			</div>
+			<div class="top-right">
+				<span class="top-right1"><span class="bold">676</span> 개의 글</span>
+				<a href="#" class="top-right2">관심주제 설정</a>
+			</div>
+		</div>
+		<div class="bot">
+			
+		</div>
+	</div>
+</body>
+</html>
