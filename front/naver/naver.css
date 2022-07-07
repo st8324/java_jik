@@ -368,7 +368,52 @@ a{ text-decoration: none; }
 	background-position: -444px -19px;
 	opacity: 1;
 }
-
+.content-con .box-left3 .box-group-press{
+	position: relative;
+}
+.content-con .box-left3 .list-group-press{
+	border: 1px solid #dae1e6;
+	height: 260px;
+}
+.content-con .box-left3 .item-press{
+	float: left; width: calc(100% / 6);
+	height: 65px;
+	position: relative;
+}
+.content-con .box-left3 .link-press{
+	display: block; padding: 23px 0 22px;
+	text-align: center; height: 20px;
+}
+.content-con .box-left3 .line{
+	position: absolute;
+	background-color: #e4e8eb;
+}
+.content-con .box-left3 .to-bottom1,
+.content-con .box-left3 .to-bottom2,
+.content-con .box-left3 .to-bottom3,
+.content-con .box-left3 .to-bottom4,
+.content-con .box-left3 .to-bottom5{
+	width: 1px; top: 0; bottom: 0;
+}
+.content-con .box-left3 .to-bottom1{left: 125px;}
+.content-con .box-left3 .to-bottom2{left: 249px;}
+.content-con .box-left3 .to-bottom3{left: 373px;}
+.content-con .box-left3 .to-bottom4{left: 498px;}
+.content-con .box-left3 .to-bottom5{left: 623px;}
+.content-con .box-left3 .to-right1,
+.content-con .box-left3 .to-right2,
+.content-con .box-left3 .to-right3{
+	height: 1px; left: 0; right: 0;
+}
+.content-con .box-left3 .to-right1{top: 66px;}
+.content-con .box-left3 .to-right2{top: 131px;}
+.content-con .box-left3 .to-right3{top: 196px;}
+.content-con .box-left3 .box-hover-press{
+	position: absolute; top: 0; left: 0; right: 0;
+	bottom: 0; background-color: #f7f9fa;
+	padding: 19px 0 18px; text-align: center;
+	font-size: 0; line-height: 0;
+}
 
 /* 오른쪽 1번째 박스(로그인) */
 .content-con .box-right1{
