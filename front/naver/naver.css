@@ -386,7 +386,7 @@ a{ text-decoration: none; }
 }
 .content-con .box-left3 .line{
 	position: absolute;
-	background-color: #e4e8eb;
+	background-color: #e4e8eb; z-index: 1;
 }
 .content-con .box-left3 .to-bottom1,
 .content-con .box-left3 .to-bottom2,
@@ -412,8 +412,44 @@ a{ text-decoration: none; }
 	position: absolute; top: 0; left: 0; right: 0;
 	bottom: 0; background-color: #f7f9fa;
 	padding: 19px 0 18px; text-align: center;
-	font-size: 0; line-height: 0;
+	font-size: 0; line-height: 0; display: none;
 }
+.content-con .box-left3 .item-press:hover .box-hover-press{
+	display: block;
+}
+.content-con .box-left3 .btn-subscribe-press,
+.content-con .box-left3 .link-news-press{
+	display: inline-block; padding: 7px 8px 5px;
+	background-color: #fff; border: 1px solid #dae1e6;
+	font-size: 12px; line-height: 16px;
+	color: #505050; vertical-align: top;
+}
+.content-con .box-left3 .btn-subscribe-press+a{
+	margin-left: -1px;
+}
+.content-con .box-left3 .btn-subscribe-press:hover,
+.content-con .box-left3 .link-news-press:hover{
+	border-color: #bec8d8; position: relative;
+}
+.content-con .box-left3 .btn-prev,
+.content-con .box-left3 .btn-next{
+	position: absolute; top: 110px; left: -27px;
+	z-index: 10;
+}
+.content-con .box-left3 .icon-prev,
+.content-con .box-left3 .icon-next{
+	width: 44px; height: 44px; display: inline-block;
+	background-position: 0 -299px;
+}
+.content-con .box-left3 .btn-next{
+	right: -13px; left: auto;
+}
+.content-con .box-left3 .icon-next{
+	background-position: -224px -158px;
+}
+
+
+
 
 /* 오른쪽 1번째 박스(로그인) */
 .content-con .box-right1{
