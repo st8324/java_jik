@@ -10,7 +10,7 @@
 		ul,ol{ list-style: none;}
 		a		 { text-decoration: none;}
 		.container	{ 
-			width: 750px; margin-left: 100px;	letter-spacing: -.25px; font-size: 12px;
+			width: 750px; margin-left: 50px;	letter-spacing: -.25px; font-size: 12px;
 			line-height: 16px;
 		}
 		.top { margin-bottom: 17px;}
@@ -50,6 +50,79 @@
 		.top-right2:hover::before{
 			opacity: 1;
 		}
+		.bot-in{
+			position: relative; overflow: hidden; 
+		}
+		.list-theme{
+			font-size: 0; line-height: 0; white-space: nowrap;
+		}
+		.list-theme::before{
+			content: ''; position: absolute;
+			top: 0; left: 0; right: 0; bottom: 0;
+			border: 1px solid #dae1e6;
+		}
+		.item-theme{
+			width: 94px; display: inline-block; 
+			/* 
+			::before를 이용하여 표현한 테두리(position:absolute) 
+			위에 배치하기 위해 */
+			position: relative;
+		}
+		.item-theme:nth-child(8n+1){
+			width: 92px;
+		}
+		.btn-theme{
+			line-height: 49px; font-size: 13px;
+			display: block; border-right: 1px solid #dae1e6;
+			text-align: center; font-weight: bold;
+		}
+		.btn-theme.enter:hover		{ color: #e65da0;}
+		.btn-theme.sports:hover		{ color: #0147b5;}
+		.btn-theme.car:hover			{ color: #4a94e1;}
+		.btn-theme.webtoon:hover	{ color: #66c971;}
+		.btn-theme.economy:hover	{ color: #35ae5e;}
+		.btn-theme.subscribe:hover{ color: #5290ff;}
+		.btn-theme.recipe:hover		{ color: #ebaa00;}
+		.btn-theme.living:hover		{ color: #c08d31;}
+		.btn-theme.book:hover			{ color: #42be6f;}
+		.btn-theme.beauty:hover		{ color: #8449ca;}
+
+		.btn-theme.enter.active			{ background-color: #e65da0;}
+		.btn-theme.sports.active		{ background-color: #0147b5;}
+		.btn-theme.car.active				{ background-color: #4a94e1;}
+		.btn-theme.webtoon.active		{ background-color: #66c971;}
+		.btn-theme.economy.active		{ background-color: #35ae5e;}
+		.btn-theme.subscribe.active	{ background-color: #5290ff;}
+		.btn-theme.recipe.active		{ background-color: #ebaa00;}
+		.btn-theme.living.active		{ background-color: #c08d31;}
+		.btn-theme.book.active			{ background-color: #42be6f;}
+		.btn-theme.beauty.active		{ background-color: #8449ca;}
+
+		.btn-theme.active,
+		.btn-theme.active:hover{ color: #fff; }
+		.btn-theme.active{
+			margin: 0 -1px; border-radius: 1px;
+			box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
+		}
+		.bot{position: relative;}
+		.btn-prev,
+		.btn-next{
+			width: 40px; height: 40px; position: absolute;
+			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+			background-size: 457px 434px;
+			background-position: -128px -345px;
+			top: 6px; left: -23px; z-index: 10;
+		}
+		.btn-prev:hover{
+			background-position: -44px -345px;
+		}
+		.btn-next{
+			left: auto; right: -18px;
+			background-position: -86px -345px;
+		}
+		.btn-next:hover{
+			background-position: -170px -345px;
+		}
 	</style>
 </head>
 <body>
@@ -65,7 +138,44 @@
 			</div>
 		</div>
 		<div class="bot">
-			
+			<div class="bot-in">
+				<ul class="list-theme">
+					<li class="item-theme">
+						<a href="#" class="btn-theme enter">엔터</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme sports active">스포츠</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme car">자동차</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme webtoon">웹툰</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme economy">경제</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme subscribe">추천구독</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme recipe">레시피</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme living">리빙</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme book">책방</a>
+					</li>
+					<li class="item-theme">
+						<a href="#" class="btn-theme beauty">패션뷰티</a>
+					</li>
+				</ul>
+			</div>
+			<div class="box-btns">
+				<a href="#" class="btn-prev"></a>
+				<a href="#" class="btn-next"></a>
+			</div>
 		</div>
 	</div>
 </body>
