@@ -447,8 +447,121 @@ a{ text-decoration: none; }
 .content-con .box-left3 .icon-next{
 	background-position: -224px -158px;
 }
+/* 왼쪽 4번째 박스(주제별 카테고리) */
+.content-con .box-left4	{ 
+	letter-spacing: -.25px; font-size: 12px;
+	line-height: 16px; margin-top: 35px;
+}
+.content-con .box-left4 .box-theme-head { margin-bottom: 17px;}
+.content-con .box-left4 .box-title		{ float: left; font-size: 0px;}
+.content-con .box-left4 .box-info	{ float: right;}
+.content-con .box-left4 .box-theme-head::after	{ clear: both; display: block; content: ''; }
+.content-con .box-left4 .title	{ 
+	font-weight: bold; font-size: 14px; 
+	line-height: 16px; 
+}
+.content-con .box-left4 .dsc	{ 
+	font-size: 12px; color: gray;
+	line-height: 16px; margin-left: 8px;
+}
+.content-con .box-left4 .info{ color: gray;}
+.content-con .box-left4 .bold			 { font-weight: bold; color: #000;}
+.content-con .box-left4 .btn-set{ 
+	color: #505050; margin-left: 14px;
+	position: relative;
+}
+.content-con .box-left4 .btn-set::before{
+	background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+	background-size: 457px 434px;
+	content: ''; width: 11px; height: 11px;
+	background-position: -444px -194px;
+	vertical-align: -1px; margin-right: 4px;
+	display: inline-block; opacity: .7;
+}
+.content-con .box-left4 .btn-set::after{
+	content: ''; width: 1px; height: 12px;
+	position: absolute; background-color: #e4e8eb;
+	top: 2px; left: -8px;
+}
+.content-con .box-left4 .btn-set:hover{
+	text-decoration: underline;
+}
+.content-con .box-left4 .btn-set:hover::before{
+	opacity: 1;
+}
+.content-con .box-left4 .box-theme-category{
+	position: relative; overflow: hidden; 
+}
+.content-con .box-left4 .list-theme{
+	font-size: 0; line-height: 0; white-space: nowrap;
+}
+.content-con .box-left4 .list-theme::before{
+	content: ''; position: absolute;
+	top: 0; left: 0; right: 0; bottom: 0;
+	border: 1px solid #dae1e6;
+}
+.content-con .box-left4 .item-theme{
+	width: 94px; display: inline-block; 
+	/* 
+	::before를 이용하여 표현한 테두리(position:absolute) 
+	위에 배치하기 위해 */
+	position: relative;
+}
+.content-con .box-left4 .item-theme:nth-child(8n+1){
+	width: 92px;
+}
+.content-con .box-left4 .btn-theme{
+	line-height: 49px; font-size: 13px;
+	display: block; border-right: 1px solid #dae1e6;
+	text-align: center; font-weight: bold; color: #202020;
+}
+.content-con .box-left4 .btn-theme.enter:hover		{ color: #e65da0;}
+.content-con .box-left4 .btn-theme.sports:hover		{ color: #0147b5;}
+.content-con .box-left4 .btn-theme.car:hover			{ color: #4a94e1;}
+.content-con .box-left4 .btn-theme.webtoon:hover	{ color: #66c971;}
+.content-con .box-left4 .btn-theme.economy:hover	{ color: #35ae5e;}
+.content-con .box-left4 .btn-theme.subscribe:hover{ color: #5290ff;}
+.content-con .box-left4 .btn-theme.recipe:hover		{ color: #ebaa00;}
+.content-con .box-left4 .btn-theme.living:hover		{ color: #c08d31;}
+.content-con .box-left4 .btn-theme.book:hover			{ color: #42be6f;}
+.content-con .box-left4 .btn-theme.beauty:hover		{ color: #8449ca;}
 
+.content-con .box-left4 .btn-theme.enter.active			{ background-color: #e65da0;}
+.content-con .box-left4 .btn-theme.sports.active		{ background-color: #0147b5;}
+.content-con .box-left4 .btn-theme.car.active				{ background-color: #4a94e1;}
+.content-con .box-left4 .btn-theme.webtoon.active		{ background-color: #66c971;}
+.content-con .box-left4 .btn-theme.economy.active		{ background-color: #35ae5e;}
+.content-con .box-left4 .btn-theme.subscribe.active	{ background-color: #5290ff;}
+.content-con .box-left4 .btn-theme.recipe.active		{ background-color: #ebaa00;}
+.content-con .box-left4 .btn-theme.living.active		{ background-color: #c08d31;}
+.content-con .box-left4 .btn-theme.book.active			{ background-color: #42be6f;}
+.content-con .box-left4 .btn-theme.beauty.active		{ background-color: #8449ca;}
 
+.content-con .box-left4 .btn-theme.active,
+.content-con .box-left4 .btn-theme.active:hover{ color: #fff; }
+.content-con .box-left4 .btn-theme.active{
+	margin: 0 -1px; border-radius: 1px;
+	box-shadow: 0 3px 6px 0 rgba(0,0,0,0.16);
+}
+.content-con .box-left4 .box-theme-body{position: relative;}
+.content-con .box-left4 .btn-prev,
+.content-con .box-left4 .btn-next{
+	width: 40px; height: 40px; position: absolute;
+	background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
+	background-size: 457px 434px;
+	background-position: -128px -345px;
+	top: 6px; left: -23px; z-index: 10;
+}
+.content-con .box-left4 .btn-prev:hover{
+	background-position: -44px -345px;
+}
+.content-con .box-left4 .btn-next{
+	left: auto; right: -18px;
+	background-position: -86px -345px;
+}
+.content-con .box-left4 .btn-next:hover{
+	background-position: -170px -345px;
+}
 
 
 /* 오른쪽 1번째 박스(로그인) */
