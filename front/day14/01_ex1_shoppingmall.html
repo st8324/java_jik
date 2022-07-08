@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>네이버 쇼핑</title>
+	<style>
+		*		 {padding: 0; margin: 0; }
+		ul,ol{ list-style: none;}
+		a		 { text-decoration: none;}
+		.box-right4{
+			width: 350px; margin-top: 15px; margin-left: 20px;
+		}
+		.box-trend{ float: left;}
+		.box-list-shop{ float: right;}
+		.link-trend{ 
+			color: #000; font-size: 13px; line-height: 17px;
+			font-weight: bold;
+		}
+		.link-trend::before{
+			content: ''; width: 15px; height: 15px; vertical-align: -3px;
+			margin-right: 4px; display: inline-block;
+			background-position: -48px -77px;
+		}
+		.link-trend::after{
+			content: ''; width: 5px; height: 9px; vertical-align: 0;
+			margin-left: 7px; display: inline-block;
+			background-position: -65px -77px;
+		}
+		.link-trend:hover{ text-decoration: underline;}
+		.link-shop{
+			line-height: 17px; border-bottom: 2px solid transparent;
+			float: left; font-weight: bold; font-size: 13px;
+			color: #202020; padding: 0 1px;
+		}
+		.link-shop+.link-shop{
+			margin-left: 11px;
+		}
+		.link-shop.active{
+			color: #03c75a; border-color: #19ce60;
+		}
+
+		.bg-img2-after::after,
+		.bg-img2-before::before,
+		.bg-img2{
+			background-image: url(https://s.pstatic.net/static/www/img/uit/sp_shop_a620bd.png);
+			background-size: 107px 101px;
+		}
+
+		.after::after{
+			clear: both; display: block; content: '';
+		}
+	</style>
+</head>
+<body>
+	<div class="box-right4">
+		<div class="box-shop-header after">
+			<div class="box-trend">
+				<a href="#" class="link-trend bg-img2-after bg-img2-before">트렌드쇼핑</a>
+			</div>
+			<div class="box-list-shop">
+				<a href="#" class="link-shop active">상품</a>
+				<a href="#" class="link-shop">쇼핑몰</a>
+				<a href="#" class="link-shop">MEN</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
