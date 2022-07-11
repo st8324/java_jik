@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>반응형 메뉴</title>
+	<script src="https://kit.fontawesome.com/b1e3c8f87d.js" crossorigin="anonymous"></script>
+	<style>
+		*{ padding: 0; margin: 0; color: #000;}
+		ul,ol{list-style: none;}
+		a{ text-decoration: none;}
+		.nav{ height: 50px; position: relative; box-sizing: border-box; border: 1px solid #000;}
+		.list-menu{
+			display: flex; height: 100%;
+		}
+		.item-menu{
+			width: 100%; height: 100%; 
+			line-height: 50px; text-align: center; box-sizing: border-box;
+		}
+		.item-menu+.item-menu{
+			margin-left: -1px; border-left: 1px solid #000;
+		}
+		.link-menu{
+			display: block; width: 100%; height: 100%;
+		}
+		.btn-ham-menu{ 
+			display:  none;
+		}
+		@media (max-width:600px) {
+			.list-menu{
+				/* display: none; */
+				display: block; position: absolute; top: 50px; right: 0;
+				margin-right: -1px; margin-top: -2px; border: 1px solid #000;
+				height: 150px;
+				min-height: calc(100vh - 49px); box-sizing: border-box;
+			}
+			.btn-ham-menu{
+				width: 50px; height: 50px; box-sizing: border-box; border: 1px solid #000;
+				position: absolute; top: 0; right: 0; margin-top: -1px; margin-right: -1px;
+				text-align: center; line-height: 48px; font-size: 30px; display: block;
+			}
+			.item-menu{
+				width: 200px; height: 50px; box-sizing: border-box;
+			}
+			.item-menu+.item-menu{
+				border-left: 0;
+				margin-top: -1px; border-top: 1px solid #000;
+			}
+			.item-menu:last-child{
+				border-bottom: 1px solid #000;
+			}
+		}
+	</style>
+</head>
+<body>
+	<nav class="nav">
+		<a href="#" class="btn-ham-menu">
+			<i class="fa-solid fa-bars"></i>
+		</a>
+		<ul class="list-menu">
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴1</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴1</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴1</a>
+			</li>
+		</ul>
+	</nav>
+</body>
+</html>

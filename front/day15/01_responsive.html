@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>반응형 예제</title>
+	<style>
+		.box{
+			width: 100px; height: 100px; background: red;
+		}
+		/* 
+		최소 ~px이상일 때 css를 바꾸고 싶다면 : min-width
+		최대 ~px이하일 때 css를 바꾸고 싶다면 : max-width
+		 */
+
+		@media (min-width: 600px) {
+			.box{
+				width: 200px; height: 200px; background: green;
+			}
+		}
+
+		@media (min-width: 1200px) {
+			.box{
+				width: 300px; height: 300px; background: blue;
+			}
+		}
+	</style>
+</head>
+<body>
+	<!-- 
+		화면 너비가 600px이하이면 100 x 100 빨간 상자
+		화면 너비가 1200px이하이면 200 x 200 녹색 상자(600px~1200px)
+		화면 너비가 1200px초과이면 300 x 300 파란 상자
+	 -->
+	<div class="box"></div>
+</body>
+</html>
