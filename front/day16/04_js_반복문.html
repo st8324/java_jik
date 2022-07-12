@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>반복문 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		- js에서 배열은 자바의 배열과 List의 혼합이라고 보는게 좋다
+		- 자바 배열에서의 특징을 가지고 있고, 자바 List와 비슷한 메소드들을 함수로 가지고 있다
+		- 자바 배열과 가장 큰 차이점은 자바 배열은 같은 타입만 관리를 하는데 js 배열은 다른 타입도 가능
+		  - 정수, 문자열, 정수가 섞여 있어도 관리가 가능
+		*/
+		var arr = [1, '2', [4,5,6], {name : '홍길동'}];//빈 배열
+		console.log(arr);
+		/* 
+		// 주로 객체에서 속성명과 값을 확인할 때 사용
+		for( 변수명 in 배열명/객체){
+			//변수명 : 배열의 번지, 객체의 속성명
+		}
+		//for of : 자바에서 향상된 for문과 유사
+		for( 변수명 of 배열명/객체){
+			//변수명 : 배열의 값, 객체의 값
+		}
+		*/
+		
+		for( index in arr){
+			console.log(index+'번지');
+		}
+		for(value of arr){
+			console.log(value);
+		}
+		var student = { name1 : '홍길동', age : 21, address : '청주시' };
+		for(index in student){
+			console.log(index + ' : ' + student[index]);
+		}
+	</script>
+</body>
+</html>
