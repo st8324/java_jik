@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>map 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		- 배열명.map(함수) : 함수의 실행 결과를 배열에 담아 새로운 배열을 만듬
+		  - 함수에 return이 필요함
+		*/
+		let arr = [-1, -2, 3, 4, -100];
+		//Math.abs를 이용한 예제
+		let arr2 = arr.map(Math.abs);
+		console.log('arr : ' + arr);
+		console.log('arr2: ' + arr2);
+
+		//에로우 함수와 조건선택연산자를 이용한 예제
+		let arr3 = arr.map((v)=>v<0?-v:v);
+		let arr3_1 = arr.map((v)=>{
+			return v<0?-v:v
+		});
+		console.log('arr3: ' + arr3);
+
+
+		//function과 조건선택연산자를 이용한 예제
+		let arr4 = arr.map(function(v){
+			return v<0?-v:v;
+		});
+		console.log('arr4: ' + arr4);
+
+
+		//function과 if else를 이용한 예제
+		let arr5 = arr.map(function(v){
+			if(v < 0)
+				return -v;
+			else
+				return v;
+		});
+		console.log('arr5: ' + arr5);
+	</script>
+</body>
+</html>
