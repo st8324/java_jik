@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>매개변수 예제</title>
+</head>
+<body>
+
+	<script>
+		/* 
+		- 함수의 매개변수가 많으면, 함수가 동작은 하지만 넘어가는 매개변수들은 활용되지 않음
+		- 함수의 매개변수가 적으면, 부족한 부분은 undefined가 들어감		
+		*/
+		function test(a, b, c){
+			console.log('a : ' + a);
+			console.log('b : ' + b);
+			console.log('c : ' + c);
+		}
+
+		test(1, 2, 3);
+		console.log('========');
+		test(1, 2);
+		console.log('========');
+		test(1);
+		console.log('========');
+		test();
+		console.log('========');
+		test(1, 2, 3, 4);
+		console.log('========');
+		/* 
+		- 디폴트 매개변수 : 매개변수를 적게 입력했을 때 해당 값을 대신할 값을 설정
+		*/
+		function test1(a=10, b=20, c=30){
+			console.log('a : ' + a);
+			console.log('b : ' + b);
+			console.log('c : ' + c);
+		}
+
+		test1(1, 2, 3);
+		console.log('========');
+		test1(1, 2);
+		console.log('========');
+		test1(1);
+		console.log('========');
+		test1();
+		console.log('========');
+		/* 
+		- 나머지 매개변수 : 매개변수의 개수를 제한하지 않고 여러개 전달하여 사용
+		*/
+		function test2(...arr){
+			for(i = 0; i<arr.length; i++)
+				console.log(arr[i]);
+		}
+		test2(1,2,3);
+		console.log('========');
+		test2(1, 2);
+		console.log('========');
+		test2(1);
+		console.log('========');
+		test2();
+		console.log('========');
+		test2(1,2,3,4,5);
+		console.log('========');
+		/*
+		- arguments : 인수(매개변수에 실제로 넣어준 값)들을 하나로 묶어 관리하기 위한 객체. 
+		  배열처럼 사용
+		*/
+		function test3(){
+			for(i = 0; i<arguments.length; i++)
+				console.log(arguments[i]);
+		}
+		test3(1,2,3);
+		console.log('========');
+		test3(1, 2);
+		console.log('========');
+		test3(1);
+		console.log('========');
+		test3();
+		console.log('========');
+		test3(1,2,3,4,5);
+		console.log('========');
+	</script>
+</body>
+</html>
