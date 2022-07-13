@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>every 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		- 주어진 배열의 모든 요소들이 숫자인지 확인하는 코드를 작성하세요.
+		  - every() 이용
+			- typeof 연산자 이용
+			- 'number'
+		*/
+		let arr = [1, 2, 3, '4'];
+		let isNumber = arr.every(function(v){
+			return typeof v == 'number';
+		})
+		console.log('배열에 모든 요소가 숫자입니까? ' + isNumber);
+
+		isNumber = arr.every((v) => typeof v == 'number')
+		console.log('배열에 모든 요소가 숫자입니까? ' + isNumber);
+		
+		//숫자와 문자열로 된 배열에서는 숫자 체크가 가능한 코드
+		isNumber = arr.every(function(v){
+			return !(v === (v+''));
+		})
+		console.log('배열에 모든 요소가 숫자입니까? ' + isNumber);
+	</script>
+</body>
+</html>
