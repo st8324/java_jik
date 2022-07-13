@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>전역 함수 예제</title>
+</head>
+<body>
+	<script>
+		// - isFinite(값) : 값이 유한수인지 알려줌
+		var x = 10;
+		console.log(x + '는 유한수? ' + isFinite(x));
+		console.log(x/0 + '는 유한수? ' + isFinite(x/0));
+		console.log('abc' + '는 유한수? ' + isFinite('abc'));
+		var y = [1, 2, 3];
+		console.log(y + '는 유한수? ' + isFinite(y));
+		// - isNaN(값) : 숫자가 아닌지를 알려줌
+		console.log(undefined+"는 숫자가 아님? " + isNaN(undefined));
+		console.log(1+"는 숫자가 아님? " + isNaN(1));
+		console.log('1'+"는 숫자가 아님? " + isNaN('1'));//정수로 변환이 되서 숫자로 판별
+		console.log('abc'+"는 숫자가 아님? " + isNaN('abc'));
+		/* 
+		- encodeURI(uri) : uri에서 사용하는 특수문자를 제외한 모든 문자를 
+		  이스케이프 시퀀스로 처리
+		- encodeURIComponent(uri) : uri에서 사용하는 특수문자를 포함한 모든 문자를
+		  이스케이프 시퀀스로 처리
+		- decodeURI(uri) : 인코드된(encodeURI로) uri를 해독하여 uri로 변환
+		- decodeURIComponent(uri) : 인코드된(encodeURIComponent로) uri를 해독하여 
+		  uri로 변환
+		*/
+		
+		var uri = "http://google.com/search.php?name=홍길동&city=서울";
+		var enc1 = encodeURI(uri);
+		var enc2 = encodeURIComponent(uri);
+		console.log(enc1);
+		console.log(enc2);
+		var dec1 = decodeURI(enc1);
+		var dec2 = decodeURIComponent(enc2);
+		console.log(dec1);
+		console.log(dec2);
+		/* 
+		- escape(문자열) : 문자열을 이스케이프 시퀀스로 변환
+		- unescape(문자열) : 이스케이프 시퀀스로 된 문자열을 문자열로 변환
+		*/
+		var encdeStr = escape(uri);
+		var decodeStr = unescape(encdeStr);
+		console.log(encdeStr)
+		console.log(decodeStr)
+	</script>
+</body>
+</html>
