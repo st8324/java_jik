@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>forEach 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		- 배열명.forEach(함수) : 모든 배열 값에 동일한 작업을 할 때 사용
+		- 함수의 매개변수를 배열값, 배열번지, 배열명순으로 된 함수를 넣어야 함
+		- 매개변수는 생략 가능
+		*/
+		let arr = [1,2,3,4,5];
+		/* 1번만 동작하는 res 함수를 선언 후 사용*/
+		arr.forEach(function res(value, index, arr){
+			console.log(value);
+		})
+		//익명 함수를 사용
+		arr.forEach(function (value, index, arr){
+			console.log(value);
+		})
+		//res1함수 선언 후 사용(res1 재사용 가능);
+		arr.forEach(res1);
+		function res1(value){
+			console.log(value);
+		}
+	</script>
+</body>
+</html>
