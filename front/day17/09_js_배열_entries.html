@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>entries 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		- 배열명.entries() : key, value로 이루어진 엔트리를 생성하여 반환
+		  - 엔트리
+			  - 0번지 key, 1번지 value
+		*/
+		let arr = [1, '홍길동', {name:'홍길동'}];
+		let entry = arr.entries();
+		for(v of entry){
+			console.log(v);
+		}
+	</script>
+</body>
+</html>
