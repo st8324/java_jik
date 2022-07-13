@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NaN 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		- 주어진 배열이 숫자로만 이루어져 있는지 확인하는 코드를 작성
+		  - isNaN()을 이용
+			- 문자열로 된 숫자는 숫자로 인정
+			- 한 배열에 대해 결과는 1번만 출력
+			- 예시 
+			  arr는 숫자로만 이루어진 배열입니까? false
+				arr2는 숫자로만 이루어진 배열입니까? true
+			- every() 이용(선택)
+		*/
+		let arr = [1, 2, 3, 'abc'];
+		let arr2= [1, 2, 3, '4'];
+
+		var isNumArray1 = arr.every((v) => {
+			return !isNaN(v);
+		});
+		console.log('arr는 숫자로만 이루어진 배열입니까? ' + isNumArray1)
+
+		var isNumArray2 = true;
+		arr2.forEach((v, i, a)=>{
+			if(isNaN(v))
+				isNumArray2 = false;
+		})
+		console.log('arr2는 숫자로만 이루어진 배열입니까? ' + isNumArray2)
+
+		var isNumArray3 = true;
+		for(i = 0; i<arr2.length; i++){
+			if(isNaN(arr2[i]))
+				isNumArray3 = false;
+		}
+		console.log('arr2는 숫자로만 이루어진 배열입니까? ' + isNumArray3)
+		
+	</script>
+</body>
+</html>
