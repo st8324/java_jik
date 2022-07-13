@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>reduce 예제</title>
+</head>
+<body>
+	<script>
+		// 숫자인 요소들만 누적합을 구하는 코드
+		let arr = ['1',2,3,'4',5];
+		let sum = arr.reduce(function(x,y){
+			if(typeof x == 'number' && typeof y == 'number'){
+				return x + y;
+			}
+			else{
+				if(typeof x == 'number')
+					return x;
+				else if(typeof y == 'number')
+					return y;
+				else
+					return 0;
+			}
+		})
+		console.log('배열의 숫자들 합 : ' + sum);
+	</script>
+</body>
+</html>
