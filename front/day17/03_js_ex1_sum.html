@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>배열 합</title>
+</head>
+<body>
+	<script>
+		/* 
+		- 주어진 배열의 값이 짝수인 요소들만 합하는 코드를 작성하세요.
+		  단, forEach를 이용하세요.
+		*/
+		let arr = [1,2,3,4,10,20,5];
+		let sum = 0;
+		arr.forEach(function(v){
+			if(v % 2 == 0){
+				sum += v;
+			}
+		});
+		console.log('배열에서 짝수의 합 : ' + sum);//36
+
+		let even = [];
+		arr.forEach(function(v){
+			if(v % 2 == 0){
+				even.push(v);
+			}
+		})
+		sum = 0;
+		even.forEach(function(v){
+			sum += v;
+		})
+		sum = 0;
+		even.forEach((v)=>sum+=v);
+		console.log('배열에서 짝수의 합 : ' + sum);//36
+
+		sum = 0;
+		arr.forEach((v)=>{
+			if(v % 2 == 0){
+				sum += v;
+			}
+		});
+		console.log('배열에서 짝수의 합 : ' + sum);//36
+	</script>
+</body>
+</html>
