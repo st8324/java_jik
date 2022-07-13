@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>함수 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		자바
+		리턴타입 메소드명(매개변수들){
+			코드구현;
+		}
+		js
+		- 함수 선언 방법1 : 함수 선언 위치와 호출 위치가 상관 없음
+		function 함수명(매개변수들){
+			코드구현;
+		}
+
+		- 함수 선언방법2 : 함수 선언 후 호출을 해야 함
+		var 함수명 = function(매개변수들){
+			코드구현;
+		}
+		- 매개변수들은 변수명만 사용, var 쓰지 않음
+		*/
+		console1(10);
+		function console1(x){
+			console.log(x);
+		}
+		console1(20);
+		//console2(40);//에러 발생
+		var console2 = function (x){
+			console.log(x);
+		}
+		console2(30);
+		/* 
+		function console1(x){
+			console.log(x);
+		}
+		var console2;
+
+		console1(10);
+		console1(20);
+		//console2(40);//에러 발생
+		console2 = function (x){
+			console.log(x);
+		}
+		console2(30);
+		*/
+	</script>
+</body>
+</html>
