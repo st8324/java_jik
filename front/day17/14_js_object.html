@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>객체 예제</title>
+</head>
+<body>
+	<script>
+		/* 
+		js에서 객체
+		var 객체명 = {
+			속성명 : 값,
+			속성명 : 값,
+			메소드명 : function(){
+				구현;
+			}
+		}
+		- 메소드안에서 속성을 사용하려면 this.을 붙여야 함
+		- 속성명에 '속성명'으로 해도 되고, 속성명으로 해도 됨
+		- 속성과 메소드는 언제든 중간에 추가할 수 있음
+		- delete를 이용하여 속성을 삭제할 수 있음
+		*/
+		var person = {
+			name : '홍길동',
+			'age': 21,
+			print: function(){
+				return this.name + ' : ' + this.age;
+			}
+		}
+		console.log(person.name);
+		console.log(person['age']);
+		console.log(person.print());
+		//gender 속성 추가
+		person.gender = '남성';
+		//setGender 메소드 추가
+		person.setGender = function(gender){
+			this.gender = gender;
+		}
+		person.setGender('여성');
+		console.log(person);
+		//gender 속성 삭제
+		delete person.gender;
+		//setGender 메소드 삭제
+		delete person.setGender;
+		console.log(person);
+	</script>
+</body>
+</html>
