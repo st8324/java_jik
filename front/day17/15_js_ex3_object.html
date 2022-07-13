@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>객체 예제</title>
+</head>
+<body>
+	<script>
+		//주어진 객체의 속성명과 값을 출력하는 코드를 작성하세요.
+		/*
+		name : 홍길동
+		age : 21
+		address : 청주시
+		*/
+		var person = {
+			name : '홍길동',
+			age  : 21,
+			address : '청주시'
+		}
+		for( property in person){
+			console.log(property + ' : ' + person[property]);
+		}
+	</script>
+</body>
+</html>
