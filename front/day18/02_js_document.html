@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>제목입니다.</title>
+</head>
+<body>
+	<a href="" class="link">링크입니다.</a>
+	<p class="title">단락입니다.</p>
+	<a href="http://naver.com" class="link">네이버</a> <br>
+	<input type="text" name="id"> <br>
+	<input type="password" name="pw" id="pw"> <br>
+	<script>
+		/* 
+		- document.getElementsByTagName('태그명')
+		  - 태그명과 일치하는 요소들을 배열에 저장
+			- 선택된 요소가 1개여도 배열에 저장
+			- 변수명[번지]로 접근(배열처럼)
+		- document.getElementsByTagName('클래스명')
+		  - 클래스명이 포함된 요소들을 배열에 저장
+			- 선택된 요소가 1개여도 배열에 저장
+			- 변수명[번지]로 접근(배열처럼)
+		- document.getElementsByName('name명')
+			- name명과 일치하는 요소들을 배열에 저장
+			- 선택된 요소가 1개여도 배열에 저장
+			- 변수명[번지]로 접근(배열처럼)
+		- document.getElementById('id명')
+			- id명과 일치하는 요소를 선택
+			- 선택된 요소가 없으면 null을 저장
+		- document.querySelectorAll('선택자')
+			- 선택자와 일치하는 요소들을 배열에 저장
+			- 선택된 요소가 1개여도 배열에 저장
+			- 변수명[번지]로 접근(배열처럼)
+		*/
+		var a = document.getElementsByTagName('a');
+		console.log(a);
+		var p = document.getElementsByTagName('p');
+		console.log(p);
+		var div = document.getElementsByTagName('div');
+		console.log(div);
+		console.log(a[0]);
+		var link = document.getElementsByClassName('link');
+		console.log(link);
+		var id = document.getElementsByName('id');
+		console.log(id);
+		var pw = document.getElementById('pw');
+		console.log(pw);
+		var selector = document.querySelectorAll('[name=id]');
+		console.log(selector);
+		/* 
+		- document.createElement('태그명')
+		  - 태그를 생성
+		- 요소.innerText = 값;
+			- 요소의 텍스트를 설정
+		- 부모요소.appendChild(자식요소);
+			- 자식요소를 부모요소 제일 마지막에 추가
+		- document.createTextNode('텍스트')
+		  - 요소에 넣을 문자열을 추가
+		*/
+		var div = document.createElement('div');
+		//div.innerText = '안녕';
+		var divText = document.createTextNode('안녕');
+		div.appendChild(divText);
+		document.body.appendChild(div);
+		
+	</script>
+	<script src="//code.jquery.com/jquery-3.4.1.js"></script>
+	<script>
+		var obj = $('[name=id]');
+		console.log(obj)
+	</script>
+</body>
+</html>
