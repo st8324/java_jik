@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이벤트 등록 예제</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<button>버튼</button>
+	<button>버튼</button>
+	<script>
+		/*
+		이벤트 등록 방법
+		1. 등록된 이벤트 메소드를 이용
+		 - 등록된 이벤트 메소드만 사용 가능
+		 - 해당 코드가 실행된 시점에서 요소들이 있는 경우에 이벤트가 등록
+		   => 요소들이 나중에 추가되면 추가된 요소들은 이벤트 등록이 안됨
+		$('선택자').이벤트명(function(){
+			//작업
+		});
+		2. on 메소드를 이용
+		 - 대부분 이벤트를 사용 가능
+		 - 요소들이 나중에 추가되도 자동으로 이벤트가 등록
+		$('선택자').on('이벤트명', function(){
+			//작업
+		})
+		//해당 선택자에 대해 요소가 나중에 추가되도 이벤트가 자동으로 추가
+		$(document).on('선택자', '이벤트명', function(){
+
+		})
+		*/
+		/* 
+		- js에서 요소를 선택(getElmentsByTagName등..)하면 배열인 경우, 
+		  번지를 이용하여 접근 => 이벤트를 한번에 주려면 다른 작업을 해야함.
+		- jquery에서는 요소를 선택자를 이용하여 선택해서 이벤트를 등록하면 
+		  해당 선택자와 일치하는 모든 요소들에게 이벤트가 등록됨
+		*/
+		$(function(){
+			$('button').click(()=>{
+				console.log(123);
+			})
+		})
+	</script>
+</body>
+</html>
