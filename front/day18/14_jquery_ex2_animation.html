@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>애니메이션 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.view{
+			width: 300px; height: 50px; border: 3px solid red;
+			margin-left: 300px; overflow: hidden;
+		}
+		.container{
+			width: 600px; height: 100%; background-color: orange;
+		}
+		.box{
+			float: left; height: 100%; width: 300px;
+			background-color: yellow;
+		}
+		.box+.box{
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn btn-prev">이전</button>
+	<button class="btn btn-next">다음</button>
+	<div class="view">
+		<div class="container">
+			<div class="box">1</div>
+			<div class="box">2</div>
+		</div>
+		<!-- container end(주황색 박스) -->
+	</div>
+	<!-- view end(빨간 박스) -->
+	<script>
+		$(function(){
+			$('.btn-prev').click(function(){
+				$('.container').animate({'margin-left':'0'}, 500);
+			})
+			$('.btn-next').click(function(){
+				$('.container').animate({'margin-left':'-300px'}, 500);
+			})
+		})
+	</script>
+</body>
+</html>

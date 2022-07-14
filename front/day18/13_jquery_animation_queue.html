@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>애니메이션 큐 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{ width: 100px; height: 100px ; background: yellow;}
+	</style>
+</head>
+<body>
+	<button class="start">시작</button>
+	<div class="box"></div>
+	<script>
+		$(function(){
+			$('.start').click(function(){
+				$('.box').animate({'margin-left':'+=300px'}, 500);
+				$('.box').animate({'margin-top':'+=300px'}, 500);
+				$('.box').animate({'margin-left':'-=300px'}, 500);
+				$('.box').animate({'margin-top':'-=300px'}, 500);
+				console.log(123)
+			})
+		})
+	</script>
+</body>
+</html>
