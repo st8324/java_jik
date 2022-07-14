@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>show 예제</title>
+	<script src="../js/jquery.js"></script>
+
+</head>
+<body>
+	<button class="btn btn-show">show 버튼</button>
+	<button class="btn btn-hide">hide 버튼</button>
+	<button class="btn btn-toggle">toggle 버튼</button>
+	<div class="box">123</div>
+	<script>
+		/* 
+		- $('선택자').show() : 요소를 보이게함 
+			=> 요소 기본 display로 설정
+			=> display가 none으로 설정된 요소들은 각 요소의 기본 display로 설정
+			   => span태그 요소를 display : none을 한 후, show()를 하면 
+				    display가 inline으로
+				 => span 태그 요소를 display : block으로 한후, hide() 했다고
+				    show()를 하면 display를 block으로
+		- $('선택자').hide() : 
+		  요소를 감춤 => display를 none으로
+			요소의 높이를 0으로 점차 줄인 후, 요소의 높이가 0이되면 
+			display:none으로 설정
+		- $('선택자').toggle() : 보이면 hide()로, 안 보이면 show()를 실행
+
+		1. display를 설정하지 않은 경우
+		 - hide()를 하면 요소의 style속성에 display:none이 추가
+		 - show()를 하면 요소의 style속성에 있는 display:none을 제거
+		2. display를 none으로 설정한 경우
+		 - hide()를 하면 요소의 style속성에 display:none이 추가
+		 - show()를 하면 요소의 기본 display 값을 적용
+		   예 : div요소를 show를 하면 display : block으로 설정
+			 예 : span 요소를 show를 하면 display : inline으로 설정
+		3. display를 none이 아닌 값으로 설정한 경우
+		 - hide()를 하면 요소의 style속성에 display:none이 추가
+		 - show()를 하면 요소의 style속성에 있는 display:none을 제거
+		*/
+		$(function(){
+			$('.btn-hide').click(function(){
+				$('.box').hide();
+			});
+			$('.btn-show').click(function(){
+				$('.box').show();
+			});
+			$('.btn-toggle').click(function(){
+				$('.box').toggle(2000,function(){
+					console.log('end');
+				});
+			});
+		})
+	</script>
+</body>
+</html>

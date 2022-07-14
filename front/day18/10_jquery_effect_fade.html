@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>fade 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{
+			height: 100px; line-height: 100px; font-size: 30px;
+			font-weight: bold; background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<button class="fade-in">fadeIn</button>
+	<button class="fade-out">fadeOut</button>
+	<button class="fade-toggle">fadeToggle</button>
+	<button class="fade-to">fadeTo</button>
+	<div class="box">안녕</div>
+	<script>
+		/* 
+		- fadeIn(speed, callback) : 요소를 점점 선명하게 하면서 나타냄
+		- fadeOut(speed, callback): 요소를 흐리게 하면서 사라지게 함
+		- fadeToggle(speed, callback) : 요소가 안보이면 fadeIn, 
+		  요소가 보이면 fadeOut
+		- fadeTo(speed,opacity, callback) : 투명도가 opacity가 될때까지 바꿈
+		*/
+		$('.fade-in').click(()=>$('.box').fadeIn(1000));
+		$('.fade-out').click(()=>$('.box').fadeOut(1000));
+		$('.fade-toggle').click(()=>$('.box').fadeToggle(1000));
+		$('.fade-to').click(()=>$('.box').fadeTo(1000, 0.5));
+	</script>
+</body>
+</html>
