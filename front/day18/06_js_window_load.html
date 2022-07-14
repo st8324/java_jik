@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>load</title>
+	<script>
+		/* 
+		- window.onload는 여러개 있을 수 있으나, 마지막 onload만 적용됨
+		*/
+		var btn;
+		window.onload = ()=>{
+			var link = document.getElementsByTagName('a')[0];
+			link.innerText = '링크크';
+		}
+		window.onload = ()=>{
+			btn = document.getElementsByTagName('button')[0];
+			btn.onclick = ()=> console.log('클릭');
+		}
+	</script>
+</head>
+<body>
+	<button>버튼</button>
+	<a href="">링크</a>
+</body>
+</html>
