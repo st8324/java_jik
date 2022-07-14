@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>프로토타입 예제</title>
+</head>
+<body>
+	<script>
+		function Dog(name, age){
+			this.name = name;
+			this.age = age;
+			this.print = function(){
+				console.log(this.name + ' : ' + this.age);	
+			}
+		}
+		var dog1 = new Dog('멍멍이', 2);
+		var dog2 = new Dog('나비', 1);
+		Object.defineProperty(dog1, 'name', { enumerable : false} );
+		
+		Dog.prototype.color = '흰색';
+		Dog.prototype.printColor = function(){
+			console.log(this.color);
+		}
+		//객체에 속성/메소드를 추가/삭제하면 해당 객체만 반영
+		/*
+		dog1.color = '흰색';
+		dog1.print = function(){
+			console.log(this.name + ' : ' + this.age);
+		}
+		delete dog1.color;
+		*/
+		
+		console.log(dog1);
+		console.log(dog2);
+		dog1.print();
+		dog1.printColor();
+		console.log('==============')
+		for(index in dog1){
+			console.log(index + " : " + dog1[index])
+		}
+		console.log('==============')
+		for(index in dog2){
+			console.log(index + " : " + dog2[index])
+		}
+		console.log('==============')
+		console.log(Object.keys(dog1));
+		console.log(Object.getOwnPropertyNames(dog1));
+	</script>
+</body>
+</html>
