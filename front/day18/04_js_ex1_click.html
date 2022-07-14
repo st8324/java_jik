@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>클릭 이벤트 예제</title>
+</head>
+<body>
+	<button onclick="createHi()">클릭</button>
+	<script>
+		/* 
+		- 버튼을 클릭하면 안녕 박스가 추가되는 코드를 작성하세요.
+		1. 클릭 이벤트 등록
+		2. 요소 생성
+		3. 요소에 안녕 글자 추가
+		4. 요소를 body에 붙임
+		*/
+		function createHi(){
+			var div = document.createElement('div');
+			div.innerText = '안녕';
+			document.body.appendChild(div);
+		}
+	</script>
+</body>
+</html>
