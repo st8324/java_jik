@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>요소 정보가져오기</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.red{ color : red}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<span>안녕</span>
+	</div>
+	<input type="text" name="id"> 
+	<button class="btn">가져오기</button>
+	<button class="btn1">123으로 수정하기</button>
+	<script>
+		/*
+		GET : 요소 정보 가져오기
+		- text() : 요소 안에 있는 텍스트 가져옴(쌍태그)
+		- html() : 요소 안에 있는 html 코드를 가져옴(쌍태그)
+		- val()  : input, select, textarea태그에 입력한 값들을 가져옴
+		  value속성에 저장되어 있는 값들을 가져옴
+		- text(), html(), val()을 통해 가져온 값은 타입이 문자열
+
+		SET : 요소 정보 설정하기
+		- text(문자열) : 요소 안에 있는 텍스트 수정함
+		- html(문자열) : 요소 안에 있는 html 코드를 수정함
+		- val(문자열)  : input, select, textarea태그에 입력한 값들을 수정함
+		  value속성에 저장되어 있는 값들을 수정함
+		*/
+		$(function(){
+			var text = $('.box').text();
+			var html = $('.box').html();
+			console.log('text : ' + text);
+			console.log('html : ' + html);
+
+			$('.btn').click(function(){
+				var val = $('[name=id]').val();
+				console.log('입력값 : ' + val);
+			});
+
+			$('.btn1').click(function(){
+				$('[name=id]').val(123);
+				//$('.box').text('<span>123</span>');
+				$('.box').html('<span class="red">123</span>');
+			});
+		})
+		
+	</script>
+</body>
+</html>
