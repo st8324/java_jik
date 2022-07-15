@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>attr(),prop() 예제</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<input type="checkbox" name="fruit" value="apple" class="ch1" checked>사과
+	<input type="checkbox" name="fruit" value="orange" class="ch2">오렌지
+	<script>
+		/* 
+		- attr('속성명') : 요소의 속성값을 가져옴. 값이 자바스크립트 형태로 가져옴
+		- attr('속성명', '값') : 요소의 속성값을 수정
+		- prop('속성명') : 요소의 속성값을 가져옴.
+		- prop('속성명', '값') : 요소의 속성값을 수정
+		*/
+		$(function(){
+			console.log($('.ch1').attr('checked'));
+			console.log($('.ch1').prop('checked'));
+			console.log($('.ch2').attr('checked'));
+			console.log($('.ch2').prop('checked'));
+
+			$('.ch2').prop('checked', true);
+		})
+	</script>
+</body>
+</html>
