@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>클릭 예제</title>
+	<style>
+		.btn{
+			width: 50px; height: 50px; font-size: 30px;
+			cursor: pointer;
+		}
+	</style>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<button class="btn btn-prev">-</button>
+	<button class="btn btn-next">+</button>
+	<script>
+		var min = 1, max = 18;
+		var num = min;
+		console.log(num);
+		$(function(){
+			$('.btn-prev').click(function(){
+				num--;
+				if(num < min)
+					num = max;
+				console.log(num);
+			})
+			/*
+			$('.btn-next').click(function(){
+				//num++;//++num; num+=1; num = num+1;
+				//num = num > max ? min : num;
+				num = ++num > max ? min : num;
+				console.log(num);
+			})
+			*/
+			$('.btn-next').click(()=> console.log(num = ++num > max ? min : num))
+		})
+	</script>
+</body>
+</html>

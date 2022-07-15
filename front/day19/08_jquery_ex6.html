@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>버튼 추가 예제</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<div class="box1">
+		<button class="btn1">버튼1</button>
+	</div>
+	<div class="box2">
+		<button class="btn2" onclick="addBtn()">버튼2</button>
+	</div>
+	<script>
+		$(function(){
+			$(document).on('click','.btn1', function(){
+				//기존 .box1에 있는 html코드를 가져옴
+				var str = $('.box1').html();
+				//기존 .box1에 버튼을 이어붙임
+				str = str + '<button class="btn1">버튼1</button>';
+				$('.box1').html(str)
+			});
+		})
+		function addBtn(){
+			var str = $('.box2').html();
+			str = str + '<button class="btn2" onclick="addBtn()">버튼2</button>';
+			$('.box2').html(str)
+		}
+	</script>
+</body>
+</html>

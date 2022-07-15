@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>체크박스 예제</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<input type="checkbox" name="fruit" value="apple" class="a">사과
+	<input type="checkbox" name="fruit" value="orange" class="b">오렌지
+	<input type="checkbox" name="fruit" value="banana" class="c">바나나
+	<script>
+		var arr = [];
+		
+		$(function(){
+			$('.a').click(function(){
+				var val = $('.a').val();
+				if($('.a').prop('checked')){
+					arr.push(val);
+				}else{
+					var index = arr.indexOf(val);
+					arr.splice(index,1);
+				}
+				console.log(arr);
+			})
+			$('.b').click(function(){
+				var val = $('.b').val();
+				if($('.b').prop('checked')){
+					arr.push(val);
+				}else{
+					var index = arr.indexOf(val);
+					arr.splice(index,1);
+				}
+				console.log(arr);
+			})
+			$('.c').click(function(){
+				var val = $('.c').val();
+				if($('.c').prop('checked')){
+					arr.push(val);
+				}else{
+					var index = arr.indexOf(val);
+					arr.splice(index,1);
+				}
+				console.log(arr);
+			})
+		})
+	</script>
+</body>
+</html>

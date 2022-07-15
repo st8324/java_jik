@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>페이지 예제</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<button class="btn btn-prev"> < </button>
+	<span class="page">1</span>
+	<button class="btn btn-next"> > </button>
+	<script>
+		var min = 1, max = 18;
+		$(function(){
+			$('.btn-prev').click(function(){
+				var page = $('.page').text();
+				page = parseInt(page);
+				page = page - 1;
+				if(page < min)
+					page = max;
+				$('.page').text(page);
+			})
+			$('.btn-next').click(function(){
+				var page = $('.page').text();
+				page = parseInt(page);
+				page = page + 1;
+				page = page > max ? min : page;
+				$('.page').text(page);
+				
+			})
+		})
+	</script>
+</body>
+</html>
