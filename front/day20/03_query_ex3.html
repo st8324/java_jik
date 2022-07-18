@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>체크박스 선택 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.text-box{ height: 30px; line-height: 30px; border: 1px solid #000;}
+	</style>
+</head>
+<body>
+	<div class="text-box"></div>
+	<div class="check-box">
+		<input type="checkbox" class="ck-apple fruit" value="사과" id="apple"> 
+		<label class="label-apple" for="apple">사과</label>
+
+		<input type="checkbox" class="ck-orange fruit" value="오렌지" id="orange"> 
+		<label class="label-orange" for="orange">오렌지</label>
+		
+		<input type="checkbox" class="ck-banana fruit" value="바나나" id="banana"> 
+		<label class="label-banana" for="banana">바나나</label>
+	</div>
+	<script>
+		var arr = [ '사과', '바나나'];
+		$(function(){
+			$('.fruit').click(function(){
+				var val = $(this).val();
+				if($(this).prop('checked')){
+					arr.push(val);
+				}else{
+					var index = arr.indexOf(val);
+					arr.splice(index,1);
+				}
+				$('.text-box').text(arr.join(','));
+			})
+
+			//체크박스 하나씩 살펴보면서
+			$('.fruit').each(function(){
+				//체크박스의 값이 arr에 있는지 확인해서 있으면 click을 해줌
+				var val = $(this).val();//선택된 요소의 value값을 가져와서 val 저장
+				var index = arr.indexOf(val)//배열에 val이 있는지 확인하여 번지를 저장
+				if( index >= 0){
+					arr.splice(index, 1);
+					$(this).click()
+				}
+			})
+			/*
+			$('.fruit').click((e)=>{
+				var t = $(e.currentTarget);
+				var val = t.val();
+				if(t.prop('checked')){
+					arr.push(val);
+				}else{
+					var index = arr.indexOf(val);
+					arr.splice(index,1);
+				}
+				$('.text-box').text(arr.join(','));
+			})
+			*/
+			
+			/*
+			$('.fruit').each(function(){
+				$(this).click(function(){
+					var val = $(this).val();
+					if($(this).prop('checked')){
+						arr.push(val);
+					}else{
+						var index = arr.indexOf(val);
+						arr.splice(index,1);
+					}
+					$('.text-box').text(arr.join(','));
+				})
+			})*/
+			/*
+			var obj1 = $('.ck-apple');
+			var obj2 = $('.ck-orange');
+			var obj3 = $('.ck-banana');
+
+			obj1.click(function(){
+				var val = obj1.val();
+				if(obj1.prop('checked')){
+					arr.push(val);
+				}else{
+					var index = arr.indexOf(val);
+					arr.splice(index,1);
+				}
+				$('.text-box').text(arr.join(','));
+			})
+			obj2.click(function(){
+				var val = obj2.val();
+				if(obj2.prop('checked')){
+					arr.push(val);
+				}else{
+					var index = arr.indexOf(val);
+					arr.splice(index,1);
+				}
+				$('.text-box').text(arr.join(','));
+			})
+			obj3.click(function(){
+				var val = obj3.val();
+				if(obj3.prop('checked')){
+					arr.push(val);
+				}else{
+					var index = arr.indexOf(val);
+					arr.splice(index,1);
+				}
+				$('.text-box').text(arr.join(','));
+			})
+			*/
+		})
+		
+	</script>
+</body>
+</html>

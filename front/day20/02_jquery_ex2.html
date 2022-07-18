@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>더보기/접기 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		* {padding: 0; margin: 0;}
+		ul, ol{ list-style: none;}
+		a{ text-decoration: none;}
+
+		nav{ 
+			border: 1px solid gray; line-height: 50px; border-width: 1px 0;
+			position: relative; z-index: 10;
+		}
+		nav::after{clear: both; display: block; content: '';}
+		.list-menu{ float: left;}
+		.btn{ float: left;}
+		.item-menu{ float: left; margin-right: 10px;}
+		.link-menu{ color: #000; display: block;}
+		.btn{color: green; font-weight: bold;}
+		.btn-fold{ display: none;}
+		.box{ 
+			height: 300px; position: absolute; left: 0; right: 0; 
+			background-color: yellow; top: 51px; display: none;
+		}
+		.container{ position: relative;}
+		.box1{ 
+			height: 100px; width: 100px; position: absolute; top: 0;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="list-menu">
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴1</a>
+			</li>
+			<li class="item-menu">
+				<a href="#" class="link-menu">메뉴2</a>
+			</li>
+		</ul>
+		<a href="#" class="btn btn-more">더보기</a>
+		<a href="#" class="btn btn-fold">접기</a>
+		<div class="box"></div>
+	</nav>
+	<div class="container">
+		<div class="box1"></div>
+	</div>
+	<script>
+		$(function(){
+			$('.btn-more').click(function(){
+				$('.btn-more').toggle();
+				$('.btn-fold').toggle();
+				$('.box').toggle();
+			})
+			$('.btn-fold').click(function(){
+				$('.btn-more').toggle();
+				$('.btn-fold').toggle();
+				$('.box').toggle();
+			})
+		})
+	</script>
+</body>
+</html>
