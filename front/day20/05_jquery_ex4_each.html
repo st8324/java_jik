@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>each 예제</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<input type="checkbox" class="fruit" value="사과"> 사과
+	<input type="checkbox" class="fruit" value="오렌지"> 오렌지
+	<input type="checkbox" class="fruit" value="바나나"> 바나나
+
+	<script>
+		//오렌지를 제외한 요소들이 선택되도록 코드를 작성하세요.
+		//=>사과, 바나나만 선택되도록 코드를 작성하세요.
+		//방법1 : 전부 클릭 후, 오렌지만 따로 클릭
+		/*
+		$('.fruit').click();
+		$('.fruit').each(function(){
+			if($(this).val() == '오렌지')
+				$(this).click()
+		})
+		*/
+		//방법2 : 오렌지를 제외하고 클릭
+		$('.fruit').each(function(){
+			if($(this).val() != '오렌지')
+				$(this).click()
+		})
+	</script>
+</body>
+</html>
