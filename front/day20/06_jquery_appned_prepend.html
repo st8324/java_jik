@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>append, prepend 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		div{
+			padding: 10px;
+		}
+		.box{ background: yellow;}
+		.box-in{ background: gray;}
+		.box-in2{ background: green;}
+		.box2{ background: blue;}
+		.box-in>p{ background: white;}
+	</style>
+</head>
+<body>
+	<div class="btn-box">
+		<button class="btn1">box append 버튼</button>
+		<button class="btn2">box-in append 버튼</button> <br>
+		<button class="btn3">box appendTo 버튼</button>
+		<button class="btn4">box-in appendTo 버튼</button>
+		<button class="btn5">box prepend 버튼</button>
+		<button class="btn6">box-in prepend 버튼</button> <br>
+	</div>
+	<div class="container">
+		<div class="box">
+			<div class="box-in">
+				<p class="title">제목입니다.</p>
+				<p class="content">내용입니다.</p>
+			</div>
+			<div class="box-in2">
+				박스 in2
+			</div>
+		</div>
+		<div class="box2">
+			박스2
+		</div>
+	</div>
+	<script>
+		$(function(){
+			var el1 = '<div class="el1">box append 추가</div>'
+			var el2 = '<div class="el2">box-in append 추가</div>'
+			$('.btn1').click(function(){
+				$('.box').append(el1);
+			})
+			$('.btn2').click(function(){
+				$('.box-in').append(el2);
+			})
+			$('.btn3').click(function(){
+				$(el1).appendTo('.box');
+			})
+			$('.btn4').click(function(){
+				$(el2).appendTo('.box-in');
+			})
+			$('.btn5').click(function(){
+				$('.box').prepend(el1);
+			})
+			$('.btn6').click(function(){
+				$('.box-in').prepend(el2);
+			})
+		})
+	</script>
+</body>
+</html>
