@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>속성 class 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{ 
+			width: 100px ; height: 100px; vertical-align: top;
+			display: inline-block; background-color: yellow;
+		}
+		.select{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">1</div>
+	<div class="box">2</div>
+	<div class="box">3</div>
+	<div class="box">4</div>
+	<script>
+		/* 
+		- addClass('클래스명들') : 요소에 클래스들을 추가
+		- removeClass('클래스명들') : 요소에 클래스들을 제거
+		- toggleClass('클래스명들') : 요소에 클래스가 있으면 제거, 없으면 추가
+		- hasClass('클래스명') : 요소에 클래스가 있는지 없는지를 알려줌
+		*/
+		$(function(){
+			//$('.box').addClass('select');//모든 박스에 select를 추가=>모두 빨강
+			//$('.box').removeClass('select');//모든 박스에 select를 제거=>모두 노랑
+			//$('.box').toggleClass('select');//모든 박스에 selec를 토글=>select를 추가=> 모두 빨강
+			//박스를 클릭하면 클릭한 박스만 빨간색이 되고 나머지는 노랑색이되도록 코드를 작성
+			$('.box').click(function(){
+				//$(this).addClass('select') //클릭한번 하면 색을 못바꿈
+				//$(this).toggleClass('select')//클릭할 때마다 색이 바뀜
+				//모든 박스에 select 클래스 제거
+				$('.box').removeClass('select');
+				//선택된 박스에 select 클래스 추가
+				$(this).addClass('select');
+				console.log($(this).hasClass('select'));
+			})
+		})
+	</script>
+</body>
+</html>

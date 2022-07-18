@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>속성 class 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{
+			width: 100px; height: 100px; display: inline-block;
+			background: yellow;
+		}
+		.select{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">1</div>
+	<div class="box">2</div>
+	<div class="box">3</div>
+	<div class="box">4</div>
+	<div>
+		<input type="checkbox" id="one" value="1" class="check">
+		<label for="one">1</label>
+		<input type="checkbox" id="two" value="2" class="check">
+		<label for="two">2</label>
+		<input type="checkbox" id="three" value="3" class="check">
+		<label for="three">3</label>
+		<input type="checkbox" id="four" value="4" class="check">
+		<label for="four">4</label>
+	</div>
+	<script>
+		$(function(){
+			//체크박스 클릭 이벤트 등록
+			$('.check').click(function(){
+				//선택한 체크박스의 value와 박스의 텍스트가 같은지 확인
+				var val = $(this).val();
+				//박스 각 요소들을 확인
+				$('.box').each(function(){
+					var text = $(this).text();
+					//같으면
+					if(val == text){
+						//체크되었으면 해당 박스에 select클래스를 추가
+						//체크가 해제되었으면 해방 박스에 select 클래스를 제거
+						$(this).toggleClass('select');
+					}
+				})
+			})
+			//박스 클릭 이벤트 등록
+			$('.box').click(function(){
+
+				//선택한 박스의 텍스트를 확인
+				//여기서 this는 box에서 선택된 요소
+				var text = $(this).text();
+				//체크박스 각 요소들을 확인
+				$('.check').each(function(){
+					//$('.check').each에서 this는 check박스중 선택된 요소
+					//체크 박스의 value를 가져옴
+					var val = $(this).val()
+					//체크 박스의 value와 선택한 박스의 텍스트가 같으면
+					if(val == text)
+						$(this).click();
+					//체크 박스를 클릭
+				})
+			})
+		})
+	</script>
+</body>
+</html>
