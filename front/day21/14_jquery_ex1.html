@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>메뉴 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		*{ padding: 0; margin: 0;}
+		.list-menu{ list-style: none; display: flex;}
+		.item-menu{
+			line-height: 50px; width: 100%;
+			border: 1px solid black;
+		}
+		.item-menu+.item-menu{
+			border-left: 0;
+		}
+		.link-menu{
+			text-decoration: none; font-weight: bold;
+			color: #000; display: block; height: 100%;
+			text-align: center;
+		}
+		.link-menu.select{
+			background-color: red; color: #fff;
+		}
+		.box{ 
+			height: 300px; background-color: yellow; margin-top: 10px;
+			display: none;
+		}
+
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="list-menu">
+			<li class="item-menu" data-target=".box1">
+				<a href="#" class="link-menu">메뉴1</a>
+			</li>
+			<li class="item-menu" data-target=".box2">
+				<a href="#" class="link-menu">메뉴2</a>
+			</li>
+			<li class="item-menu" data-target=".box3">
+				<a href="#" class="link-menu">메뉴3</a>
+			</li>
+		</ul>
+	</nav>
+	<div class="container">
+		<div class="box box1">1</div>
+		<div class="box box2">2</div>
+		<div class="box box3">3</div>
+	</div>
+	<script>
+		$(function(){
+			$('.item-menu').click(function(){
+				$('.link-menu').removeClass('select');
+				$(this).children().addClass('select');
+				var target = $(this).data('target')
+				$('.box').hide();
+				$(target).show();
+			});
+			$('.item-menu').eq(1).click();
+		})
+	</script>
+</body>
+</html>
