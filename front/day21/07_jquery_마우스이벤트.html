@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>마우스 이벤트</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{
+			height: 300px; border: 3px solid black;
+			padding: 30px; margin-bottom: 20px; line-height: 20px;
+		}
+		.box-in{
+			height: 260px; border: 3px solid red; box-sizing: border-box;
+		}
+		.bg-yellow{ background: yellow;}
+	</style>
+</head>
+<body>
+	<div class="box box1">
+		over : <span class="over">0</span> <br>
+		out : <span class="out">0</span>
+		<div class="box-in box-in2"></div>
+	</div>
+
+	<div class="box box2">
+		enter : <span class="enter">0</span> <br>
+		leave : <span class="leave">0</span>
+		<div class="box-in box-in2"></div>
+	</div>
+	<div class="box-pos"> 0, 0</div>
+	<script>
+		/* 
+		- mouseover(함수) : 요소에 마우스를 들어갈 때 동작, 
+		  자식 요소에 들어가도 동작
+		- mouseout(함수)  : 요소에 마우스가 나올 때 동작,
+		  마우스가 자식 요소에서 나올때도 동작
+		- mouseenter(함수) : 요소에 마우스를 들어갈 때 동작, 
+		  자식 요소에도 들어가도 동작이 유지
+		- mouseleave(함수) : 요소에 마우스가 나올 때 동작,
+		  마우스가 자식 요소에서 나올때 동작하지 않음
+		- hover(함수) : 마우스가 요소를 hover 할때와 hover를 해제할때 함수를 실행
+		  hover는 mouseenter + mouseleave
+		- hover(함수1, 함수2) : 마우스가 요소를 hover할 때 함수1을 실행, 
+		  hover를 해제할 때 함수2가 실행
+		- mousemove(함수) : 마우스가 요소 위에서 움직이고 있을 때 동작
+		*/
+		$(function(){
+			const box1 = $('.box1');
+			const box2 = $('.box2');
+			box1.mouseover(function(){
+				//.box1에서 .over를 찾아 텍스트를 가져옴(문자열)
+				var count = box1.find('.over').text();
+				//가져온 텍스트를 1증가(자동으로 문자열이 정수로 타입변환)
+				count++;//count = count + 1;//(x)
+				box1.find('.over').text(count);
+			})
+			box2.mouseenter(function(){
+				var count = box2.find('.enter').text();
+				count++;
+				box2.find('.enter').text(count);
+			})
+			box1.mouseout(function(){
+				var count = box1.find('.out').text();
+				count++;
+				box1.find('.out').text(count);
+				//box1.toggleClass('bg-yellow')
+			})
+			box2.mouseleave(function(){
+				var count = box2.find('.leave').text();
+				count++;
+				box2.find('.leave').text(count);
+			})
+			box2.hover(function(){
+				var count = box2.find('.enter').text();
+				count++;
+				box2.find('.enter').text(count);
+			}, function(){
+				var count = box2.find('.leave').text();
+				count++;
+				box2.find('.leave').text(count);
+			})
+			$(document).mousemove(function(e){
+				var x= e.offsetX;
+				var y = e.offsetY;
+				$('.box-pos').text(x +',' + y);
+			})
+		})
+	</script>
+</body>
+</html>
