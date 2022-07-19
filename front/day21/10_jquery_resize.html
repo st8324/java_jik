@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>resize 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{ 
+			width: 100px; height: 100px; background-color: yellow;
+			resize: both; border: 1px solid black;
+		} 
+		
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+
+	<script>
+		$(function(){
+			//브라우저 크기가 변경됐을 때 박스 크기를 변경하는 이벤트
+			$(window).resize(function(){
+				var width = $(this).width();
+				var height = $(this).height();
+				if(width >= 500 && height >= 500){
+					$('.box').width(500).height(500);
+				}else{
+					$('.box').width(100).height(100);
+				}
+			})
+			
+		})
+	</script>
+</body>
+</html>

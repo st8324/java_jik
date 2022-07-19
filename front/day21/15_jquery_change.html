@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>change 이벤트</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<input type="text" name="id"> <br>
+	<select name="city">
+		<option>서울</option>
+		<option>청주</option>
+		<option>제주</option>
+	</select>
+	<script>
+		/*
+		change(함수) : change 이벤트가 발생했을 때 함수를 실행
+		- change 이벤트는 input, select, textarea태그에서 발생
+		- 값이 바뀌면 change 이벤트가 동작
+		- 값이 바뀌는 중이면 change 이벤트가 동작하지 않음
+		- input태그 같은 경우 엔터를 치거나 다른 요소를 선택하면 발생
+		*/
+		$(function(){
+			$('[name=id]').change(function(){
+				var val = $(this).val()
+				console.log(val);
+			})
+			$('[name=city]').change(function(){
+				var val = $(this).val()
+				console.log(val);
+			})
+			$('[name=city]').click(function(){
+				var val = $(this).val()
+				console.log('클릭 : '+val);
+			})
+		})
+	</script>
+</body>
+</html>

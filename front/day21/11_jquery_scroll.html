@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스크롤 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		body{ height: 2000px;}
+		.box{
+			position:  fixed; right: 10px; width: 100px; height: 100px;
+			background-color: yellow; bottom: 10px;
+			text-align: center; line-height: 100px; font-size: 50px;
+		}
+		.box2{ bottom: 120px ;}
+		.box1{ bottom: 230px ;}
+	</style>
+</head>
+<body>
+	<div class="box box1">1</div>
+	<div class="box box2">2</div>
+	<div class="box box3">3</div>
+	<script>
+		/* 
+		- scroll(함수) : 요소에 스크롤이 움직이면 이벤트 발생
+		- scrollTop() : 요소의 스크롤 막대의 제일 윗부분 위치를 정수로 알려줌
+		- scrollTop(정수) : 요소의 스크롤 막대의 제일 윗부분을 알려준 정수px로 이동
+		*/
+		$(document).scroll(function(e){
+			console.log($(this).scrollTop())
+		})
+		$('.box1').click(function(){
+			$(document).scrollTop(300)
+		})
+		$('.box2').click(function(){
+			$(document).scrollTop(600)
+		})
+		$('.box3').click(function(){
+			$(document).scrollTop(900)
+		})
+	</script>
+</body>
+</html>

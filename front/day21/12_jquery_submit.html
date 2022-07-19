@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>submit 예제</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<form action="">
+		<input type="text" name="id"> <br>
+		<button class="btn">전송</button>
+	</form>
+	<script>
+		/* 
+		submit(함수) : 
+		- form태그가 서버에 데이터를 전송하기 전 실행되는 이벤트
+		- form태그 안에 있는 type이 submit인 버튼을 클릭했을 때 동작
+		- return이 false면 서버로 데이터를 전송하지 않음
+		- return이 없거나 true이면 서버로 데이터를 전송
+
+		1. type이 submit인 버튼을 클릭(입력하고 엔터)
+		2. type이 submit인 버튼의 click이벤트가 동작
+		3. 2번에서 return값이 false이면 중지
+		  => submit까지 가지 않음
+		4. 2번에서 return값이 true이거나 없으면 submit이벤트가 발생
+		5. submit 이벤트에서 return값이 false이면 서버로 데이터를 전송하지 않음
+		6. submit 이벤트에서 return값이 없거나 true이면 서버로 데이터를 전송
+		*/
+		/*
+		$('form').submit(function(){
+			var id = $('[name=id]').val();
+			if(id == ''){
+				alert('아이디는 반드시 입력해야합니다.')
+				return false;
+			}
+			return true;
+		})
+		*/
+		$('form').submit(function(){
+			return true;
+		})
+		$('.btn').click(function(){
+			console.log('버튼 클릭')
+			return false;
+		})
+	</script>
+</body>
+</html>
