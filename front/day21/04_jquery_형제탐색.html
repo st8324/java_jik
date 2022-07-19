@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>형제 탐색</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<ul>
+		<li class="item first bold"><a href="#" class="link">1</a></li>
+		<li class="item bold"><a href="#" class="link">2</a></li>
+		<li class="item"><a href="#" class="link">3</a></li>
+		<li class="item center"><a href="#" class="link">4</a></li>
+		<li class="item"><a href="#" class="link">5</a></li>
+		<li class="item"><a href="#" class="link">6</a></li>
+		<li class="item last bold"><a href="#" class="link">7</a></li>
+	</ul>
+	<script>
+		/*
+		- siblings() : 형제 요소 선택
+		- siblings('선택자') : 형제 요소 중 선택자와 일치하는 요소 선택
+		- prev() : 앞에 있는 형제 요소 선택
+		- prevAll() : 앞에 있는 모든 형제 요소 선택
+		- prevAll('선택자') : 앞에 있는 형제 요소 중 선택자와 일치하는 요소 선택
+		- prevUntil('선택자') : 앞에 있는 형제 요소 중 선택자 전까지의 요소 선택
+		- next() : 뒤에 있는 형제 요소 선택
+		- nextAll('선택자') : 뒤에 있는 형제 요소 중 선택자와 일치하는 요소 선택
+		- nextUntil('선택자') : 뒤에 있는 형제 요소 중 선택자 전까지의 요소 선택
+		*/
+		$(function(){
+			const center = $('.center');
+			center.siblings().css('color','red')
+			center.siblings().children().css('color','red')
+			center.siblings('.first').children().css('text-decoration','none')
+			center.prev().css('font-size','30px');
+			center.next().css('text-align','center');
+			center.prevAll().css('color', 'green');
+			center.prevAll('.bold').css('background','yellow');
+			center.nextAll().css('color', 'blue');
+			center.nextAll('.bold').css('background','yellow');
+			center.prevUntil('.first').css('font-weight','bold');
+			center.nextUntil('.last').css('font-weight','bold')
+		})
+	</script>
+</body>
+</html>

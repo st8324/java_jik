@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>자손탐색</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		div{ padding: 10px;	}
+		.box{ background: yellow;}
+		.box-in{background: gray;}
+		.box-left, .box-right{
+			float: left; height: 200px; width: 50%; box-sizing: border-box;
+			background: pink;
+		}
+		.box-right{ background: greenyellow;}
+		.box-in::after{ display: block; clear: both; content: '';}
+		
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="box-in">
+			<div class="box-left">
+				<a href="#" class="link-naver">네이버</a>
+				<a href="#" class="link-daum">다음</a>
+			</div>
+			<div class="box-right">
+				<ul class="list">
+					<li class="item">
+						<a href="#" class="link">1</a>
+					</li>
+					<li class="item">
+						<a href="#" class="link">2</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>
+		/* 
+		- children() : 자식 요소들을 선택
+		- children('선택자') : 자식 요소들 중 선택자와 일치하는 요소들을 선택
+		- find('선택자') : 자손 요소들 중 선택자와 일치하는 요소들을 선택
+		*/
+		$(function(){
+			const box = $('.box');
+			box.children().css('border', '3px solid red')
+			box.find('*').css('border-bottom', '3px solid blue')
+			box.find('a').css('color', 'red');
+		})
+	</script>
+</body>
+</html>

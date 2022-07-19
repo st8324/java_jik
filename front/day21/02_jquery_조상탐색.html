@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>조상탐색</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		div{ padding: 10px;	}
+		.box{ background: yellow;}
+		.box-in{background: gray;}
+		.box-left, .box-right{
+			float: left; height: 200px; width: 50%; box-sizing: border-box;
+			background: pink;
+		}
+		.box-right{ background: greenyellow;}
+		.box-in::after{ display: block; clear: both; content: '';}
+		
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="box-in">
+			<div class="box-left">
+				<a href="#" class="link-naver">네이버</a>
+				<a href="#" class="link-daum">다음</a>
+			</div>
+			<div class="box-right">
+				<ul class="list">
+					<li class="item">
+						<a href="#" class="link">1</a>
+					</li>
+					<li class="item">
+						<a href="#" class="link">2</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>
+		/* 
+		- parent() : 부모요소를 선택
+		- parent('선택자') : 부모 요소 중 '선택자'와 일치하는 요소를 선택
+		- parents(): 조상요소를 선택(부모를 포함)
+		- parents('선택자'): 조상요소들 중 '선택자'와 일치하는 요소를 선택(부모를 포함)
+		- parentsUntil('선택자') : 부모요소부터 '선택자'와 일치하는 요소 사이에 있는 조상요소들
+		*/
+		$(function(){
+			const naver = $('.link-naver');
+			naver.parent().css('border', '3px solid red');
+			naver.parents().css('border-top', '3px solid blue')
+			naver.parentsUntil('.box').css('border-left', '3px solid green')
+			naver.parents('div').css('border-bottom', '3px solid black')
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>필터 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{
+			width: 100px; height: 100px; display: inline-block;
+			background: yellow; margin-bottom: 10px; vertical-align: top;
+		}
+	</style>
+</head>
+<body>
+	<div class="box green">1</div>
+	<div class="box">2</div>
+	<div class="box green">3</div>
+	<div class="box">4</div>
+	<div class="box green">5</div>
+	<div class="box">6</div>
+	<div class="box green">7</div>
+	<script>
+		/*
+		- eq(n) : 요소들 중 n+1번째 요소 선택. n이 0이면 첫번째 요소
+		- first() : eq(0)와 같은
+		- last() : 요소들 중 마지막 요소를 선택
+		- filter('선택자') : 요소들 중 선택자와 일치하는 요소들 선택
+		- not('선택자') : 요소들 중 선택자와 일치하지 않은 요소들 선택
+		*/
+		$(function(){
+			const box = $('.box');
+			box.eq(0).css('color', 'red');
+			box.first().css('text-align', 'center');
+			var length = box.length;
+			box.eq(length-1).css('font-size','20px');
+			box.last().css('text-align', 'right');
+			box.filter('.green').css('background','green');
+			box.not('.green').css('line-height','100px')
+		})
+	</script>
+</body>
+</html>
