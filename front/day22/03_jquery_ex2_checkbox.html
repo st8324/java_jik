@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>체크박스 개수 제한 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.text-box{
+			height: 50px; line-height: 50px; font-size: 30px; font-weight: bold;
+			border: 2px solid #000; margin: 10px 0; width: 200px;
+			display: inline-block; vertical-align: top;
+		}
+		.bd-none{
+			border-color: #fff; width: auto;
+		}
+		.first{
+			border-color: #19ce60;
+		}
+	</style>
+</head>
+<body>
+	<div>취미를 선택하세요.(최대 4개)</div>
+	<div>
+		<div class="text-box first"></div>
+		<div class="text-box"></div>
+		<div class="text-box"></div>
+		<div class="text-box"></div>
+	</div>
+	<input type="checkbox" class="check" value="축구"> 축구
+	<input type="checkbox" class="check" value="농구"> 농구
+	<input type="checkbox" class="check" value="야구"> 야구
+	<input type="checkbox" class="check" value="음악감상"> 음악감상
+	<input type="checkbox" class="check" value="영화감상"> 영화감상
+	<script>
+		var arr = [];
+		var maxSelectCount = 4;
+		$(function(){
+			$('.check').click(function(){
+				var val = $(this).val();
+				//체크박스가 체크되면
+				if($(this).is(':checked')){
+					//현재 체크된 개수가 몇개인지 확인
+					var count = $('.check').filter(':checked').length;
+					//2개를 넘으면 알림창을 띄우고, 마지막에 체크된 체크박스의 체크를 해제
+					//(현재 클릭된 체크박스)
+					if(count > maxSelectCount){
+						alert('최대 '+maxSelectCount+'개까지 선택하세요.')
+						$(this).prop('checked', false);
+					}else{
+						arr.push(val);
+					}
+				}
+				//체크가 해제되면
+				else{
+					//삭제할 값의 위치를 확인
+					var index = arr.indexOf(val);
+					//삭제할 위치에서 1개를 삭제
+					arr.splice(index, 1);
+				}
+				draw(arr);
+			})
+		})
+		function draw(arr){
+			$('.text-box').text('').removeClass('bd-none').removeClass('first');
+			arr.forEach(function(v,i){
+				$('.text-box').eq(i).text(v).addClass('bd-none');
+			})
+			//네모 상자 중 첫번째 상자에 first클래스 추가
+			$('.text-box').not('.bd-none').first().addClass('first');
+		}
+	</script>
+</body>
+</html>
