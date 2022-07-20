@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>버블링 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box-left{ height: 500px; border:  1px solid black;}
+		body div{ padding: 20px ; border: 1px solid black;}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="inner-box">
+			<div class="box-left"></div>
+		</div>
+	</div>
+	<a href="#">클릭</a>
+	<script>
+		/* 
+		- 버블링 : 요소에 이벤트가 발생했을 때 해당 요소에만 적용되는것이 아니라
+		  조상 요소에게도 적용되는 것
+		- stopPropagation() : 버블링을 막아줌
+		- preventDefault() : 태그의 기본 효과를 막아줌(a태그)
+		  - a태그로 만든 버튼에 주로 활용
+		*/
+		$(function(){
+			$('.box').click(function(){
+				console.log('.box 클릭');
+				$('.box-left').css('background','red');
+			})
+			$('.inner-box').click(function(e){
+				console.log('.inner-box 클릭');
+				$('.box-left').css('background','yellow');
+				e.stopPropagation();
+			})
+			$('.box-left').click(function(e){
+				console.log('.box-left 클릭');
+				$('.box-left').css('background','green');
+				e.stopPropagation();
+			})
+			$('a').click(function(e){
+				e.preventDefault();
+			})
+		})
+	</script>
+</body>
+</html>
