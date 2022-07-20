@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>스톱워치</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.view{
+			width: 300px; margin: 10px auto; height: 50px;
+			line-height: 46px; border: 2px solid black;
+			text-align: center; font-size: 20px;
+			letter-spacing: 1px; box-sizing: border-box;
+		}
+		.box-btn{ width: 300px; margin: 0 auto;	}
+		.box-btn::after{ clear: both; content: ''; display: block;}
+		.box-record{
+			width: 300px; margin: 0 auto; border: 2px solid black;
+			padding: 10px 0; box-sizing: border-box;
+			min-height: 74px; text-align: center; line-height: 50px;
+		}
+		.btn{ 
+			height: 30px; width: 98%; cursor: pointer; 
+			margin-bottom: 10px; display: block;
+		}
+		.box-btn>div{ width: 50%; float: left;}
+	</style>
+<body>
+	<div class="view">00:00.00</div>
+	<div class="box-btn">
+		<div class="left">
+			<button class="btn btn-lab">랩</button>
+			<button class="btn btn-reset">재설정</button>
+		</div>
+		<div class="right">
+			<button class="btn btn-start">시작</button>
+			<button class="btn btn-stop">중지</button>
+		</div>
+	</div>
+	<div class="box-record"></div>
+	<script>
+		var ms = 0;//밀리초
+		var s = 0;//초
+		var m = 0;//분
+		var id = null;
+		$(function(){
+
+			$('.btn-start').click(function(){
+				if(id == null){
+					id = setInterval(() => {
+						ms += 10;
+						if(ms == 1000){
+							ms = 0;	s++;
+						}
+						if(s == 60){
+							s = 0; m++;
+						}
+						$('.view').text(getStr(m, s, ms));
+					}, 10);
+				}
+				//랙, 중지버튼 보임
+				showBtns(true,false,false,true);
+			})
+			$('.btn-stop').click(function(){
+				clearInterval(id);
+				id = null;
+				//재설정, 시작버튼 보임
+				showBtns(false, true, true, false)
+			})
+			$('.btn-lab').click(function(){
+				if(id != null){
+					var str = 
+					'<div class="lab">' +
+						//getStr(m, s, ms) +
+						$('.view').text() +
+					'</div>';
+					$('.box-record').prepend(str);
+				}
+			})
+			$('.btn-reset').click(function(){
+				ms=0, s=0, m = 0;
+				$('.view').text(getStr(m, s, ms));
+				$('.box-record').html('');
+				//랩, 시작버튼 보임
+				showBtns(true, false, true, false)
+			})
+			//랩, 시작버튼 보임
+			showBtns(true, false, true, false)
+		})
+		function getStr(m, s, ms){
+			return fillZero(m) + ':' + fillZero(s) + '.' + fillZero(ms/10);
+		}
+		function fillZero(num){
+			return num < 10 ? '0'+num : ''+num;
+		}
+		function showBtns(lab, reset, start, stop){
+			$('.btn').hide();
+			lab?$('.btn-lab').show():'';
+			reset?$('.btn-reset').show():'';
+			start?$('.btn-start').show():'';
+			stop?$('.btn-stop').show():'';
+		}
+	</script>
+</body>
+</html>
