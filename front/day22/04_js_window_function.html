@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>window 함수</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<button class="btn1">버튼1</button>
+	<button class="btn2">시작</button>
+	<button class="btn3">중지</button>
+	<script>
+		/*
+		setTimeout(함수, n) : n밀리초가 지난 후 함수가 실행됨
+		setInterval(함수, n): 
+		- n밀리초마다 함수를 실행
+		- 이 때, 정수값을 가지는 아이디가 반환
+		clearInterval(아이디) : 주기적으로 동작하던 작업을 멈춤
+		*/
+		/* 버튼1을 클릭하면 1초 뒤 1초라고 콘솔에 출력 */
+		$('.btn1').click(function(){
+			setTimeout(function(){
+				console.log('1초')
+			}, 1000);
+		})
+		// 시작 버튼을 클릭하면 1초마다 숫자를 1부터 출력
+		var num = 0;
+		var id = null;
+		$('.btn2').click(function(){
+			id = setInterval(() => {
+				num++;
+				console.log(num);
+			}, 1000);
+		})
+		$('.btn3').click(function(){
+			if(id != null){
+				clearInterval(id)
+				id = null;
+			}
+		})
+		//중지 버튼을 클릭하면 1초마다 출력되는 숫자를 멈춤
+	</script>
+</body>
+</html>
