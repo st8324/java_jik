@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>롤링 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		*{padding: 0; margin: 0;}
+		ul{ list-style: none;}
+		.view{
+			width: 300px; height: 50px; border: 2px solid black;
+			margin-top: 100px; margin-left: 100px; overflow: hidden;
+			position: relative;
+		}
+		.list{width: 1500px;}
+		.list::after{clear: both; content: ''; display: block;}
+		.item{
+			float: left; width: 300px; line-height: 50px;
+			height: 50px; background: yellow;
+		}
+		.box-btn{ 
+			position: absolute; top: 0px; right: 0px; 
+			background: yellow; bottom: 0; padding: 10px;
+		}
+		.btn{
+			width: 28px; height: 28px; float: left; text-align: center;
+			line-height: 28px; border: 1px solid black; text-decoration: none;
+			color: black; background-color: #fff;
+		}
+		.btn+.btn{ margin-left: -1px;}
+	</style>
+</head>
+<body>
+	<div class="view">
+		<ul class="list">
+			<li class="item">1</li>
+			<li class="item">2</li>
+			<li class="item">3</li>
+			<li class="item">4</li>
+			<li class="item">5</li>
+		</ul>
+		<div class="box-btn">
+			<a href="#" class="btn btn-prev"><</a>
+			<a href="#" class="btn btn-next">></a>
+		</div>
+	</div>
+	<script>
+		const itemWidth = -$('.item').first().width() + 'px';
+		$(function(){
+			setInterval(() => {
+				if($('.item').first().is(':animated') || $('.view').is(':hover'))
+					return;
+
+				toLeft(itemWidth);
+				
+			}, 1500);
+			$('.btn-next').click(function(e){
+				e.preventDefault();
+				toLeft(itemWidth);
+			})
+			$('.btn-prev').click(function(e){
+				e.preventDefault();
+				toRight(itemWidth);
+			})
+		})
+		function toLeft(width){
+			$('.item').first().animate(
+				{
+					'margin-left': width
+				},
+				1200 , 
+				function(){
+					$(this).detach()
+								.removeAttr('style')
+								.appendTo('.list');
+				}
+			)
+		}
+		function toRight(width){
+			$('.item')
+				.last()
+				.detach()
+				.prependTo('.list')
+				.css('margin-left',width).animate(
+					{
+						'margin-left': '0px'
+					},
+					1200 
+				)
+		}
+	</script>
+</body>
+</html>

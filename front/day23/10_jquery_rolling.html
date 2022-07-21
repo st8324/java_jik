@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>롤링 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		*{padding: 0; margin: 0;}
+		ul{ list-style: none;}
+		.view{
+			width: 300px; height: 50px; border: 2px solid black;
+			margin-top: 100px; margin-left: 100px; overflow: hidden;
+		}
+		.list::after{clear: both; content: ''; display: block;}
+		.item{
+			float: left; width: 300px; line-height: 50px;
+			height: 50px; background: yellow;
+		}
+		.view1 .list{width: 1500px;}
+
+	</style>
+</head>
+<body>
+	<div class="view view1">
+		<ul class="list">
+			<li class="item">1</li>
+			<li class="item">2</li>
+			<li class="item">3</li>
+			<li class="item">4</li>
+			<li class="item">5</li>
+		</ul>
+	</div>
+	<div class="view view2">
+		<ul class="list">
+			<li class="item">1</li>
+			<li class="item">2</li>
+			<li class="item">3</li>
+			<li class="item">4</li>
+			<li class="item">5</li>
+		</ul>
+	</div>
+	<div class="view view3">
+		<ul class="list">
+			<li class="item">1</li>
+			<li class="item">2</li>
+			<li class="item">3</li>
+			<li class="item">4</li>
+			<li class="item">5</li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			setInterval(() => {
+				let ancestorSelector ='.view1 ';
+				let childSelector = '.view1 .item';
+				let parentSelector = '.view1 .list'
+				if($(childSelector).first().is(':animated') || $(ancestorSelector).is(':hover'))
+					return;
+				toLeft(parentSelector, childSelector, 1200)
+			}, 1500);
+
+			setInterval(() => {
+				let ancestorSelector ='.view2 ';
+				let childSelector = '.view2 .item';
+				let parentSelector = '.view2 .list'
+				if($(childSelector).first().is(':animated') || $(ancestorSelector).is(':hover'))
+					return;	
+				toUp(parentSelector,childSelector,900);
+			}, 1000);
+			setInterval(() => {
+				let ancestorSelector ='.view3 ';
+				let childSelector = '.view3 .item';
+				let parentSelector = '.view3 .list'
+				if($(childSelector).first().is(':animated') || $(ancestorSelector).is(':hover'))
+					return;	
+				toUp(parentSelector,childSelector,1500);
+			}, 2000);
+		})
+
+		function toLeft(parentSelector, childSelector, animateTime){
+			let width = -$(childSelector).first().width() + 'px';
+			$(childSelector).first().animate(
+					{
+						'margin-left': width
+					},
+					animateTime , 
+					function(){
+						$(this).detach()
+									.removeAttr('style')
+									.appendTo(parentSelector);
+					}
+				)
+		}
+		function toUp(parentSelector, childSelector, animateTime){
+			let height = -$(childSelector).first().height() + 'px';
+			$(childSelector).first().animate(
+					{
+						'margin-top': height
+					},
+					animateTime , 
+					function(){
+						$(this).detach()
+									.removeAttr('style')
+									.appendTo(parentSelector);
+					}
+				)
+		}
+	</script>
+</body>
+</html>
