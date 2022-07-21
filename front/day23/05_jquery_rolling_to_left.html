@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>롤링 예제</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		*{padding: 0; margin: 0;}
+		ul{ list-style: none;}
+		.view{
+			width: 300px; height: 50px; border: 2px solid black;
+			margin-top: 100px; margin-left: 100px; overflow: hidden;
+		}
+		.list{width: 1500px;}
+		.list::after{clear: both; content: ''; display: block;}
+		.item{
+			float: left; width: 300px; line-height: 50px;
+			height: 50px; background: yellow;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="view">
+		<ul class="list">
+			<li class="item">1</li>
+			<li class="item">2</li>
+			<li class="item">3</li>
+			<li class="item">4</li>
+			<li class="item">5</li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			setInterval(() => {
+				let width = -$('.item').first().width() + 'px';
+				if(!$('.item').first().is(':animated') && !$('.view').is(':hover')){
+					$('.item').first().animate(
+						//애니메이션을 적용할 속성과 값
+						{
+							'margin-left': width
+						},
+						//애니메이션 동작 시간
+						1200 , 
+						//애니메이션 끝나고 나서 할 작업
+						function(){
+							$(this).detach()
+										.removeAttr('style')
+										.appendTo('.list');
+						}
+					)
+				}
+			}, 1500);
+		})
+	</script>
+</body>
+</html>

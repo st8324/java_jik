@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>롤링</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		*{padding: 0; margin: 0;}
+		ul{ list-style: none;}
+		.view{
+			width: 300px; height: 50px; border: 2px solid black;
+			margin-top: 100px; margin-left: 100px; overflow: hidden;
+		}
+		.list{width: 1500px;}
+		.list::after{clear: both; content: ''; display: block;}
+		.item{
+			float: left; width: 300px; line-height: 50px;
+			height: 50px; background: yellow;
+		}
+		.item:nth-child(2n){ background: skyblue;}
+	</style>
+</head>
+<body>
+	<div class="view">
+		<ul class="list">
+			<li class="item">1</li>
+			<li class="item">2</li>
+			<li class="item">3</li>
+			<li class="item">4</li>
+			<li class="item">5</li>
+		</ul>
+	</div>
+	<script>
+		var id = startRolling();
+		$(function(){
+			
+			$('.view').hover(function(){
+				clearInterval(id)
+			},function(){
+				id = startRolling();
+			});
+		})
+		function startRolling(){
+			let id = setInterval(()=>{
+				//박스 한칸의 크기
+				let width = $('.item').first().width()
+				//박스의 개수
+				//let maxCount = $('.item').length;
+				//리스트의 margin-left 값
+				let ml = $('.list').css('margin-left');
+				//리스트가 최대로 갈 수 있는 margin-left 값
+				//let maxMl = -width * (maxCount-1) +'px';
+				let maxMl = -$('.list').width()+width +'px';
+				if(!$('.list').is(':animated') && ml != maxMl && !$('.view').is(':hover'))
+					$('.list').animate({'margin-left':'-='+width+'px'}, 1500);
+			},2000)
+			return id;
+		}
+	</script>
+</body>
+</html>
