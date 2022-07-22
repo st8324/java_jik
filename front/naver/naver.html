@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>NAVER</title>
 	<link rel="stylesheet" href="naver.css">
+	<script src="../js/jquery.js"></script>
 </head>
 <body>
 	<div class="fixed-con search-con" >
@@ -396,10 +397,10 @@
 					<div class="box-theme-category">
 						<ul class="list-theme">
 							<li class="item-theme">
-								<a href="#" class="btn-theme enter">엔터</a>
+								<a href="#" class="btn-theme enter active">엔터</a>
 							</li>
 							<li class="item-theme">
-								<a href="#" class="btn-theme sports active">스포츠</a>
+								<a href="#" class="btn-theme sports ">스포츠</a>
 							</li>
 							<li class="item-theme">
 								<a href="#" class="btn-theme car">자동차</a>
@@ -707,5 +708,151 @@
 	<footer class="footer-con"></footer>
 	<!-- footer-con end -->
 
+
+	<script>
+		let parentSelector1 = '.box-left2 .list-issue';
+		let childSelector1 = '.box-left2 .list-issue .item-issue';
+		let parentSelector2 = '.box-right2 .box-timesquare .list-timesquare';
+		let childSelector2 = '.box-right2 .box-timesquare .item-timesquare';
+		let ancestorSelector2 = '.box-right2 .box-timesquare';
+
+		$(function(){
+			//왼쪽 테마 박스 이벤트들
+			let boxThemeBody = '.box-left4 .box-theme-body ';
+			$(boxThemeBody+'.item-theme').click(function(e){
+				e.preventDefault();
+				$('.btn-theme').removeClass('active');
+				$(this).children().addClass('active')
+				//이전 버튼 처리
+				if($(this).is(':first-child'))
+					$(boxThemeBody+'.btn-prev').hide()
+				else
+					$(boxThemeBody+'.btn-prev').show()
+			})
+			//이전버튼 클릭 이벤트 등록
+			$(boxThemeBody+'.btn-prev').click(function(e){
+				e.preventDefault()
+				//active가 있는 요소의 부모를 찾음(parent)
+				let parent = $(boxThemeBody+'.btn-theme.active').parent()
+				//parent의 앞에 있는 형제 요소를 찾음(parentPrev)
+				let parentPrev = parent.prev();
+				//parentPrev의 자식 요소를 클릭
+				parentPrev.children('.btn-theme').click()
+				if(parent.index() == 2){
+					$(boxThemeBody+'.list-theme')
+						.animate({'margin-left':'0px'})
+				}
+			})
+			//다음버튼 클릭 이벤트 등록
+			$(boxThemeBody+'.btn-next').click(function(e){
+				e.preventDefault()
+				//active가 있는 요소의 부모를 찾음(parent)
+				let parent = $(boxThemeBody+'.btn-theme.active').parent()
+				//parent의 뒤에 있는 형제 요소를 찾음(parentPrev)
+				let parentPrev = parent.next();
+				//parentPrev의 자식 요소를 클릭
+				parentPrev.children('.btn-theme').click();
+				if(parent.index() == 7){
+					$(boxThemeBody+'.list-theme').animate({'margin-left':'-186px'})
+				}
+			})
+
+			//오른쪽 증시박스 이벤트들
+			let boxTimesquare = '.box-right2 .box-timesquare '
+			$(boxTimesquare+' .btn-nav').click(function(e){
+				e.preventDefault();
+				if($(childSelector2).first().is(':animated'))
+					return;
+				let isLeft = $(this).hasClass('btn-next')
+				toLeftOrRight(parentSelector2, childSelector2, 500, isLeft);
+			})
+
+			//메뉴 이벤트들
+			$('.menu-con .box-menu .btn-more').click(function(){
+				$(this).toggleClass('fold')
+			})
+
+
+			//페이지 로딩 완료 후
+			$(boxThemeBody+'.item-theme').first().click()
+
+			
+			setInterval(() => {
+				if($(childSelector1).first().is(':animated') ||
+					$(parentSelector1).is(':hover'))
+					return;
+				toUp(parentSelector1, childSelector1, 500);
+			}, 2000);
+
+			setInterval(() => {
+				if($(childSelector2).first().is(':animated') ||
+					$(ancestorSelector2).is(':hover'))
+					return;
+				toLeftOrRight(parentSelector2, childSelector2, 500, true);
+			}, 2000);
+
+		})
+
+		/**
+		 * 왼쪽으로 rolling
+		 * 
+		 * @param {string} parentSelector 부모 선택자
+		 * @param {string} childSelector 자식 선택자
+		 * @param {number} animateTime 애니메이션 실행 시간
+		 * @param {boolean} left 왼쪽이면 true, 오른쪽이면 false
+		 * @return {void} 없음
+		 * */
+		function toLeftOrRight(parentSelector, childSelector, animateTime, left){
+			let width = -$(childSelector).first().width() + 'px';
+			if(left)
+				$(childSelector).first().animate(
+						{
+							'margin-left': width
+						},
+						animateTime , 
+						function(){
+							$(this).detach()
+										.removeAttr('style')
+										.appendTo(parentSelector);
+						}
+					)
+			else
+				$(childSelector)
+					.last()
+					.css('margin-left', width)
+					.detach()
+					.prependTo(parentSelector)
+					.animate(
+						{
+							'margin-left': '0px'
+						},
+						animateTime
+					)
+		}
+
+		/**
+		 * 위로 rolling
+		 * 
+		 * @param {string} parentSelector 부모 선택자
+		 * @param {string} childSelector 자식 선택자
+		 * @param {number} animateTime 애니메이션 실행 시간
+		 * @return {void} 없음
+		 * */
+		function toUp(parentSelector, childSelector, animateTime){
+			let height = -$(childSelector).first().height() + 'px';
+			$(childSelector).first().animate(
+					{
+						'margin-top': height
+					},
+					animateTime , 
+					function(){
+						$(this).detach()
+									.removeAttr('style')
+									.appendTo(parentSelector);
+					}
+				)
+		}
+
+	</script>
 </body>
 </html>
