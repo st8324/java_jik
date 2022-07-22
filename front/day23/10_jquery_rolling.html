@@ -93,6 +93,14 @@
 					}
 				)
 		}
+		/**
+		 * 위로 rolling
+		 * 
+		 * @param {string} parentSelector 부모 선택자
+		 * @param {string} childSelector 자식 선택자
+		 * @param {number} animateTime 애니메이션 실행 시간
+		 * @return {void} 없음
+		 * */
 		function toUp(parentSelector, childSelector, animateTime){
 			let height = -$(childSelector).first().height() + 'px';
 			$(childSelector).first().animate(
