@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>콜백 함수 예제</title>
+</head>
+<body>
+	<script>
+		/**
+		- callback 함수 : 함수의 매개변수로 들어가는 함수
+		@param {string} question 질문
+		@param {Function} yes 확인했을 때 실행될 함수
+		@param {Function} no 취소했을 때 실행될 함수
+		*/
+		function qna(question, yes, no){
+			if(confirm(question)) yes()
+			else no()
+		}
+		function answerYes(){
+			alert('확인했습니다.');
+		}
+		function answerNo(){
+			alert('취소했습니다.');
+		}
+		//qna('완료했습니까?', answerYes, answerNo);
+		qna('완료했습니까?', ()=>alert('확인'), answerNo);
+	</script>
+</body>
+</html>
