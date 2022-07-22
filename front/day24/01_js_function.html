@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>함수 예제</title>
+</head>
+<body>
+	
+	<script>
+		/*
+		- 함수 선언식
+		function 함수명(매개변수){
+			구현;
+		}
+		  - 일반적으로 많이 사용
+		*/
+
+		/*
+		- 함수 표현식
+		let 함수명 = function(매개변수){
+			구현;
+		}
+		  - 특정 조건인 경우 사용
+			- 함수 구현부가 조건에 따라 달라지는 경우 함수 표현식 사용
+		*/
+		let age = 25;
+		let hi;
+		if(age < 19){
+			hi = ()=>	alert('안녕!')
+		}else{
+			hi = ()=> alert('안녕하세요');
+		}
+		hi()
+
+	</script>
+</body>
+</html>
