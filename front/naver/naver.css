@@ -282,6 +282,18 @@ a{ text-decoration: none; }
 	vertical-align: top; content: '';
 	background-position: -444px -142px; margin: 2px 5px 0 0;
 }
+.menu-con .box-btn .btn-save{
+	background-color: #19ce60; color: #fff;
+	border-color: #00c73c;
+}
+.menu-con .box-btn .btn-init::before{
+	width: 10px;  height: 13px; content: ''; display: inline-block;
+	vertical-align: top; margin-right: 6px; 
+	background-position: -444px -114px;
+}
+.menu-con .box-btn .box-btn2{
+	display: none;
+}
 
 
 /* 컨텐츠 박스 */
