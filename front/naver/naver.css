@@ -190,6 +190,21 @@ a{ text-decoration: none; }
 	background-position: -444px -49px; vertical-align: top;
 	margin: 9px 2px 0 0;
 }
+.menu-con .list-menu.empty-box{
+	letter-spacing: -1px; display: none;
+}
+.menu-con .list-menu.empty-box .item-menu.box{
+	width: 68px; height: 28px;
+	border: 1px solid #dae1e6; border-radius: 2px; 
+	background-color: #f7f9fa;
+}
+.menu-con .list-menu.empty-box .item-menu+.item-menu{
+	margin-left: 8px;
+}
+.menu-con .list-menu.empty-box .box.first{
+	background-color: #fff;  border-color: #19ce60;
+}
+
 /* 더보기 버튼 */
 .menu-con .btn-more{
 	float: left; margin-left: 17px; line-height: 30px;
@@ -259,6 +274,31 @@ a{ text-decoration: none; }
 	vertical-align: 0; margin-left: 7px;
 	background-position: -444px -368px;
 }
+.menu-con .box-service .label-service{
+	position: relative; 
+}
+.menu-con .box-service .label-service>*{
+	font-size: 13px; line-height: 26px; white-space: nowrap;
+}
+.menu-con .box-service .input-service{
+	width: 16px; height: 16px;
+	opacity: 0; position: absolute;
+	top: 0; left: 0; 
+}
+.menu-con .box-service .input-service:focus{
+	opacity: 1;
+}
+.menu-con .box-service .icon-check{
+	width: 16px; height: 16px; display: inline-block;
+	background-position: -420px -365px; 
+	margin: 4px 9px 0 0; vertical-align: top;
+}
+.menu-con .box-service .checked .icon-check{
+	background-position: -420px -347px; 
+}
+
+
+
 .menu-con>.fixed-con{
 	position: relative;
 }
@@ -1024,4 +1064,8 @@ a{ text-decoration: none; }
 .content-con .box-right2 .link-timesquare::after,
 .after::after{
 	clear: both; display: block; content: '';
+}
+
+.display-none{
+	display: none !important;
 }
