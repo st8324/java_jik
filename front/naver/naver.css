@@ -146,6 +146,7 @@ a{ text-decoration: none; }
 	height: 52px; background: #fff;
 	border-top: 1px solid #e4e8eb;
 	box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+	position: relative;
 }
 .menu-con .box-menu{
 	padding: 11px 0; float: left;
@@ -220,6 +221,68 @@ a{ text-decoration: none; }
 .menu-con .btn-more.fold::after{
 	background-position: -444px -330px;
 }
+.menu-con .box-service{
+	min-height: 300px; background-color: white;
+	position: absolute; left: 0; right: 0; z-index: 100;
+	top: 52px; border-top: 1px solid #e4e8eb;
+	box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.12);
+	display: none;
+}
+.menu-con .box-service .fixed-con{
+	padding: 20px 30px 22px; 
+}
+.menu-con .box-service .box-service-container{
+	border: 1px solid #e4e8eb; border-width: 0 1px; display: flex;
+}
+.menu-con .box-service .list-service{
+	height: 315px; box-sizing: border-box; width: 100%;
+	font-size: 13px; line-height: 26px; letter-spacing: -.25px;
+	padding: 0 14px 0 15px; white-space: nowrap;
+}
+.menu-con .box-service .list-service:first-child{
+	border-right: 1px solid white; 
+}
+.menu-con .box-service .list-service+.list-service{
+	border-left: 1px solid #e4e8eb;
+}
+.menu-con .box-service .title-service{
+	font-weight: bold; margin-bottom: 3px;
+}
+.menu-con .box-service .link-service{
+	color: #202020;
+}
+.menu-con .box-service .more-dic .link-service{
+	color: gray; margin-top: 5px; display: inline-block;
+}
+.menu-con .box-service .more-dic .link-service::after{
+	display: inline-block; width: 6px; height: 10px; content: '';
+	vertical-align: 0; margin-left: 7px;
+	background-position: -444px -368px;
+}
+.menu-con>.fixed-con{
+	position: relative;
+}
+.menu-con .box-btn{
+	width: 270px; padding: 11px 0; background-color: #fff;
+	text-align: right; z-index: 10;
+	top: 0; right: 30px; position: absolute; font-size: 12px;
+	display: none;
+}
+.menu-con .box-btn a{
+	display: inline-block; padding: 7px 13px 5px;
+	border: 1px solid #dae1e6; background-color: #fff; color: #202020;
+	line-height: 16px; font-size: 12px; border-radius: 15px;
+	margin-left: 3px;
+}
+.menu-con .box-btn a:hover{
+	text-decoration: underline;
+}
+.menu-con .box-btn .btn-set::before{
+	display: inline-block; width: 11px;  height: 11px;
+	vertical-align: top; content: '';
+	background-position: -444px -142px; margin: 2px 5px 0 0;
+}
+
 
 /* 컨텐츠 박스 */
 .content-con.fixed-con{
@@ -927,7 +990,9 @@ a{ text-decoration: none; }
 .content-con .box-right2 .exchange .name::before,
 .bg-img,
 .bg-img::after,
-.bg-img::before{
+.bg-img::before,
+.bg-img-after::after,
+.bg-img-before::before{
 	background-image: url(https://s.pstatic.net/static/www/img/uit/sp_main_4f8ccb.png);
 	background-size: 457px 434px;
 }
