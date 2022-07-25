@@ -1279,7 +1279,9 @@
 				$('.menu-con .box-service-container').addClass('display-none');
 				$('.menu-con .box-service-container.check').removeClass('display-none');
 			})
-
+			$('.input-service').click(function(){
+				$(this).parents('.data-service').toggleClass('checked');
+			})
 
 
 
