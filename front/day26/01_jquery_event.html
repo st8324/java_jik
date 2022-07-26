@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<button class="btn1">버튼1</button>
+	<button class="btn2">버튼2</button>
+	<script>
+		$('.btn1').click(function(){
+			console.log(1);
+			$('.btn2').click(function(){
+				console.log(2);
+			})
+		})
+	</script>
+</body>
+</html>
