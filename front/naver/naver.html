@@ -1208,7 +1208,14 @@
 		let parentSelector2 = '.box-right2 .box-timesquare .list-timesquare';
 		let childSelector2 = '.box-right2 .box-timesquare .item-timesquare';
 		let ancestorSelector2 = '.box-right2 .box-timesquare';
+		let menu = {
+			'myfeed' : '구독', 'weather' : '날씨', 'mycar' : 'MY CAR', 
+			'ngame'  : '네이버 게임', 'booking' : '예약', 'premium' : '프리미엄콘텐츠',
+			'plus' : '네이버플러스', 'news' : '뉴스', 'datalab' : '데이터랩', 
+			'book' : '도서', 'memo' : '메모'
+		}
 
+		let selectMenu = [];
 		$(function(){
 			//왼쪽 테마 박스 이벤트들
 			let boxThemeBody = '.box-left4 .box-theme-body ';
@@ -1279,10 +1286,25 @@
 				$('.menu-con .box-service-container').addClass('display-none');
 				$('.menu-con .box-service-container.check').removeClass('display-none');
 			})
-			$('.input-service').click(function(){
+			$('.input-service').change(function(){
 				$(this).parents('.data-service').toggleClass('checked');
+				let val = $(this).val();
+				console.log(val);
+				if($(this).is(':checked')){
+					if(selectMenu.length < 4){
+						selectMenu.push(val);
+					}else{
+						$(this).prop('checked', false);
+						$(this).parents('.data-service').toggleClass('checked');
+						alert('최대 4개까지 설정할 수 있습니다.')
+					}
+				}else{
+					let index = selectMenu.indexOf(val);
+					selectMenu.splice(index,1);
+				}
+				drawBox(selectMenu, menu)
 			})
-
+			
 
 
 			//페이지 로딩 완료 후
@@ -1306,6 +1328,32 @@
 
 		})
 		
+		function drawBox(arr, menu){
+			//선택된 메뉴를 추가하는 작업 
+			// => 메뉴가 들어갈 곳에는 박스 테두리를 제거, 아닌 부분에는 테두리 추가
+			//녹색 테두리를 제거 
+			// => 왜냐하면 녹색 테두리위치가 이동하기 때문에 일단 제거하고 나중에 추가
+			$('.empty-box .item-menu.first').removeClass('first');
+			//어디에 메뉴가 들어가야 할지 아직 모르기 때문에 모든 항목에 테두리를 추가
+			$('.empty-box .item-menu').addClass('box');
+			//각 항목에 글자를 넣을지(테두리를 제거) 말지를 작업
+			$('.empty-box .item-menu').each(function(index){
+				//선택된 항목이 메뉴를 추가해야하는 위치이면
+				if(index < arr.length){
+					//글자가 들어가는 박스는 테두리를 제거
+					$(this).removeClass('box');
+					//메뉴를 항목 글자로 추가
+					$(this).text(menu[arr[index]]);
+				}
+				//항목에 글자를 넣지 말아야 하면
+				else{
+					//빈 글자로 설정(이 전에 글자가 있었을지도 모르기 때문에)
+					$(this).text('');
+				}
+			})
+			//박스들 중 첫번째 박스에 녹색 테두리 추가
+			$('.empty-box .item-menu.box').first().addClass('first')
+		}
 	</script>
 </body>
 </html>
