@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>정규 표현식 예제</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<input type="text" name="id" id="id">
+	<button class="btn1" onclick="checkId()">아이디 검사(js)</button>
+	<button class="btn2">아이디 검사(jquery)</button>
+	<script>
+		/* 
+		- 아이디 입력창을 만듬
+		- 아이디를 입력 받은 후 아이디 검사 버튼을 클릭
+		- 입력된 아이디가 아이디 정규표현식에 맞는지 알림창으로 띄우는 코드를 작성
+		- 아이디는 영문자와 숫자만 가능하고, 5~13자리이다
+		*/
+		let idRegex = /^\w{5,13}$/
+		
+		$('.btn2').click(function(){
+			//입력한 아이디 값 가져오기
+			let id = $('#id').val()
+			//아이디가 정규표현식에 맞으면 맞다고 알림
+			if(idRegex.test(id) ){
+				alert('정상적인 아이디입니다.')
+			}//아니면 아니라고 알림
+			else{
+				alert('잘못된 아이디입니다.')
+			}
+		})
+
+		function checkId(){
+			//입력한 아이디 값 가져오기
+			let id = document.getElementById('id').value;
+			//아이디가 정규표현식에 맞으면 맞다고 알림
+			if(idRegex.test(id)){
+				alert('정상적인 아이디입니다.')
+			//아니면 아니라고 알림
+			}else{
+				alert('잘못된 아이디입니다.')
+			}
+		}
+		/*
+		let phoneNumberRegex = /^010(-\d{4}){2}$/g
+		let phoneNumber = '010-1234-5675';
+		console.log(phoneNumberRegex.test(phoneNumber))
+		*/
+	</script>
+</body>
+</html>
