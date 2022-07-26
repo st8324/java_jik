@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>validate 예제</title>
+	<script src="../js/jquery.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
+	<style>
+		.error{ color: red;}
+	</style>
+</head>
+<body>
+	<form id="frm">
+		<input type="text" name="id" id="id" placeholder="아이디"/><br/>
+		<div>
+			<label for="id" class="error" id="id-error"></label>
+		</div>
+		<input type="password" name="password" id="password" placeholder="비밀번호"/><br/>
+		<input type="password" name="repassword" id="repassword" placeholder="비밀번호 확인"/><br/>
+		<input type="text" name="age" id="age" placeholder="나이"/><br/>
+		<input type="text" name="name" id="name" placeholder="이름"/><br/>
+		<input type="text" name="email" id="email" placeholder="이메일"/><br/>
+		<input type="text" name="homepage" id="homepage" placeholder="홈페이지"/><br/>
+		<input type="submit" value="회원가입" />
+	</form>
+	<script>
+		$(function(){
+			$("#frm").validate({
+				rules: {
+					/*
+					name명 : {
+						required : true/false, //필수항목, 생략되면 false
+						minlength : 정수, //최소길이
+						maxlength : 정수, //최대길이
+						equalTo : 아이디명,//해당 아이디명과 일치하는 요소와 값이 같은지 확인
+						digits : true/false, //정수만 가능
+						email : true/false, //이메일 형식체크를 할지 말지
+						url : true/false, //url 형식 체크를 할지말지
+					}
+					*/
+					id: {
+						required : true,
+						minlength : 4
+					},
+					password: {
+						required : true,
+						minlength : 8,
+						regex: /^(?=\w{8,20}$)\w*(\d[A-z]|[A-z]\d)\w*$/
+					},
+					repassword: {
+						required : true,
+						minlength : 8,
+						equalTo : password
+					},
+					name: {
+						required : true,
+						minlength : 2
+					},
+					age: {
+						digits : true
+					},
+					email: {
+						required : true,
+						minlength : 2,
+						email : true
+					},
+					homepage: {
+						url : true
+					}
+				},
+				//규칙체크 실패시 출력될 메시지
+				messages : {
+					id: {
+						required : "아이디는 필수항목입니다",
+						minlength : "최소 {0}글자이상이어야 합니다"
+					},
+					password: {
+						required : "필수로입력하세요",
+						minlength : "최소 {0}글자이상이어야 합니다",
+						regex : "영문자, 숫자로 이루어져있으며 최소 하나이상 포함"
+					},
+					repassword: {
+						required : "필수로입력하세요",
+						minlength : "최소 {0}글자이상이어야 합니다",
+						equalTo : "비밀번호가 일치하지 않습니다."
+					},
+					name: {
+						required : "필수로입력하세요",
+						minlength : "최소 {0}글자이상이어야 합니다"
+					},
+					age: {
+						digits : "숫자만입력하세요"
+					},
+					email: {
+						required : "필수로입력하세요",
+						minlength : "최소 {0}글자이상이어야 합니다",
+						email : "메일규칙에 어긋납니다"
+					},
+					homepage: {
+						url : "정상적인 URL이 아닙니다"
+					}
+				}
+			});
+		})
+		//ruels와 messages에 regex를 사용하려면 반드시 추가
+		$.validator.addMethod(
+			"regex",
+			function(value, element, regexp) {
+					var re = new RegExp(regexp);
+					return this.optional(element) || re.test(value);
+			},
+			"Please check your input."
+		);
+	</script>
+</body>
+</html>
