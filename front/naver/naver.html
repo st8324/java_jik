@@ -927,6 +927,18 @@
 						<a href="#" class="btn-next"></a>
 					</div>
 				</div>
+				<div class="box-theme-footer">
+					<div class="box">1</div>
+					<div class="box">2</div>
+					<div class="box">3</div>
+					<div class="box">4</div>
+					<div class="box">5</div>
+					<div class="box">6</div>
+					<div class="box">7</div>
+					<div class="box">8</div>
+					<div class="box">9</div>
+					<div class="box">10</div>
+				</div>
 			</div>
 			<!-- box-left4 end(주제별 카테고리) -->
 		</div>
@@ -1230,6 +1242,7 @@
 					$(boxThemeBody+'.btn-prev').hide()
 				else
 					$(boxThemeBody+'.btn-prev').show()
+				$('.box-left4 .box-theme-footer .box').hide().eq($(this).index()).show()
 			})
 			//이전버튼 클릭 이벤트 등록
 			$(boxThemeBody+'.btn-prev').click(function(e){
