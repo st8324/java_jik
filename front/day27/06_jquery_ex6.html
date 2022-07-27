@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>복습</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<input type="text" class="num1"> 
+	+
+	<input type="text" class="num2">
+	=
+	<input type="text" class="result" readonly>
+	<br>
+	<button class="btn">확인</button>
+	<script>
+		/*
+		1. 요소 구성
+		2. 이벤트 등록
+		- 클래스명이 btn인 요소에 클릭 이벤트 등록
+		  - 요소 : 클래스명이 btn, .btn
+			- 이벤트 : 클릭, click
+		3. 이벤트 구현
+		*/
+		$('.btn').click(function(){
+			/*
+			- 첫번째 input태그에 입력된 숫자를 가져옴
+			  - 요소 : 클래스명이 num1인 요소, .num1
+				- .val()
+			*/
+			let num1 = $('.num1').val();
+			let num2 = $('.num2').val();
+			let result = parseInt(num1) + parseInt(num2);
+			/*
+			- 클래스명이 result인 요소에 value로 result에 저장된 값을 넣어줌
+			  - 요소 : 클래스명이 result
+				- 메소드 : val()
+			*/
+			$('.result').val(result)
+		})
+	</script>
+	
+</body>
+</html>

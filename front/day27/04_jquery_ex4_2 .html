@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>복습</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<input type="checkbox" id="banana" value="바나나">
+	<label for="banana">바나나</label>
+	<input type="checkbox" id="apple" value="사과">
+	<label for="apple">사과</label>
+	<input type="checkbox" id="orange" value="오렌지">
+	<label for="orange">오렌지</label>
+	<script>
+		/* 
+		1. 요소 구성
+		2. 이벤트 등록
+		 - input태그이면서 type 속성이 checkbox인 요소를 클릭
+		   - 요소 : input[type=checkbox]
+			 - 이벤트 : click
+		3. 이벤트 구현
+		 - input[type=checkbox] 클릭 : 
+		   {선택한요소의 value}를 선택했습니다 알림창
+
+		*/
+		$('input[type=checkbox]').click(function(){
+			let fruit = $(this).val()
+			alert(`${fruit}를 선택했습니다.`)
+		})
+		
+	</script>
+</body>
+</html>

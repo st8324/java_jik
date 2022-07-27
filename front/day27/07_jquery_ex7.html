@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>복습</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{
+			line-height: 30px; border: 1px solid black; 
+			height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<input type="checkbox" id="banana" value="바나나">
+	<label for="banana">바나나</label>
+	<input type="checkbox" id="apple" value="사과">
+	<label for="apple">사과</label>
+	<input type="checkbox" id="orange" value="오렌지">
+	<label for="orange">오렌지</label>
+
+	<script>
+		/* 
+		1. 요소구성
+		2. 이벤트 등록
+		 - 요소 : input태그이고, type속성이 checkbox인 요소
+		          input[type=checkbox]
+		 - 이벤트 : click
+		3. 이벤트 구현
+		*/
+		$('input[type=checkbox]').click(function(){
+			//클릭한 요소의 value를 가져옴
+			let fruit = $(this).val();
+			
+			//가져온 값을 .box요소에 문자열로 추가
+			$('.box').text(fruit)
+
+			//체크된 상태인지
+			if($(this).is(':checked')){
+				//방법1
+				//모든 체크박스의 체크를 해제
+				$('input[type=checkbox]').prop('checked',false);
+				//클릭한 요소만 다시 체크
+				$(this).prop('checked', true)
+				
+				//방법2. 내 형제들 체크를 해제
+				$(this).siblings('input[type=checkbox]').prop('checked',false);
+			}
+			//아닌지
+			else{
+				//.box 요소에 빈 문자열로 덮어쓰기 or 안에 있는 요소 삭제
+				$('.box').text('');
+				//$('.box').empty();
+			}
+		})
+	</script>
+</body>
+</html>

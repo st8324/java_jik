@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>복습</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	<input type="checkbox" id="banana" value="바나나">
+	<label for="banana">바나나</label>
+	<input type="checkbox" id="apple" value="사과">
+	<label for="apple">사과</label>
+	<input type="checkbox" id="orange" value="오렌지">
+	<label for="orange">오렌지</label>
+	<script>
+		/* 
+		1. 요소 구성
+		2. 이벤트 등록
+		 - 아이디가 banana인 요소를 클릭
+		   - 요소 : #banana
+			 - 이벤트 : click
+		 - 아이디가 apple인 요소를 클릭
+			 - 요소 : #apple
+			 - 이벤트 : click
+		 - 아이디가 orange인 요소를 클릭
+			 - 요소 : #orange
+			 - 이벤트 : click
+		3. 이벤트 구현
+		 - #banana 클릭 : 바나나를 선택했습니다 알림창
+		 - #apple 클릭 : 사과를 선택했습니다 알림창
+		 - #orange 클릭 : 오렌지를 선택했습니다 알림창
+
+		*/
+		$('#banana').click(function(){
+			let fruit = $(this).val()//3번
+			alert(`${fruit}를 선택했습니다.`)//3번
+			//let fruit = $('#banana').val()//2번
+			//alert(`${fruit}를 선택했습니다.`)//2번
+			//alert(`바나나를 선택했습니다.`)//1번
+		})
+		$('#apple').click(function(){
+			let fruit = $(this).val()//3번
+			alert(`${fruit}를 선택했습니다.`)//3번
+			//let fruit = $('#apple').val()//2번
+			//alert(`${fruit}를 선택했습니다.`)//2번
+			//alert(`사과를 선택했습니다.`)//1번
+		})
+		$('#orange').click(function(){
+			let fruit = $(this).val()//3번
+			alert(`${fruit}를 선택했습니다.`)//3번
+			//let fruit = $('#orange').val()//2번
+			//alert(`${fruit}를 선택했습니다.`)//2번
+			//alert(`오렌지를 선택했습니다.`)//1번
+		})
+	</script>
+</body>
+</html>

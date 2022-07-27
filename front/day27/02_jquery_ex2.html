@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>jquery 정리</title>
+	<script src="../js/jquery.js"></script>
+</head>
+<body>
+	
+	<script>
+		//문서(태그들)가 로딩된후 실행되게 하는 코드
+		//이 코드들이 있어야 script 태그 위치에 상관없이 동작
+
+		//js방식으로 중복선언하면 마지막에 있는 코드가 적용
+		window.onload = function(){
+			
+		}
+		//jquery 방식으로 중복 선언하면 각각 동작
+		$(document).ready(function(){
+
+		})
+		$(function(){
+
+		})
+
+		//요소 선택
+		$('선택자')
+		let selector = '선택자'
+		$(selector)
+		$(selector + ' > 자식선택자')
+
+		//요소의 기능을 실행
+		$('선택자').메소드명()
+		//메소드명 : 효과
+		//slideUp, slideDown, show, hide, toggle 등등
+
+		//메소드명 : 이벤트
+		//click, focus, change, keydown, keyup, keypress, hover 등등
+		//이벤트 등록, 이벤트 실행
+		//이벤트 등록
+		//이벤트명으로 이벤트 등록하는 방법과 on으로 등록하는 방법의 차이
+		//이벤트명으로 등록하는 이벤트들은 모든 이벤트를 포함하지 않음
+		$('선택자').이벤트명(function(){
+
+		})
+		$('선택자').on('이벤트명', function(){
+
+		})
+		//위 2가지 경우와 아래의 차이
+		//위 2가지 경우는 요소에 이벤트를 등록하면 끝 
+		//=> 요소가 새로 추가되면 이벤트가 등록이 안됨
+		//아래 코드는 새로 추가되도 자동으로 이벤트가 등록
+		$(document).on('이벤트명','선택자',function(){
+
+		})
+		//이벤트 실행
+		$('선택자').이벤트명()
+		//이벤트 객체 : e, 이벤트 실행 위치, 이벤트가 발행 요소, 이벤트 키값등
+		//다양한 정보와 메소드들이 있다
+		$('선택자').이벤트명(function(e){
+
+		})
+
+		//요소 탐색
+		//자손탐색 : children() - 자식, find() - 자손
+		//조상탐색 : parent() - 부모, parents() - 조상 parentsUntil() - 조상
+		//형제탐색 : siblings(), prev(), next(), prevAll(), nextAll()
+		//필터 : eq(정수), filter(선택자), not(선택자)
+		//그 외 : is()
+
+		//정보 설정/가져오기
+		//hltml 코드 : html(), html('코드')
+		//글자 : text(), text('문자열')
+		//값 : val(), val('값') - input태그 textarea태그, select태그 
+		//속성 : attr('속성명'), prop('속성명'), attr('속성명', '값'),prop('속성명', '값')
+		//       removeAttr('속성명')
+
+		//선택된 요소 반복
+		$('선택자').each(function(index){
+
+		})
+
+		//스타일 변경
+		//애니메이션 : animate({}, 시간, 콜백함수)
+		//스타일 속성 : css('속성명', '값'), css({ 속성명 : '값', 속성명 : '값'})
+		//클래스 : addClass('클래스명'), removeClass('클래스명')
+		//클래스 확인 : hasClass('클래스명')
+		
+	</script>
+</body>
+</html>
