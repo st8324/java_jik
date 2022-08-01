@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>복습</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.input{ 
+			height: 30px; box-sizing: border-box; vertical-align: top;
+		}
+		.btn-add{
+			height: 30px; box-sizing: border-box; vertical-align: top;
+		}
+		.box-tags{
+			margin-top: 20px;
+		}
+		.box-tags::after{
+			display: block; content: ''; clear: both;
+		}
+		.box-tag{
+			float: left; margin-right: 20px;
+			line-height: 30px; border: 1px solid black;
+			border-radius: 10px; padding: 10px;
+		}
+		.close{
+			margin-left: 10px; cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" class="input">
+	<button class="btn-add">추가</button>
+	<div class="box-tags"></div>
+	<script>
+		/*
+		1. 요소구성
+		2. 이벤트 등록
+		- 추가버튼 클릭
+		  - 요소 : .btn-add
+			- 이벤트 : click
+		- X버튼 클릭(중요)
+		  - 요소 : .close
+			- 이벤트 : click
+		3. 이벤트 구현
+		- 추가버튼 클릭
+		  - input창에 입력된 값을 가져와서 요소를 만듬
+			- 만들어진 요소를 추가
+		*/
+		$('.btn-add').click(function(){
+			let text = $('.input').val()
+			let boxTag = 
+				`<div class="box-tag">${text}<span class="close">X</span></div>`;
+			$('.box-tags').append(boxTag)
+		})
+		$(document).on('click','.close',function(){
+			if(confirm('삭제하겠습니까?'))
+				$(this).parent().remove()
+		})
+		/*
+		let hobby = prompt('취미를 입력하세요.');
+		alert(`취미는 ${hobby} 입니다.`)
+		*/
+	</script>
+</body>
+</html>

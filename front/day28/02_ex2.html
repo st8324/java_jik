@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>복습</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.link-news{ color: #000; text-decoration: none; vertical-align: top;}
+		.link-news:hover .title{ text-decoration: underline;}
+		.dot{ 
+			width: 4px; height: 4px; border-radius: 2px; background-color: gray;
+			display: inline-block; vertical-align: top;
+			margin-top: 8px; margin-left: 3px;
+		}
+		.dot.sel{ background-color: red;}
+		.dot+.dot{ margin-right: 3px;}
+		.box-dot{
+			display: inline-block;
+		}
+	</style>
+</head>
+<body>
+	<a href="https://news.daum.net/" class="link-news">
+		<span class="title">뉴스</span>
+		<span class="box-dot">
+			<span class="dot sel"></span>
+			<span class="dot"></span>
+		</span>
+	</a>
+	<script>
+		/*
+		1. 요소 구성
+		2. 이벤트 등록
+		- 뉴스를 클릭했을 때
+		 - 클래스가 title 요소를 클릭
+		 - 요소 : .title
+		 - 이벤트 : click
+		- .을 클릭했을 때
+		 - 클래스가 dot인 요소를 클릭
+		 - 요소 : .dot
+		 - 이벤트 : click
+		- 뉴스와 ..이 클릭됐을 때
+		 - 요소 : .link-news
+		 - 이벤트 : click
+		3. 이벤트 구현
+		*/
+		$('.title').click(function(e){
+			let index = $('.dot').filter('.sel').index();
+			//선택된 점이 첫번째 점이면 이동
+			if(index == 0)
+				//e.stopPropagation()을 실행하면 등록된 이벤트인 $('.link-news').click()이
+				//실행되지 않고, a태그 기능이 동작됨
+				e.stopPropagation();
+			//아니면 이동하지 않고, 점을 선택
+			else
+				$('.box-dot').click()
+		})
+		$('.box-dot').click(function(){
+			//현재 선택된 점을 해제하고, 옆에 있는 점을 선택
+			$('.dot.sel').removeClass('sel').siblings().addClass('sel')
+		})
+		$('.link-news').click(function(e){
+			e.preventDefault();
+		})
+	</script>
+</body>
+</html>

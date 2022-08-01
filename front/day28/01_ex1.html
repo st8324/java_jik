@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>복습</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.box{
+			border: 1px solid red; height: 400px; width: 400px;
+		}
+		.box1:hover{
+			background-color: yellow;
+		}
+		.bg-yellow{
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<script>
+		$('.box2').hover(function(){
+			$(this).css('background', 'yellow');
+		},function(){
+			$(this).css('background', 'white');
+		})
+		$('.box').hover(function(){
+			$(this).toggleClass('bg-yellow')
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>복습</title>
+	<script src="../js/jquery.js"></script>
+	<style>
+		.table{
+			width: 100%;border-collapse: collapse;
+		}
+		.table th:nth-child(1){	width: 10%;	}
+		.table th:nth-child(2){	width: 70%;	}
+		.table th:nth-child(3){	width: 20%;	}
+		.table td,
+		.table th{
+			border: 1px solid black; line-height: 30px;
+		}
+		.table td:nth-child(1){	text-align: center;	}
+		.btn-del{
+			height: 30px; margin-bottom: 10px; cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<button class="btn-del">선택 삭제</button>
+	<table class="table">
+		<tr>
+			<th>
+				<input type="checkbox" class="check-all">
+			</th>
+			<th>제목</th>
+			<th>작성자</th>
+		</tr>
+		<tr>
+			<td>
+				<input type="checkbox" class="check">
+			</td>
+			<td>과제1입니다.</td>
+			<td>홍길동</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="checkbox" class="check">
+			</td>
+			<td>과제2입니다.</td>
+			<td>홍길동</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="checkbox" class="check">
+			</td>
+			<td>과제3입니다.</td>
+			<td>홍길동</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="checkbox" class="check">
+			</td>
+			<td>과제4입니다.</td>
+			<td>홍길동</td>
+		</tr>
+	</table>
+	<script>
+		/*
+		1. 요소구성
+		2. 이벤트 등록
+		- 요소 : .btn-del
+		- 이벤트 : click
+		3. 이벤트 구현
+		- 체크된 체크박스의 조상 중 tr태그를 삭제(remove)
+		*/
+
+		$('.btn-del').click(function(){
+			$('.check').filter(':checked').parents('tr').remove()
+		})
+
+		//전체 선택 버튼 클릭
+		$('.check-all').click(function(){
+			$('.check').prop('checked', $(this).prop('checked'))
+		})
+		//개별 선택 버튼 클릭
+		$('.check').click(function(){
+			if($(this).is(':checked')){
+				//전체가 체크되지 않으면
+				if($('.check').length != $('.check').filter(':checked').length)
+					return;
+				$('.check-all').prop('checked',true)	
+			}else{
+				$('.check-all').prop('checked',false)
+			}
+			
+		})
+	</script>
+</body>
+</html>
