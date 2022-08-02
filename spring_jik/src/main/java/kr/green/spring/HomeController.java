@@ -61,4 +61,11 @@ public class HomeController {
 	    mv.setViewName("/main/login");
 	    return mv;
 	}
+	@RequestMapping(value="/login", method=RequestMethod.POST)
+	public ModelAndView loginPost(ModelAndView mv, String id, String pw){
+	    mv.setViewName("redirect:/login");
+	    System.out.println("id : " + id);
+	    System.out.println("pw : " + pw);
+	    return mv;
+	}
 }
