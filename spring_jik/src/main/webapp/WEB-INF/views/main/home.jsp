@@ -49,4 +49,5 @@
 		})
 	})
 	</script>
+	${user.id} <!-- user.getId()  -->
 </div>
