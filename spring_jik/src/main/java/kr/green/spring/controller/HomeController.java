@@ -82,6 +82,8 @@ public class HomeController {
 	    //아이디와 비번이 주어지면 아이디와 비번이 일치하는 회원 정보를 가져오는 작업
 	    MemberVO dbMember2 = memberService.getMember(member);
 	    System.out.println(dbMember2);
+	    MemberVO dbMember3 = memberService.getMember2(member);
+	    System.out.println(dbMember3);
 	    return mv;
 	}
 }
