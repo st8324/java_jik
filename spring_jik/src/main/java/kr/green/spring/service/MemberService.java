@@ -4,12 +4,8 @@ import kr.green.spring.vo.MemberVO;
 
 public interface MemberService {
 
-	String getEmail(String id);
+	boolean signup(MemberVO member);
 
-	MemberVO getMember(String me_id);
-
-	MemberVO getMember(MemberVO member);
-
-	MemberVO getMember2(MemberVO member);
+	MemberVO login(MemberVO member);
 
 }

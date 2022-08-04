@@ -40,30 +40,11 @@ public class HomeController {
 	 * 이 때, hobby와 time의 타입이 null을 처리할 수 없는 타입이면 에러가 발생
 	 * */
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public ModelAndView home(ModelAndView mv, String hobby, Integer time){
+	public ModelAndView home(ModelAndView mv){
 	    mv.setViewName("/main/home");
-	    mv.addObject("name", "홍길동");
-	    mv.addObject("age", 20);
-	    System.out.println("취미는 " + hobby + "이고, " + time + "시간씩 합니다.");
-	   
 	    return mv;
 	}
-	@RequestMapping(value="/", method=RequestMethod.POST)
-	public ModelAndView homePost(ModelAndView mv, String hobby, Integer time){
-	    mv.setViewName("redirect:/");
-	    System.out.println("취미는 " + hobby + "이고, " + time + "시간씩 합니다.");
-	    return mv;
-	}
-	
-	@RequestMapping(value="/hobby/{hobby1}/{time1}")
-	public ModelAndView hobby(ModelAndView mv, 
-			@PathVariable("hobby1") String hobby, 
-			@PathVariable("time1") Integer time){
-	    mv.setViewName("redirect:/");
-	    System.out.println("취미는 " + hobby + "이고, " + time + "시간씩 합니다.");
-	    return mv;
-	}
-	
+		
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView loginGet(ModelAndView mv){
 	    mv.setViewName("/main/login");
@@ -71,19 +52,24 @@ public class HomeController {
 	}
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public ModelAndView loginPost(ModelAndView mv, MemberVO member){
-	    mv.setViewName("redirect:/login");
-	    System.out.println(member);
-	    //아이디가 주어지면 이메일을 가져오는 작업 
-	    String email = memberService.getEmail(member.getMe_id());
-	    System.out.println("이메일 : "+email);
-	    //아이디가 주어지면 회원 정보를 가져오는 작업
-	    MemberVO dbMember = memberService.getMember(member.getMe_id());
-	    System.out.println(dbMember);
-	    //아이디와 비번이 주어지면 아이디와 비번이 일치하는 회원 정보를 가져오는 작업
-	    MemberVO dbMember2 = memberService.getMember(member);
-	    System.out.println(dbMember2);
-	    MemberVO dbMember3 = memberService.getMember2(member);
-	    System.out.println(dbMember3);
+			MemberVO dbMember = memberService.login(member);
+			System.out.println("로그인 중 : " + dbMember);
+			mv.addObject("user", dbMember);
+	    mv.setViewName("redirect:/");
 	    return mv;
+	}
+	@RequestMapping(value="/signup", method=RequestMethod.GET)
+	public ModelAndView signupGet(ModelAndView mv) {
+		mv.setViewName("/main/signup");
+		return mv;
+	}
+	@RequestMapping(value="/signup", method=RequestMethod.POST)
+	public ModelAndView signupPost(ModelAndView mv, MemberVO member) {
+		if(memberService.signup(member)) {
+			mv.setViewName("redirect:/");
+		}else {
+			mv.setViewName("redirect:/signup");
+		}
+		return mv;
 	}
 }
