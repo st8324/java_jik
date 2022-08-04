@@ -24,5 +24,8 @@
 	      	</c:if>   
 	    	</ul>
 		</div> 
+   	<c:if test="${user != null }">
+   		<a href="javascript:0;" class="float-right" style="color:#fff;">${user.me_id}님 환영합니다.</a>
+   	</c:if>
 	</div> 
 </nav>
