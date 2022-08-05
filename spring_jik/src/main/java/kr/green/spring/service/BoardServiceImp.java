@@ -52,4 +52,31 @@ public class BoardServiceImp implements BoardService {
 			return null;
 		return boardDao.selectBoard(bd_num);
 	}
+
+	@Override
+	public void updateBoard(BoardVO board, MemberVO user) {
+		if(user == null)
+			return;
+		
+		if(board == null)
+			return;
+		
+		//제목에 공백만 있는 경우
+		if(board.getBd_title().trim().length() == 0)
+			return;
+		//내용에 공백만 있는 경우
+		if(board.getBd_content().trim().length() == 0)
+			return;
+		
+		BoardVO dbBoard = boardDao.selectBoard(board.getBd_num());
+		
+		//작성자와 로그인한 회원이 다르면
+		if(!user.getMe_id().equals(dbBoard.getBd_me_id()))
+			return;
+		
+		boardDao.updateBoard(board);
+		
+	}
+
+	
 }

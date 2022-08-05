@@ -26,6 +26,10 @@
 			<div class="form-group">
 			  <textarea class="form-control" rows="10" name="bd_content" readonly>${board.bd_content}</textarea>
 			</div>
+			<c:if test="${user != null && user.me_id == board.bd_me_id }">
+				<a href="<%=request.getContextPath()%>/board/update/${board.bd_num}" class="btn btn-outline-danger">수정</a>
+				<a href="<%=request.getContextPath()%>/board/delete/${board.bd_num}" class="btn btn-outline-danger">삭제</a>
+			</c:if>
 		</c:if>
 		<c:if test="${board != null && 'A'.charAt(0) ==board.bd_del }">
 			<h1>관리자에 의해 삭제된 게시글입니다.</h1>
