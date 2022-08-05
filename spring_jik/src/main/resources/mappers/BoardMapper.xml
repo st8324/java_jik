@@ -24,6 +24,11 @@
   		set bd_title = #{b.bd_title}, bd_content = #{b.bd_content}, bd_up_date = now()
   		where bd_num = #{b.bd_num}
   </update>
+  <update id="deleteBoard">
+  	update board
+  		set bd_del = #{bd_del}
+  		where bd_num = #{bd_num}
+  </update>
 </mapper>
 
 
