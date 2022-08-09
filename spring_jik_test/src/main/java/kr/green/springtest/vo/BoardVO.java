@@ -28,4 +28,11 @@ public class BoardVO {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		return format.format(bd_reg_date);
 	}
+	public String getBd_up_date_time_str() {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		if(bd_up_date != null)
+			return format.format(bd_up_date);
+		else
+			return format.format(bd_reg_date);
+	}
 }
