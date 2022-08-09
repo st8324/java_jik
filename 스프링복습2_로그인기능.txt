@@ -1,0 +1,76 @@
+1. header.jsp
+ - 링크 설정
+ - /login
+
+테스트 => 404에러
+
+2. 홈컨트롤러
+ - 메소드 추가
+   - url : /login
+   - method : get
+   - viewName : /main/login
+
+테스트 => 500에러 => login.jsp가 없어서
+
+3. login.jsp
+ - 파일 추가
+ - 화면 구성
+  - form태그로 구성
+     - post : post
+  - input태그에 name 지정
+
+테스트 => 로그인 화면 잘 나옴
+테스트 => 아이디/비번 입력 후 버튼 클릭 => 405에러
+
+4. 홈컨트롤러
+ - 메소드 추가
+   - url : /login
+   - method : post
+   - viewName : redirect:/
+ - 화면에서 입력한 아이디/비번 확인
+
+테스트 => 콘솔에 아이디/비번이 찍히고, 메인으로 이동
+
+5. 홈컨트롤러
+ - 4번 메소드에서 서비스에게 일을 시킴
+ - 아이디/비번을 주면서 로그인 하라고 시키고, 로그인 성공하면 
+   회원 정보를, 실패하면 null을 반환
+ - 받은 회원 정보가 null이 아니면 viewName을 redirect:/
+   null이면 redirect:/login
+ - 회원 정보를 ModelAndView에 담아 전송
+
+6. 멤버서비스
+ - 메소드 추가
+7. 멤버서비스임플
+ - 메소드 추가 및 구현
+ - 아이디와 일치하는 회원 정보 가져옴
+ - 회원 정보가 null이면 null을 반환
+ - 회원 정보가 있고, 비번이 같으면 회원 정보를 반환
+ - 그렇지 않으면 null을 반환
+
+8. interceptor 패키지 추가
+9. LoiginInterceptor 클래스 추가
+ - Docs에 있는 문서 참고
+ - postHandle 오버라이딩
+   - 넘겨 받은 회원 정보가 있으면 세션에 저장
+
+10. sevlet-context.xml
+ - LoginInterceptor 추가 및 interceptor할 경로 설정
+
+11. home.jsp
+ -  ${user}를 추가하여 로그인 했을 때 회원 정보가 찍히도록 작성
+
+테스트 => /login에서 아이디/비번 입력후 테스트 => 있는 회원 정보로 하면 home.jsp에서 회원 정보 출력
+
+12. header.jsp
+ - 로그인 시, 로그인, 회원가입 메뉴를 안보이게 처리
+ - c:if태그 활용
+
+
+
+
+
+
+
+
+
