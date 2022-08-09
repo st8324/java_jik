@@ -36,6 +36,7 @@
       </c:forEach>
     </tbody>
   </table>
+  <a href="<c:url value="/board/insert"></c:url>" class="btn btn-outline-success">글쓰기</a>
 </div>
 </body>
 </html>

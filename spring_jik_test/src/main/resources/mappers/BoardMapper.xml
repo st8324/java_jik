@@ -12,4 +12,9 @@
 	<update id="updateViews">
 		update board set bd_views = bd_views+1 where bd_num = #{bd_num} and bd_del = 'N'
 	</update>
+	<insert id="insertBoard">
+		insert into board(bd_title, bd_content, bd_me_id, bd_ori_num, bd_depth)
+			select #{b.bd_title},#{b.bd_content},#{b.bd_me_id},ifnull(max(bd_num),0)+1,1 
+			from board
+	</insert>
 </mapper>

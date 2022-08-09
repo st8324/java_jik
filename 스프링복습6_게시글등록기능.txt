@@ -1,0 +1,49 @@
+1. list.jsp
+ - 글쓰기 버튼 추가
+ - 링크로 /board/insert
+
+테스트 => 404
+
+2. 보드 컨트롤러
+ - 메소드 추가  
+  - url : /board/insert
+  - method : get
+  - viewName : /board/insert
+
+테스트 => 500 - insert.jsp가 없어서
+
+3. insert.jsp
+ - board 폴더에 추가
+ - 화면 구성
+   - form태그
+     - method : post
+   - 각 input, textarea태그에 name 지정
+
+테스트 => 글쓰기 화면 잘 나옴
+테스트 => 글쓰기 버튼 클릭 => 405 에러
+
+4. 보드 컨트롤러
+ - 메소드 추가
+  - url : /board/insert
+  - method : post
+  - viewName : redirect:/board/list
+ - 화면에서 전달한 게시글 정보를 콘솔에 출력(추후 삭제)
+ - 현재 로그인한 회원 정보를 콘솔에 확인(추후 삭제)
+ - 보드 서비스에게 회원 정보와 게시글 정보를 주고, 게시글 등록하라고 시킴
+
+5. 보드 서비스
+ - 메소드 추가
+6. 보드 서비스임플
+ - 게시글, 회원 null 체크
+ - 게시글 작성자로 회원 아이디를 저장
+ - 보드 아오에게 게시글을 주면서 게시글 등록하라고 시킴
+
+7. 보드 다오
+ - 메소드 추가
+ - @Param추가
+8. 보드 매퍼
+ - insert 태크 및 쿼리 이용하여 게시글 등록
+ - insert into xxx select를 이용
+
+
+

@@ -2,6 +2,8 @@ package kr.green.springtest.controller;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.springtest.service.BoardService;
 import kr.green.springtest.vo.BoardVO;
+import kr.green.springtest.vo.MemberVO;
 
 @Controller
 public class BoardController {
@@ -32,6 +35,18 @@ public class BoardController {
 		BoardVO board = boardService.getBoard(bd_num);
 		mv.addObject("board", board);
     mv.setViewName("/board/select");
+    return mv;
+	}
+	@RequestMapping(value="/board/insert", method=RequestMethod.GET)
+	public ModelAndView boardInsertGet(ModelAndView mv){
+		mv.setViewName("/board/insert");
+    return mv;
+	}
+	@RequestMapping(value="/board/insert", method=RequestMethod.POST)
+	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board, HttpSession session){
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		boardService.insertBoard(board,user);
+		mv.setViewName("redirect:/board/list");
     return mv;
 	}
 }
