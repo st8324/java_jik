@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.springtest.dao.BoardDAO">
+	<select id="selectBoardList" resultType="kr.green.springtest.vo.BoardVO">
+		select * from board where bd_del = 'N' order by bd_num desc
+	</select>
+</mapper>
