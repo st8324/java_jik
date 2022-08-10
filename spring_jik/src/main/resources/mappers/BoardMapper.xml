@@ -9,7 +9,7 @@
 			1 from board
   </insert>
   <select id="selectBoardList" resultType="kr.green.spring.vo.BoardVO">
-  	select * from board where bd_del = 'N' order by bd_num desc
+  	select * from board where bd_del = 'N' order by bd_num desc limit #{cri.pageStart}, #{cri.perPageNum}
   </select>
   <update id="updateViews">
   	update board
@@ -29,6 +29,9 @@
   		set bd_del = #{bd_del}
   		where bd_num = #{bd_num}
   </update>
+  <select id="selectTotalCount" resultType="int">
+  	select count(*) from board where bd_del = 'N'
+  </select>
 </mapper>
 
 
