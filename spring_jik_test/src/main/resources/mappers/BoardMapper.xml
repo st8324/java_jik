@@ -21,7 +21,8 @@
 		update board set 
 			bd_title = #{b.bd_title}, 
 			bd_content = #{b.bd_content},
-			bd_up_date = now()
+			bd_up_date = now(),
+			bd_del = #{b.bd_del}
 			where bd_num = #{b.bd_num}
 	</update>
 </mapper>

@@ -37,6 +37,7 @@
 			</div>
 			<c:if test="${board.bd_me_id == user.me_id }">
 				<a href="<c:url value="/board/update/${board.bd_num}"></c:url>" class="btn btn-outline-success">수정</a>
+				<a href="<c:url value="/board/delete/${board.bd_num}"></c:url>" class="btn btn-outline-success">삭제</a>
 			</c:if>
 		</c:if>
 		<c:if test="${board.bd_del =='Y' }">
