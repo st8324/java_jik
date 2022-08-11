@@ -8,9 +8,20 @@
 		select #{b.bd_title}, #{b.bd_content}, #{b.bd_me_id}, ifnull(max(bd_num),0) + 1, 
 			1 from board
   </insert>
+  
   <select id="selectBoardList" resultType="kr.green.spring.vo.BoardVO">
-  	select * from board where bd_del = 'N' order by bd_num desc limit #{cri.pageStart}, #{cri.perPageNum}
+  	select * from board 
+  		where bd_del = 'N' 
+  		<if test="cri.searchType == 'all'">
+  		and (bd_title like concat('%', #{cri.search} ,'%') or bd_me_id like concat('%',#{cri.search} ,'%'))
+  		</if>
+  		<if test="cri.searchType != 'all'">
+  		and ${cri.searchType} like concat('%',#{cri.search} ,'%')
+  		</if>
+  		order by bd_num desc 
+  		limit #{cri.pageStart}, #{cri.perPageNum}
   </select>
+  
   <update id="updateViews">
   	update board
   		set bd_views = bd_views+1
@@ -30,7 +41,13 @@
   		where bd_num = #{bd_num}
   </update>
   <select id="selectTotalCount" resultType="int">
-  	select count(*) from board where bd_del = 'N'
+  	select count(*) from board where bd_del = 'N' 
+  		<if test="cri.searchType == 'all'">
+  		and (bd_title like concat('%', #{cri.search} ,'%') or bd_me_id like concat('%',#{cri.search} ,'%'))
+  		</if>
+  		<if test="cri.searchType != 'all'">
+  		and ${cri.searchType} like concat('%',#{cri.search} ,'%')
+  		</if>
   </select>
 </mapper>
 

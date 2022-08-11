@@ -20,6 +20,6 @@ public interface BoardService {
 
 	void deleteBoard(Integer bd_num, MemberVO user);
 
-	int getTotalCount();
+	int getTotalCount(Criteria cri);
 
 }
