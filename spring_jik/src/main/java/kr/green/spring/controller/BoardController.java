@@ -7,14 +7,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.spring.pagination.Criteria;
 import kr.green.spring.pagination.PageMaker;
 import kr.green.spring.service.BoardService;
 import kr.green.spring.vo.BoardVO;
+import kr.green.spring.vo.LikesVO;
 import kr.green.spring.vo.MemberVO;
 
 @Controller
@@ -99,5 +102,10 @@ public class BoardController {
 		
     mv.setViewName("redirect:/board/list");
     return mv;
+	}
+	@RequestMapping(value="/board/likes", method=RequestMethod.POST)
+	@ResponseBody
+	public String boardLikes(@RequestBody LikesVO likes){
+		return boardService.updateLikes(likes);
 	}
 }

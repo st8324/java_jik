@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kr.green.spring.pagination.Criteria;
 import kr.green.spring.vo.BoardVO;
+import kr.green.spring.vo.LikesVO;
 import kr.green.spring.vo.MemberVO;
 
 public interface BoardService {
@@ -21,5 +22,7 @@ public interface BoardService {
 	void deleteBoard(Integer bd_num, MemberVO user);
 
 	int getTotalCount(Criteria cri);
+
+	String updateLikes(LikesVO likes);
 
 }

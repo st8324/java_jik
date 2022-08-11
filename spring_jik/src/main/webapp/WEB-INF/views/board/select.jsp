@@ -24,6 +24,10 @@
 			  <input type="text" class="form-control" name="bd_views" value="${board.bd_views}" readonly>
 			</div>
 			<div class="form-group">
+				<button type="button" class="btn btn-outline-primary up btn-likes" >추천</button>
+				<button type="button" class="btn btn-outline-danger down btn-likes">비추천</button>
+			</div>
+			<div class="form-group">
 			  <textarea class="form-control" rows="10" name="bd_content" readonly>${board.bd_content}</textarea>
 			</div>
 			<c:if test="${user != null && user.me_id == board.bd_me_id }">
@@ -41,5 +45,44 @@
 			<h1>잘못된 경로로 접근했습니다.</h1>
 		</c:if>
 	</div>
+	<script>
+		$(function(){
+			$('.btn-likes').click(function(){
+
+				let li_state = $(this).hasClass('up') ? 1 : -1;
+				let obj = {
+					li_bd_num : '${board.bd_num}',
+					li_state : li_state,
+					li_me_id : '${user.me_id}'
+				}
+				if(obj.li_me_id == ''){
+					if(confirm('추천/비추천은 로그인을 해야 합니다. 로그인을 하시겠습니까?')){
+						location.href='<%=request.getContextPath()%>/login'
+					}
+					else
+						return;
+				}
+				$.ajax({
+	        async:true,
+	        type:'POST',
+	        data: JSON.stringify(obj),
+	        url: '<%=request.getContextPath()%>/board/likes',
+	        contentType:"application/json; charset=UTF-8",
+	        success : function(data){
+	        	if(data == '1')
+	        		alert('해당 게시글을 추천했습니다.')
+	        	else if(data == '-1')
+	        		alert('해당 게시글을 비추천했습니다.')
+	        	else if(data == '10')
+	        		alert('해당 게시글 추천을 취소했습니다.')
+	        	else if(data == '-10')
+	        		alert('해당 게시글 비추천을 취소했습니다.')
+	        	else
+	        		alert('잘못된 접근입니다.');
+	        }
+		    });
+			})
+		})
+	</script>
 </body>
 </html>
