@@ -8,4 +8,6 @@ public interface MemberService {
 
 	MemberVO login(MemberVO member);
 
+	boolean checkId(MemberVO member);
+
 }
