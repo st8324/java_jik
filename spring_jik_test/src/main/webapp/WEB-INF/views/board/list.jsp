@@ -36,6 +36,20 @@
       </c:forEach>
     </tbody>
   </table>
+  
+  <ul class="pagination justify-content-center">
+  	<c:if test="${pm.prev}">
+    	<li class="page-item"><a class="page-link" href="<c:url value="/board/list?page=${pm.startPage-1}"></c:url>">이전</a></li>
+    </c:if>
+    <c:forEach begin="${pm.startPage}" end="${pm.endPage }" var="i">
+    	<li class="page-item <c:if test="${pm.cri.page == i}">active</c:if>">
+    		<a class="page-link" href="<c:url value="/board/list?page=${i}"></c:url>">${i}</a>
+    	</li>
+    </c:forEach>
+    <c:if test="${pm.next}">
+    	<li class="page-item"><a class="page-link" href="<c:url value="/board/list?page=${pm.endPage+1}"></c:url>">다음</a></li>
+    </c:if>
+  </ul>
   <a href="<c:url value="/board/insert"></c:url>" class="btn btn-outline-success">글쓰기</a>
 </div>
 </body>
