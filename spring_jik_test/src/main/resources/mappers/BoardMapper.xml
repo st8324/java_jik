@@ -4,7 +4,16 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.springtest.dao.BoardDAO">
 	<select id="selectBoardList" resultType="kr.green.springtest.vo.BoardVO">
-		select * from board where bd_del = 'N' order by bd_num desc limit #{cri.pageStart}, #{cri.perPageNum}
+		select * from board 
+			where bd_del = 'N' 
+			<if test="cri.searchType == 'all'">
+				and (bd_title like concat('%', #{cri.search}, '%') or bd_me_id like concat('%', #{cri.search}, '%'))
+			</if>
+			<if test="cri.searchType != 'all'">
+				and ${cri.searchType} like concat('%', #{cri.search}, '%')
+			</if>
+			order by bd_num desc 
+			limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectBoard" resultType="kr.green.springtest.vo.BoardVO">
 		select * from board where bd_num = #{bd_num}
@@ -26,6 +35,13 @@
 			where bd_num = #{b.bd_num}
 	</update>
 	<select id="selectTotalCount" resultType="int">
-		select count(*) from board where bd_del = 'N' 
+		select count(*) from board 
+			where bd_del = 'N' 
+			<if test="cri.searchType == 'all'">
+				and (bd_title like concat('%', #{cri.search}, '%') or bd_me_id like concat('%', #{cri.search}, '%'))
+			</if>
+			<if test="cri.searchType != 'all'">
+				and ${cri.searchType} like concat('%', #{cri.search}, '%')
+			</if>
 	</select>
 </mapper>

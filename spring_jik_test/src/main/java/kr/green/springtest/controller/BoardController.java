@@ -27,7 +27,7 @@ public class BoardController {
 	public ModelAndView boardListGet(ModelAndView mv, Criteria cri){
 		cri.setPerPageNum(2);
 		ArrayList<BoardVO> list = boardService.getBoardList(cri);
-		int totalCount = boardService.getTotalCount();
+		int totalCount = boardService.getTotalCount(cri);
 		PageMaker pm = new PageMaker(totalCount, 5, cri);
 		mv.addObject("pm", pm);
 		mv.addObject("list", list);
