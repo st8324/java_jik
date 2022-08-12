@@ -23,9 +23,11 @@
 			<div class="form-group">
 			  <input type="text" class="form-control" name="bd_views" value="${board.bd_views}" readonly>
 			</div>
+			
+			
 			<div class="form-group">
-				<button type="button" class="btn btn-outline-primary up btn-likes" >추천</button>
-				<button type="button" class="btn btn-outline-danger down btn-likes">비추천</button>
+				<button type="button" class="btn btn<c:if test="${likes.li_state != 1}">-outline</c:if>-primary up btn-likes" >추천</button>
+				<button type="button" class="btn btn<c:if test="${likes.li_state != -1}">-outline</c:if>-danger down btn-likes">비추천</button>
 			</div>
 			<div class="form-group">
 			  <textarea class="form-control" rows="10" name="bd_content" readonly>${board.bd_content}</textarea>
@@ -69,15 +71,19 @@
 	        url: '<%=request.getContextPath()%>/board/likes',
 	        contentType:"application/json; charset=UTF-8",
 	        success : function(data){
-	        	if(data == '1')
+	        	$('.btn-likes.up').removeClass('btn-primary').addClass('btn-outline-primary');
+	        	$('.btn-likes.down').removeClass('btn-danger').addClass('btn-outline-danger');
+	        	if(data == '1'){
 	        		alert('해당 게시글을 추천했습니다.')
-	        	else if(data == '-1')
+	        		$('.btn-likes.up').addClass('btn-primary').removeClass('btn-outline-primary');
+	        	}else if(data == '-1'){
 	        		alert('해당 게시글을 비추천했습니다.')
-	        	else if(data == '10')
+	        		$('.btn-likes.down').addClass('btn-danger').removeClass('btn-outline-danger');
+	        	}else if(data == '10'){
 	        		alert('해당 게시글 추천을 취소했습니다.')
-	        	else if(data == '-10')
+	        	}else if(data == '-10'){
 	        		alert('해당 게시글 비추천을 취소했습니다.')
-	        	else
+	        	}else
 	        		alert('잘못된 접근입니다.');
 	        }
 		    });

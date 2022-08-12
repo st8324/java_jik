@@ -142,4 +142,17 @@ public class BoardServiceImp implements BoardService {
 		}
 		return "";
 	}
+
+	@Override
+	public LikesVO getLikes(BoardVO board, MemberVO user) {
+		if(board == null || board.getBd_del() != 'N')
+			return null;
+		
+		if(user == null)
+			return null;
+		LikesVO likes = new LikesVO();
+		likes.setLi_bd_num(board.getBd_num());
+		likes.setLi_me_id(user.getMe_id());
+		return boardDao.selectLikes(likes);
+	}
 }

@@ -59,13 +59,18 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/board/select/{bd_num}", method=RequestMethod.GET)
-	public ModelAndView boardSelectGet(ModelAndView mv, @PathVariable("bd_num")Integer bd_num){
+	public ModelAndView boardSelectGet(ModelAndView mv, 
+			@PathVariable("bd_num")Integer bd_num, HttpSession session){
 		//게시글 번호에 맞는 게시글 조회수를 증가
 		boardService.updateViews(bd_num);
 		//게시글 번호에 맞는 게시글 정보를 가져옴
 		BoardVO board = boardService.getBoard(bd_num);
+		//해당 게시글에 대한 사용자의 추천 정보 => 게시글 번호, 아이디
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		LikesVO likes = boardService.getLikes(board, user);
 		//가져온 게시글을 화면에 전달
 		mv.addObject("board", board);
+		mv.addObject("likes", likes);
     mv.setViewName("/board/select");
     return mv;
 	}
