@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import kr.green.springtest.dao.BoardDAO;
 import kr.green.springtest.dao.MemberDAO;
 import kr.green.springtest.vo.MemberVO;
 
@@ -50,6 +51,15 @@ public class MemberServiceImp implements MemberService {
 			return user;
 		
 		return null;
+	}
+
+	@Override
+	public Object idCheck(MemberVO member) {
+		if(member == null || member.getMe_id() == null)
+			return false;
+		if(memberDao.selectMember(member.getMe_id()) != null)
+			return false;
+		return true;
 	}
 
 }

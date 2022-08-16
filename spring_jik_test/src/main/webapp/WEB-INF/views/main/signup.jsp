@@ -14,6 +14,7 @@
 			  <label for="me_id">아이디:</label>
 			  <input type="text" class="form-control" id="me_id" name="me_id">
 			</div>
+			<button class="btn btn-outline-success col-12" type="button" id="idCheck">아이디 중복 확인</button>
 			<div class="form-group">
 			  <label for="me_pw">비밀번호:</label>
 			  <input type="password" class="form-control" id="me_pw" name="me_pw">
@@ -45,5 +46,52 @@
 			<button class="btn btn-outline-success col-12">회원가입</button>
 		</form>
 	</div>
+	<script type="text/javascript">
+	let idCheck = false;
+	
+	$(function(){
+		$('#idCheck').click(function(){
+			let me_id = $('[name=me_id]').val();
+			if(me_id.trim().length == 0){
+				alert('아이디를 입력하세요.')
+				return;
+			}
+			
+			let obj = {
+					me_id : me_id
+			}
+			
+			$.ajax({
+	      async:false,
+	      type:'POST',
+	      data:JSON.stringify(obj),
+	      url:"<%=request.getContextPath()%>/id/check",
+	      dataType:"json",
+	      contentType:"application/json; charset=UTF-8",
+	      success : function(data){
+	    	  //data.check
+	    	  //data['check']
+          if(data.check){
+        	  alert('사용 가능한 아이디입니다.')
+        	  idCheck = true;
+          }else{
+        	  alert('이미 사용중인 아이디입니다.')
+          }
+	      }
+		  });
+		});
+		
+		$('[name=me_id]').change(function(){
+			idCheck = false;
+		})
+		$('form').submit(function(){
+			if(idCheck)
+				return true;
+			
+			alert('아이디 중복검사를 확인하세요.')
+			return false;
+		})	
+	})
+	</script>
 </body>
 </html>
