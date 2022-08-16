@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.green.springtest.dao.BoardDAO;
 import kr.green.springtest.pagination.Criteria;
 import kr.green.springtest.vo.BoardVO;
+import kr.green.springtest.vo.LikesVO;
 import kr.green.springtest.vo.MemberVO;
 
 @Service
@@ -81,5 +82,47 @@ public class BoardServiceImp implements BoardService{
 		if(cri == null)
 			return 0;
 		return boardDao.selectTotalCount(cri);
+	}
+
+	@Override
+	public String getLikesState(LikesVO likes, MemberVO user) {
+		if(likes == null || user == null)
+			return "0";
+		
+		likes.setLi_me_id(user.getMe_id());
+		
+		LikesVO dbLikes = boardDao.selectLikes(likes);
+		
+		try {
+			if(dbLikes == null) {
+				boardDao.insertLikes(likes);
+				return ""+likes.getLi_state();//1 or -1 문자열이 리턴
+			}
+			String res;
+			if(likes.getLi_state() == dbLikes.getLi_state()) {
+				dbLikes.setLi_state(0);
+				res = likes.getLi_state() + "0";
+			}else {
+				dbLikes.setLi_state(likes.getLi_state());
+				res = likes.getLi_state() + "";
+			}
+			boardDao.updateLikes(dbLikes);
+			return res;
+			
+		}catch(Exception e) {}
+		finally {
+			boardDao.updateBoardLikes(likes.getLi_bd_num());
+		}
+		return "0";
+	}
+
+	@Override
+	public LikesVO getLikes(int bd_num, MemberVO user) {
+		if(user == null)
+			return null;
+		LikesVO likes = new LikesVO();
+		likes.setLi_bd_num(bd_num);
+		likes.setLi_me_id(user.getMe_id());
+		return boardDao.selectLikes(likes);
 	}
 }

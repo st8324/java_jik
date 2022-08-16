@@ -44,4 +44,20 @@
 				and ${cri.searchType} like concat('%', #{cri.search}, '%')
 			</if>
 	</select>
+	<select id="selectLikes" resultType="kr.green.springtest.vo.LikesVO">
+		select * from likes where li_bd_num = #{li.li_bd_num} and li_me_id = #{li.li_me_id}
+	</select>
+	<insert id="insertLikes">
+		insert into likes(li_bd_num, li_me_id, li_state) 
+		values(#{li.li_bd_num},#{li.li_me_id},#{li.li_state})
+	</insert>
+	<update id="updateLikes">
+		update likes set li_state = #{li.li_state} where li_num = #{li.li_num}
+	</update>
+	<update id="updateBoardLikes">
+		update board set 
+			bd_up = (select count(*) from likes where li_bd_num = #{bd_num} and li_state = 1),
+			bd_down = (select count(*) from likes where li_bd_num = #{bd_num} and li_state = -1)
+		where bd_num = #{bd_num}
+	</update>
 </mapper>
