@@ -1,0 +1,15 @@
+인터셉터를 이용하여 
+로그인한 회원은 회원가입, 로그인페이지로 이동하지 못하게 하고,
+비회원은 게시글 등록,수정,삭제 페이지에 이동하지 못하게 하는 작업을 하세요.
+MemberInterceptor
+GuestInterceptor
+
+1. MemberInterceptor
+ - 클래스 생성 및 메소드 오버로딩
+ - 회원이 아니면 메인으로 이동
+2. GeuestIntercpetor
+ - 클래스 생성 및 메소드 오버로딩
+ - 회원이면 메인으로 이동
+3. servlet-context.xml
+ - interceptor 등록
+ - interceptor 동작 시킬 url 등록
