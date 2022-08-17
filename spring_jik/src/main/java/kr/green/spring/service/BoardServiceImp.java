@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.green.spring.dao.BoardDAO;
 import kr.green.spring.pagination.Criteria;
 import kr.green.spring.vo.BoardVO;
+import kr.green.spring.vo.CommentVO;
 import kr.green.spring.vo.LikesVO;
 import kr.green.spring.vo.MemberVO;
 
@@ -154,5 +155,35 @@ public class BoardServiceImp implements BoardService {
 		likes.setLi_bd_num(board.getBd_num());
 		likes.setLi_me_id(user.getMe_id());
 		return boardDao.selectLikes(likes);
+	}
+
+	@Override
+	public String insertComment(CommentVO comment, MemberVO user) {
+		if(comment == null || comment.getCo_content() == null) 
+			return "댓글 정보가 없습니다.";
+		
+		if(user == null)
+			return "로그인한 회원만 댓글 작성이 가능합니다.";
+		
+		BoardVO board = boardDao.selectBoard(comment.getCo_bd_num()); 
+		if( board == null || board.getBd_del() != 'N')
+			return "잘못된 게시글입니다. 댓글을 작성할 수 없습니다.";
+		
+		comment.setCo_me_id(user.getMe_id());
+		boardDao.insertComment(comment);
+			
+		return "댓글을 등록했습니다.";
+	}
+
+	@Override
+	public ArrayList<CommentVO> getCommentList(int co_bd_num, Criteria cri) {
+		if(cri == null)
+			return null;
+		return boardDao.selectCommentList(co_bd_num, cri);
+	}
+
+	@Override
+	public int getTotalCountComment(int co_bd_num) {
+		return boardDao.selectTotalCountComment(co_bd_num);
 	}
 }

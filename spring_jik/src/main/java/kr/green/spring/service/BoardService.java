@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import kr.green.spring.pagination.Criteria;
 import kr.green.spring.vo.BoardVO;
+import kr.green.spring.vo.CommentVO;
 import kr.green.spring.vo.LikesVO;
 import kr.green.spring.vo.MemberVO;
 
@@ -26,5 +27,11 @@ public interface BoardService {
 	String updateLikes(LikesVO likes);
 
 	LikesVO getLikes(BoardVO board, MemberVO user);
+
+	String insertComment(CommentVO comment, MemberVO user);
+
+	ArrayList<CommentVO> getCommentList(int co_bd_num, Criteria cri);
+
+	int getTotalCountComment(int co_bd_num);
 
 }
