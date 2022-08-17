@@ -18,7 +18,7 @@
   		<if test="cri.searchType != 'all'">
   		and ${cri.searchType} like concat('%',#{cri.search} ,'%')
   		</if>
-  		order by bd_num desc 
+  		order by ${cri.column} ${cri.orderBy} 
   		limit #{cri.pageStart}, #{cri.perPageNum}
   </select>
   
