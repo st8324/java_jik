@@ -1,6 +1,8 @@
 package kr.green.spring.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -112,5 +114,24 @@ public class BoardController {
 	@ResponseBody
 	public String boardLikes(@RequestBody LikesVO likes){
 		return boardService.updateLikes(likes);
+	}
+	
+	@RequestMapping(value="/board/list2", method=RequestMethod.GET)
+	public ModelAndView boardList2Get(ModelAndView mv){
+		mv.setViewName("/board/list2");
+    return mv;
+	}
+	
+	@RequestMapping(value="/ajax/board/list", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<Object,Object> ajaxBoardList(@RequestBody Criteria cri){
+		HashMap<Object, Object> map = new HashMap<Object,Object>();
+		cri.setPerPageNum(2);
+		int totalCount = boardService.getTotalCount(cri);
+		ArrayList<BoardVO> list = boardService.getBoardList(cri);
+		PageMaker pm = new PageMaker(cri, 5, totalCount);
+		map.put("list", list);
+		map.put("pm", pm);
+		return map;
 	}
 }
