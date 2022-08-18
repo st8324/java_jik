@@ -14,6 +14,7 @@ public class CommentVO {
 	private int co_depth;
 	private Date co_reg_date;
 	private int co_bd_num;
+	private int co_order;
 	
 	public String getCo_reg_date_str() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd HH:mm");
