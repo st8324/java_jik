@@ -5,8 +5,13 @@
 <mapper namespace="kr.green.spring.dao.BoardDAO">
   <insert id="insertBoard">
   	insert into board(bd_title, bd_content, bd_me_id, bd_ori_num, bd_depth)
+  	<if test="b.bd_ori_num == 0">
 		select #{b.bd_title}, #{b.bd_content}, #{b.bd_me_id}, ifnull(max(bd_num),0) + 1, 
 			1 from board
+		</if>
+		<if test="b.bd_ori_num != 0">
+		values(#{b.bd_title}, #{b.bd_content}, #{b.bd_me_id}, #{b.bd_ori_num}, #{b.bd_depth}) 
+		</if>
   </insert>
   
   <select id="selectBoardList" resultType="kr.green.spring.vo.BoardVO">
@@ -18,7 +23,12 @@
   		<if test="cri.searchType != 'all'">
   		and ${cri.searchType} like concat('%',#{cri.search} ,'%')
   		</if>
-  		order by ${cri.column} ${cri.orderBy} 
+  		<if test="cri.column != 'bd_num'">
+  			order by ${cri.column} ${cri.orderBy}
+  		</if>
+  		<if test="cri.column == 'bd_num'">
+  			order by bd_ori_num ${cri.orderBy}, bd_depth asc, bd_num asc
+  		</if>
   		limit #{cri.pageStart}, #{cri.perPageNum}
   </select>
   

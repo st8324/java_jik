@@ -31,7 +31,7 @@ public class BoardController {
 	
 	@RequestMapping(value="/board/list", method=RequestMethod.GET)
 	public ModelAndView boardListGet(ModelAndView mv, Criteria cri){
-		cri.setPerPageNum(2);
+		cri.setPerPageNum(10);
 		int totalCount = boardService.getTotalCount(cri);
 		//등록된 게시글을 가져옴(여러개)
 		ArrayList<BoardVO> list = boardService.getBoardList(cri);
@@ -43,7 +43,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/board/insert", method=RequestMethod.GET)
-	public ModelAndView boardInsertGet(ModelAndView mv){
+	public ModelAndView boardInsertGet(ModelAndView mv, Integer bd_ori_num, Integer bd_depth){
+		mv.addObject("bd_ori_num", bd_ori_num == null ? 0 : bd_ori_num);
+		mv.addObject("bd_depth", bd_depth == null ? 1 : bd_depth+1);
     mv.setViewName("/board/insert");
     return mv;
 	}
