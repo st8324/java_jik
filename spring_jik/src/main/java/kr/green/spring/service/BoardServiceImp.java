@@ -32,9 +32,14 @@ public class BoardServiceImp implements BoardService {
 		if(user == null || user.getMe_id() == null)
 			return;
 		
+		//답글인 경우 순서를 업데이트
+		if(board.getBd_ori_num() != 0)
+			boardDao.updateBoardOrder(board);
+		
 		//게시글 작성자로 회원 아이디를 저장
 		board.setBd_me_id(user.getMe_id());
 		boardDao.insertBoard(board);
+		
 	}
 
 	@Override

@@ -52,7 +52,7 @@
 				<a href="<%=request.getContextPath()%>/board/delete/${board.bd_num}" class="btn btn-outline-danger">삭제</a>
 			</c:if>
 			<c:if test="${user.me_id != board.bd_me_id }">
-				<a href="<%=request.getContextPath()%>/board/insert?bd_ori_num=${board.bd_ori_num}&bd_depth=${board.bd_depth}" class="btn btn-outline-danger">답글</a>
+				<a href="<%=request.getContextPath()%>/board/insert?bd_ori_num=${board.bd_ori_num}&bd_depth=${board.bd_depth}&bd_order=${board.bd_order}" class="btn btn-outline-danger">답글</a>
 			</c:if>
 		</c:if>
 		<c:if test="${board != null && 'A'.charAt(0) ==board.bd_del }">
@@ -222,6 +222,14 @@
 			$('.btn-comment-update-cancle').remove();
 			$('.btn-comment-update-complete').remove();
 		})
+		//답글버튼 클릭
+		$(document).on('click', '.btn-comment-reply', function(){
+			let str = '<br><textarea class="co_content_reply"></textarea><br>';
+			str += '<button class="btn-insert-reply">답글 등록</button>'
+				str += '<button class="btn-cancle-reply">답글 취소</button>'
+			$(this).after(str);
+			$(this).hide();
+		})
 	})
 	
 	
@@ -250,6 +258,7 @@
 							'<button class="btn-comment-update">수정</button>';
 						}
 					str +=
+						'<button class="btn-comment-reply">답글</button>'+
 					'</div>'
 	    	}
 	    	$('.list-comment').html(str);

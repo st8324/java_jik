@@ -9,10 +9,8 @@
 </head>
 <body>
 	<div class="container">
-		<form method="post" class="mt-5" action="<c:url value='/board/insert'></c:url>">
+		<form method="post" class="mt-5">
 			<h1>게시글 등록</h1>
-			<input name="bd_ori_num" value="${bd_ori_num}" type="hidden">
-			<input name="bd_depth" value="${bd_depth}" type="hidden">
 			<div class="form-group">
 			  <input type="text" class="form-control" name="bd_title" placeholder="제목">
 			</div>

@@ -43,9 +43,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/board/insert", method=RequestMethod.GET)
-	public ModelAndView boardInsertGet(ModelAndView mv, Integer bd_ori_num, Integer bd_depth){
-		mv.addObject("bd_ori_num", bd_ori_num == null ? 0 : bd_ori_num);
-		mv.addObject("bd_depth", bd_depth == null ? 1 : bd_depth+1);
+	public ModelAndView boardInsertGet(ModelAndView mv){
     mv.setViewName("/board/insert");
     return mv;
 	}
