@@ -111,9 +111,19 @@
 	})
 	
 	$(function(){
+		//댓글 등록 버튼 클릭
 		$('.btn-comment-insert').click(function(){
 			let co_content = $('[name=co_content]').val();
 			let co_bd_num = '${board.bd_num}';
+			
+			if('${user.me_id}' == ''){
+				if(confirm('로그인한 회원만 댓글 작성이 가능합니다. 로그인 하겠습니까?')){
+					location.href = '<%=request.getContextPath()%>/login'
+					return;
+				}
+			}
+			
+			
 			let obj = {
 					co_content : co_content,
 					co_bd_num : co_bd_num
@@ -134,6 +144,7 @@
 	})
 	
 	$(function(){
+		//댓글 삭제 버튼 클릭
 		$(document).on('click','.btn-comment-delete',function(){
 			let co_num = $(this).siblings('[name=co_num]').val()
 			let obj ={
