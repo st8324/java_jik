@@ -158,4 +158,14 @@ public class BoardController {
 		map.put("list", list);
 		return map;
 	}
+	@RequestMapping(value="/ajax/comment/delete", method=RequestMethod.POST)
+	@ResponseBody
+	public Map<Object,Object> ajaxCommentDelete(@RequestBody CommentVO comment,
+			HttpSession session){
+		HashMap<Object, Object> map = new HashMap<Object,Object>();
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		boolean res = boardService.deleteComment(comment, user);
+		map.put("res", res);
+		return map;
+	}
 }
