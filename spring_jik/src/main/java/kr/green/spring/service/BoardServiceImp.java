@@ -59,7 +59,7 @@ public class BoardServiceImp implements BoardService {
 			try {
 				String fi_name = UploadFileUtils.uploadFile(uploadPath, fi_ori_name, file.getBytes());
 				FileVO fileVo = new FileVO(fi_name, fi_ori_name, board.getBd_num());
-				System.out.println(fileVo);
+				boardDao.insertFile(fileVo);
 			}catch (Exception e) {
 				e.printStackTrace();
 			}

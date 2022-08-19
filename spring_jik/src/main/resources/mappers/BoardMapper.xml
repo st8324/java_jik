@@ -109,6 +109,10 @@
   <update id="updateComment">
   	update comments set co_content = #{co.co_content} where co_num = #{co.co_num}
   </update>
+  
+  <insert id="insertFile">
+  	insert into file(fi_name, fi_ori_name, fi_bd_num) values(#{fi.fi_name},#{fi.fi_ori_name},#{fi.fi_bd_num})
+  </insert>
 </mapper>
 
 
