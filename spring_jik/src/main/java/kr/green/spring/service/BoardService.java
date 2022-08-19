@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.green.spring.pagination.Criteria;
 import kr.green.spring.vo.BoardVO;
 import kr.green.spring.vo.CommentVO;
+import kr.green.spring.vo.FileVO;
 import kr.green.spring.vo.LikesVO;
 import kr.green.spring.vo.MemberVO;
 
@@ -39,5 +40,7 @@ public interface BoardService {
 	boolean deleteComment(CommentVO comment, MemberVO user);
 
 	boolean updateComment(CommentVO comment, MemberVO user);
+
+	ArrayList<FileVO> getFileList(Integer bd_num);
 
 }

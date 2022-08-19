@@ -32,7 +32,15 @@
 			<div class="form-group">
 			  <textarea class="form-control" rows="10" name="bd_content" readonly>${board.bd_content}</textarea>
 			</div>
-			
+			<div class="form-group">
+			  <label>첨부파일</label>
+			  <c:if test="${fileList.size() == 0 }">없음</c:if>
+			  <c:if test="${fileList.size() != 0 }">
+			  	<c:forEach items="${fileList}" var="file">
+				  	<a href="<c:url value="/file${file.fi_name}"></c:url>" class="form-control" download>${file.fi_ori_name}</a>
+			  	</c:forEach>
+			  </c:if>
+			</div>
 			<div class="list-comment">
 				<div class="item-comment">
 					<div class="co_me_id">작성자</div>
