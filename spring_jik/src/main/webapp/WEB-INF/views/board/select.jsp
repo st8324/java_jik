@@ -175,16 +175,18 @@
 	$(function(){
 		//수정 버튼 클릭
 		$(document).on('click', '.btn-comment-update', function(){
-			$('.btn-comment-update-cancle').click();
+			$('.btn-comment-update-cancel').click();
+			$('.btn-cancel-reply').click();
 			//기존 댓글 내용이 입력창으로 바뀌어야 함
 			let co_content = $(this).siblings('.co_content').text();
 			let str = '<textarea class="co_content2">'+co_content+'</textarea>';
 			$(this).siblings('.co_content').after(str);
 			$(this).siblings('.co_content').hide();
-			$(this).hide();
-			$(this).siblings('.btn-comment-delete').hide();
+			$(this).hide();//수정버튼 감춤
+			$(this).siblings('.btn-comment-delete').hide();//삭제버튼 감춤
+			$(this).siblings('.btn-comment-reply').hide();//답글버튼 갑춤
 			str = '<button class="btn-comment-update-complete">수정완료</button>'
-			str += '<button class="btn-comment-update-cancle">취소</button>';
+			str += '<button class="btn-comment-update-cancel">취소</button>';
 			$(this).parent().append(str);
 		})
 		//수정 완료 버튼 클릭
@@ -213,22 +215,35 @@
 			})
 		})
 		//수정버튼 클릭 후 생기는 취소버튼 클릭
-		$(document).on('click', '.btn-comment-update-cancle', function(){
+		$(document).on('click', '.btn-comment-update-cancel', function(){
 			//기존 댓글 내용이 입력창으로 바뀌어야 함
 			$(this).siblings('.co_content').show();
 			$(this).siblings('.co_content2').remove();
-			$(this).siblings('.btn-comment-update').show();
-			$(this).siblings('.btn-comment-delete').show();
-			$('.btn-comment-update-cancle').remove();
+			$(this).siblings('.btn-comment-update').show();//수정버튼 보임
+			$(this).siblings('.btn-comment-delete').show();//삭제버튼 보임
+			$(this).siblings('.btn-comment-reply').show();//답글버튼 보임
+			$('.btn-comment-update-cancel').remove();
 			$('.btn-comment-update-complete').remove();
 		})
 		//답글버튼 클릭
 		$(document).on('click', '.btn-comment-reply', function(){
+			let id = '${user.me_id}';
+			if(id == ''){
+				if(confirm('댓글 답글은 로그인을 해야 합니다. 로그인을 하시겠습니까?')){
+					location.href = '<%=request.getContextPath()%>/login'
+					return;
+				}
+			}
+			//답글을 누른 댓글에만 답글을 입력하는 창이 나오게 하기 위해 모든 답글취소버튼을 클릭해서 없애줌
+			$('.btn-cancel-reply').click();
+			$('.btn-comment-update-cancel').click();
 			let str = '<br><textarea class="co_content_reply"></textarea><br>';
 			str += '<button class="btn-insert-reply">답글 등록</button>'
-				str += '<button class="btn-cancle-reply">답글 취소</button>'
+				str += '<button class="btn-cancel-reply">답글 취소</button>'
 			$(this).after(str);
-			$(this).hide();
+			$(this).hide();//답변버튼 감춤
+			$(this).siblings('.btn-comment-update').hide();//수정버튼 감춤
+			$(this).siblings('.btn-comment-delete').hide();//삭제버튼 감춤
 		})
 		//답글 등록버튼 클릭
 		$(document).on('click', '.btn-insert-reply', function(){
@@ -259,6 +274,16 @@
 		    }
 		  });
 		})
+		//답글취소버튼 클릭
+		$(document).on('click', '.btn-cancel-reply', function(){
+			$(this).siblings('.co_content_reply').remove();
+			$(this).siblings('.btn-insert-reply').remove();
+			$(this).siblings('br').remove();
+			$(this).siblings('.btn-comment-reply').show();//답글 보임
+			$(this).siblings('.btn-comment-update').show();//수정버튼 보임
+			$(this).siblings('.btn-comment-delete').show();//삭제버튼 보임
+			$(this).remove();
+		});
 	})
 	
 	
