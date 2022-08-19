@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.spring.dao.BoardDAO">
-  <insert id="insertBoard">
+  <insert id="insertBoard" useGeneratedKeys="true" keyProperty="b.bd_num">
   	insert into board(bd_title, bd_content, bd_me_id, bd_ori_num, bd_depth, bd_order)
   	<if test="b.bd_ori_num == 0">
 		select #{b.bd_title}, #{b.bd_content}, #{b.bd_me_id}, ifnull(max(bd_num),0) + 1, 
