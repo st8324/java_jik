@@ -1,5 +1,7 @@
 package kr.green.spring.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -78,5 +80,12 @@ public class MemberServiceImp implements MemberService {
 		if(user != null)
 			return false;
 		return true;
+	}
+
+	@Override
+	public ArrayList<String> getIdList(MemberVO member) {
+		if(member== null)
+			return null;
+		return memberDao.selectIdList(member);
 	}
 }
