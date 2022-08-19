@@ -116,6 +116,12 @@
   <select id="selectFileList" resultType="kr.green.spring.vo.FileVO">
   	select * from file where fi_bd_num = #{bd_num}
   </select>
+  <delete id="deleteFile">
+  	delete from file where fi_num = #{fi_num}
+  </delete>
+  <select id="selectFile" resultType="kr.green.spring.vo.FileVO">
+  	select * from file where fi_num = #{fi_num}
+  </select>
 </mapper>
 
 
