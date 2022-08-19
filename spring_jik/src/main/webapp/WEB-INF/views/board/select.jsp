@@ -37,7 +37,7 @@
 			  <c:if test="${fileList.size() == 0 }">없음</c:if>
 			  <c:if test="${fileList.size() != 0 }">
 			  	<c:forEach items="${fileList}" var="file">
-				  	<a href="<c:url value="/file${file.fi_name}"></c:url>" class="form-control" download>${file.fi_ori_name}</a>
+				  	<a href="<c:url value="/file${file.fi_name}"></c:url>" class="form-control" download="${file.fi_ori_name}">${file.fi_ori_name}</a>
 			  	</c:forEach>
 			  </c:if>
 			</div>
