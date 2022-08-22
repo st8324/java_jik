@@ -60,4 +60,9 @@
 			bd_down = (select count(*) from likes where li_bd_num = #{bd_num} and li_state = -1)
 		where bd_num = #{bd_num}
 	</update>
+	<insert id="insertComment">
+		insert into comments(co_me_id, co_bd_num, co_content, co_ori_num, co_depth, co_order)
+		select #{co.co_me_id}, #{co.co_bd_num}, #{co.co_content}, ifnull(max(co_num),0)+1, 1, 1
+			from comments
+	</insert>
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.green.springtest.dao.BoardDAO;
 import kr.green.springtest.pagination.Criteria;
 import kr.green.springtest.vo.BoardVO;
+import kr.green.springtest.vo.CommentVO;
 import kr.green.springtest.vo.LikesVO;
 import kr.green.springtest.vo.MemberVO;
 
@@ -124,5 +125,14 @@ public class BoardServiceImp implements BoardService{
 		likes.setLi_bd_num(bd_num);
 		likes.setLi_me_id(user.getMe_id());
 		return boardDao.selectLikes(likes);
+	}
+
+	@Override
+	public boolean insertComment(CommentVO comment, MemberVO user) {
+		if(comment == null || user == null)
+			return false;
+		comment.setCo_me_id(user.getMe_id());
+		boardDao.insertComment(comment);
+		return true;
 	}
 }
