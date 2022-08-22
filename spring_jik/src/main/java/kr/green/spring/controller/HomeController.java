@@ -157,4 +157,17 @@ public class HomeController {
 		map.put("exception", exception);
 		return map;
 	}
+	@RequestMapping(value="/user/update", method=RequestMethod.GET)
+	public ModelAndView userUpdateGet(ModelAndView mv) {
+		mv.setViewName("/main/update");
+		return mv;
+	}
+	@RequestMapping(value="/user/update", method=RequestMethod.POST)
+	public ModelAndView userUpdatePost(ModelAndView mv,MemberVO member, 
+			HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		memberService.updateMember(member,user);
+		mv.setViewName("/main/update");
+		return mv;
+	}
 }
