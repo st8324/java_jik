@@ -31,6 +31,13 @@
     </div>
     <div id="pw" class="container tab-pane fade"><br>
       <h3>비번찾기</h3>
+      <div class="form-group">
+      	<input type="text" name="me_birth" class="form-control" placeholder="생년월일을 입력하세요(yyyy-MM-dd)">
+      </div>
+      <div class="form-group">
+      	<input type="text" name="me_email" class="form-control" placeholder="이메일을 입력하세요.">
+      </div>
+      <button class="btn btn-success col-12 btn-find-pw">비번 찾기</button>
     </div>
   </div>
 </div>
@@ -77,6 +84,36 @@ $(function(){
       }
     });
 	})	
+	$('.btn-find-pw').click(function(){
+		let me_birth = $('#pw [name=me_birth]').val();
+		let me_email = $('#pw [name=me_email]').val();
+		let obj = {
+				me_birth : me_birth,
+				me_email : me_email
+		}
+		
+		if(me_birth.trim() == ''){
+			alert('생년월일을 입력하세요.');
+			$('#pw [name=me_birth]').focus();
+			return;
+		}
+		if(me_email.trim() == ''){
+			alert('이메일을 입력하세요.');
+			$('#pw [name=me_email]').focus();
+			return;
+		}
+		$.ajax({
+      async:true,
+      type:'POST',
+      data: JSON.stringify(obj),
+      url: '<%=request.getContextPath()%>/find/pw',
+      dataType:"json", 
+      contentType:"application/json; charset=UTF-8",
+      success : function(data){
+    	  console.log(data)
+      }
+    });
+	})
 })
 </script>
 </body>

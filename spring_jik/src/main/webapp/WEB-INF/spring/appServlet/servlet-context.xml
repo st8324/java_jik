@@ -58,6 +58,7 @@
     <interceptor>
       <mapping path="/signup"/>
       <mapping path="/login"/>
+      <mapping path="/find"/>
       <beans:ref bean="guestInterceptor"/>
     </interceptor>
     <interceptor>

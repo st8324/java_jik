@@ -13,4 +13,16 @@
   <select id="selectIdList" resultType="String">
   	select me_id from member where me_email = #{m.me_email} and me_birth = #{m.me_birth_str}
   </select>
+  <select id="selectMemberByEmailBirth" resultType="kr.green.spring.vo.MemberVO">
+  	select * from member where me_email = #{m.me_email} and me_birth = #{m.me_birth_str}
+  </select>
+  <update id="updateMember">
+  	update member set
+  		me_pw = #{m.me_pw},
+  		me_gender = #{m.me_gender},
+  		me_birth = #{m.me_birth},
+  		me_email = #{m.me_email},
+  		me_authority = #{m.me_authority}
+  	where me_id = #{m.me_id}
+  </update>
 </mapper>
