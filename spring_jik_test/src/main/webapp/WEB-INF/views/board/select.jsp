@@ -137,6 +137,7 @@
 					if(confirm('로그인이 필요한 서비스입니다.\n로그인화면으로 이동하겠습니까?')){
 						//로그인화면으로 이동
 						location.href = '<%=request.getContextPath()%>/login'
+						return;
 					}else{
 						return;
 					}
@@ -182,9 +183,38 @@
 				alert('댓글 등록이 완료됐습니다.')
 			else
 				alert('댓글 등록에 실패했습니다.')
+			getCommentList(cri);
+			$('[name=co_content]').val('');
 		}
 		function commentListSuccess(data){
-			console.log(data);
+			let list = data.list;
+			let str = '';
+			for(co of list){
+				str += '<div class="media border p-3">';
+			  str +=   '<div class="media-body">';
+			  str +=     '<h4>'+co.co_me_id+'<small><i> '+co.co_reg_date_str+'</i></small></h4>';
+			  str +=     '<p>'+co.co_content+'</p>';      
+			  str +=   '</div>';
+			  str += '</div>';
+			}
+			$('.list-comment').html(str);
+			let pm = data.pm;
+			let pmStr = '';
+			if(pm.prev)
+				pmStr +=	'<li class="page-item" data-page="'+(pm.startPage-1)+'"><a class="page-link" href="javascript:void(0);">이전</a></li>';
+			for(i = pm.startPage; i<= pm.endPage; i++){
+				if(i == pm.cri.page)
+					pmStr +=	'<li class="page-item active" data-page="'+i+'"><a class="page-link" href="javascript:void(0);">'+i+'</a></li>';
+				else
+		    	pmStr +=	'<li class="page-item" data-page="'+i+'"><a class="page-link" href="javascript:void(0);">'+i+'</a></li>';
+			}
+			if(pm.next)
+		  	pmStr += 	'<li class="page-item" data-page="'+(pm.endPage+1)+'"><a class="page-link" href="javascript:void(0);">다음</a></li>';
+		  $('.pagination-comment').html(pmStr);
+		  $('.pagination-comment .page-item').click(function(){
+			  cri.page = $(this).data('page');
+			  getCommentList(cri);
+		  })
 		}
 		function commentUpdateSuccess(data){
 			console.log(data);

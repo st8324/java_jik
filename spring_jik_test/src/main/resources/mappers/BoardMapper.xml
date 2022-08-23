@@ -65,4 +65,12 @@
 		select #{co.co_me_id}, #{co.co_bd_num}, #{co.co_content}, ifnull(max(co_num),0)+1, 1, 1
 			from comments
 	</insert>
+	<select id="selectCommetList" resultType="kr.green.springtest.vo.CommentVO">
+		select * from comments where co_bd_num = #{bd_num} 
+			order by co_num desc
+			limit #{cri.pageStart}, #{cri.perPageNum}
+	</select>
+	<select id="selectCommentTotalCount" resultType="int">
+		select count(*) from comments where co_bd_num = #{bd_num}
+	</select>
 </mapper>
