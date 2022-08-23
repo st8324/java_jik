@@ -54,6 +54,20 @@
 				<a href="<c:url value="/board/delete/${board.bd_num}"></c:url>" class="btn btn-outline-success">삭제</a>
 			</c:if>
 			<hr>
+			<div class="list-comment">
+				<div class="media border p-3">
+			    <div class="media-body">
+			      <h4>John Doe <small><i>February 19, 2016</i></small></h4>
+			      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>      
+			    </div>
+			  </div>
+			</div>
+			<ul class="pagination-comment pagination justify-content-center mt-3">
+		    <li class="page-item"><a class="page-link" href="javascript:void(0);">Previous</a></li>
+		    <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
+		    <li class="page-item"><a class="page-link" href="javascript:void(0);">2</a></li>
+		    <li class="page-item"><a class="page-link" href="javascript:void(0);">Next</a></li>
+		  </ul>
 			<div>
 				<div class="form-group">
 				  <textarea class="form-control" rows="5" name="co_content"></textarea>
@@ -143,7 +157,26 @@
 				ajaxPost(false, obj, '/ajax/comment/insert', commentInsertSuccess);
 				
 			})
+			
+			getCommentList(cri);
 		})
+		
+		//전역변수들
+		let cri = {
+				page : 1,
+				perPageNum : 5
+		}
+		
+		//함수들
+		function getCommentList(cri){
+			if(cri == undefined ||cri == null || typeof cri !='object'){
+				cri = {};
+			}
+			if(isNaN(cri.page))
+				cri.page = 1;
+			ajaxPost(false, cri, '/ajax/comment/list/'+${board.bd_num}, commentListSuccess);
+		}
+		
 		function commentInsertSuccess(data){
 			if(data.res)
 				alert('댓글 등록이 완료됐습니다.')
