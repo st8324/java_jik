@@ -60,6 +60,10 @@
 			      <h4>John Doe <small><i>February 19, 2016</i></small></h4>
 			      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>      
 			    </div>
+			    <div class="btn-box">
+			    	<button class="btn btn-outline-danger" style="display: block">수정</button>
+			    	<button class="btn btn-outline-success  mt-1" style="display: block">삭제</button>
+			    </div>
 			  </div>
 			</div>
 			<ul class="pagination-comment pagination justify-content-center mt-3">
@@ -189,17 +193,34 @@
 		function commentListSuccess(data){
 			let list = data.list;
 			let str = '';
+			//반복문을 이용하여 댓글들 구성
 			for(co of list){
 				str += '<div class="media border p-3">';
 			  str +=   '<div class="media-body">';
 			  str +=     '<h4>'+co.co_me_id+'<small><i> '+co.co_reg_date_str+'</i></small></h4>';
 			  str +=     '<p>'+co.co_content+'</p>';      
 			  str +=   '</div>';
-			  str += '</div>';
+			  str +=   '<div class="btn-box">'
+			  if(co.co_me_id == '${user.me_id}'){
+					str +=	 	'<button class="btn btn-outline-danger btn-co-update" style="display: block">수정</button>';
+					str +=   	'<button data-target="'+co.co_num+'" class="btn btn-outline-success btn-co-delete mt-1" style="display: block">삭제</button>';
+			  }
+				str +=    '</div>';
+			  str += '</div>';;
 			}
+			//댓글들을 화면에 출력
 			$('.list-comment').html(str);
+			$('.btn-co-delete').click(function(){
+				let co_num = $(this).data('target');
+				let comment = {
+						co_num : co_num
+				}
+				ajaxPost(false, comment, '/ajax/comment/delete', commentDeleteSuccess)
+			});
+			
 			let pm = data.pm;
 			let pmStr = '';
+			//댓글 페이지네이션 구성
 			if(pm.prev)
 				pmStr +=	'<li class="page-item" data-page="'+(pm.startPage-1)+'"><a class="page-link" href="javascript:void(0);">이전</a></li>';
 			for(i = pm.startPage; i<= pm.endPage; i++){
@@ -210,7 +231,9 @@
 			}
 			if(pm.next)
 		  	pmStr += 	'<li class="page-item" data-page="'+(pm.endPage+1)+'"><a class="page-link" href="javascript:void(0);">다음</a></li>';
+		  //댓글 페이지네이션 화면에 출력
 		  $('.pagination-comment').html(pmStr);
+		  //페이지네이션에서 페이지 이벤트 등록
 		  $('.pagination-comment .page-item').click(function(){
 			  cri.page = $(this).data('page');
 			  getCommentList(cri);
