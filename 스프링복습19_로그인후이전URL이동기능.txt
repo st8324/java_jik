@@ -1,0 +1,20 @@
+로그인 후 이전 URL로 이동
+
+1. 홈컨트롤러
+ - 메소드에 작업(수정)
+  > url : /login
+  > method : GET
+  > 이전 URL을 가져와서 세션에 저장
+     - 이전 URL이 있고, 이전 URL이 login이 아닌 경우
+
+2. Redirect인터셉터
+ - preHandle 메소드 추가
+  > 세션에 있는 이전 URL 정보를 가져옴 - 헤더에 referer
+  > 이전 URL정보가 있으면 sendRedirect로 이전 URL로 이동하고 false를 반환
+  > 이전 URL정보가 없으면 true를 반환
+
+3. servlet-context.xml
+ - Redirect인터셉터 등록
+ - 동작시킬 URL 등록
+   > /**
+  
