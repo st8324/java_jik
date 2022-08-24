@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.springtest.pagination.Criteria;
@@ -61,9 +62,10 @@ public class BoardController {
     return mv;
 	}
 	@RequestMapping(value="/board/insert", method=RequestMethod.POST)
-	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board, HttpSession session){
+	public ModelAndView boardInsertPost(ModelAndView mv, BoardVO board, HttpSession session
+		,MultipartFile[] files){
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		boardService.insertBoard(board,user);
+		boardService.insertBoard(board,user, files);
 		mv.setViewName("redirect:/board/list");
     return mv;
 	}

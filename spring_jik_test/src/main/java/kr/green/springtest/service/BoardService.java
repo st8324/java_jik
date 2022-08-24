@@ -2,6 +2,8 @@ package kr.green.springtest.service;
 
 import java.util.ArrayList;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import kr.green.springtest.pagination.Criteria;
 import kr.green.springtest.vo.BoardVO;
 import kr.green.springtest.vo.CommentVO;
@@ -16,7 +18,7 @@ public interface BoardService {
 
 	void updateViews(int bd_num);
 
-	void insertBoard(BoardVO board, MemberVO user);
+	void insertBoard(BoardVO board, MemberVO user, MultipartFile[] files);
 
 	void updateBoard(BoardVO board, MemberVO user);
 

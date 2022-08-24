@@ -4,11 +4,14 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.green.springtest.dao.BoardDAO;
 import kr.green.springtest.pagination.Criteria;
+import kr.green.springtest.utils.UploadFileUtils;
 import kr.green.springtest.vo.BoardVO;
 import kr.green.springtest.vo.CommentVO;
+import kr.green.springtest.vo.FileVO;
 import kr.green.springtest.vo.LikesVO;
 import kr.green.springtest.vo.MemberVO;
 
@@ -17,6 +20,8 @@ public class BoardServiceImp implements BoardService{
 
 	@Autowired
 	BoardDAO boardDao;
+
+	String uploadPath = "D:\\git\\uploadfiles";
 
 	@Override
 	public ArrayList<BoardVO> getBoardList(Criteria cri) {
@@ -34,13 +39,32 @@ public class BoardServiceImp implements BoardService{
 	}
 
 	@Override
-	public void insertBoard(BoardVO board, MemberVO user) {
+	public void insertBoard(BoardVO board, MemberVO user, MultipartFile[] files) {
 		if(board == null)
 			return ;
 		if(user == null || user.getMe_id() == null)
 			return ;
 		board.setBd_me_id(user.getMe_id());
 		boardDao.insertBoard(board);
+		
+		if(files == null || files.length == 0) {
+			return;
+		}
+		for(MultipartFile tmp : files) {
+			String fi_ori_name = tmp.getOriginalFilename(); 
+			if(tmp == null || fi_ori_name == null || fi_ori_name.length() == 0)
+				continue;
+			
+			try {
+				String fi_name = UploadFileUtils.uploadFile(uploadPath, fi_ori_name, tmp.getBytes());
+				
+				FileVO file = new FileVO(fi_name, fi_ori_name, board.getBd_num());
+				boardDao.insertFile(file);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
 	@Override

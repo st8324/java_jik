@@ -21,7 +21,7 @@
 	<update id="updateViews">
 		update board set bd_views = bd_views+1 where bd_num = #{bd_num} and bd_del = 'N'
 	</update>
-	<insert id="insertBoard">
+	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="b.bd_num">
 		insert into board(bd_title, bd_content, bd_me_id, bd_ori_num, bd_depth)
 			select #{b.bd_title},#{b.bd_content},#{b.bd_me_id},ifnull(max(bd_num),0)+1,1 
 			from board
@@ -82,4 +82,8 @@
 	<update id="updateComment">
 		update comments set co_content = #{co.co_content} where co_num = #{co.co_num}
 	</update>
+	<insert id="insertFile">
+		insert into file(fi_bd_num, fi_ori_name, fi_name)
+		 values(#{fi.fi_bd_num},#{fi.fi_ori_name},#{fi.fi_name})
+	</insert>
 </mapper>
