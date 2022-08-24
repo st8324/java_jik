@@ -58,7 +58,19 @@
     	<li class="page-item"><a class="page-link" href="<c:url value="/board/list?page=${pm.endPage+1}&search=${pm.cri.search}&searchType=${pm.cri.searchType}"></c:url>">다음</a></li>
     </c:if>
   </ul>
-  <a href="<c:url value="/board/insert"></c:url>" class="btn btn-outline-success">글쓰기</a>
+  <a href="<c:url value="/board/insert"></c:url>" class="btn btn-outline-success btn-board-insert">글쓰기</a>
 </div>
+<script type="text/javascript">
+$(function(){
+	$('.btn-board-insert').click(function(e){
+		if('${user.me_id}' == ''){
+			if(confirm('회원만 가능합니다. 로그인페이지로 이동하겠습니까?')){
+				e.preventDefault();
+				location.href = '<%=request.getContextPath()%>/login'
+			}
+		}
+	})
+})
+</script>
 </body>
 </html>
