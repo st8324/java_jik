@@ -131,8 +131,8 @@ public class BoardController {
 			@RequestBody CommentVO comment,HttpSession session){
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		System.out.println(user);
-		System.out.println(comment);
+		boolean res = boardService.deleteComment(comment, user);
+		map.put("res", res);
     return map;
 	}
 }

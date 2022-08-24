@@ -155,4 +155,16 @@ public class BoardServiceImp implements BoardService{
 			return 0;
 		return boardDao.selectCommentTotalCount(bd_num);
 	}
+
+	@Override
+	public boolean deleteComment(CommentVO comment, MemberVO user) {
+		if(comment == null || user == null)
+			return false;
+		CommentVO dbComment = boardDao.selectComment(comment.getCo_num());
+		System.out.println(dbComment);
+		if(dbComment == null || !dbComment.getCo_me_id().equals(user.getMe_id()))
+			return false;
+		boardDao.deleteComment(comment.getCo_num());
+		return true;
+	}
 }

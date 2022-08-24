@@ -243,7 +243,12 @@
 			console.log(data);
 		}
 		function commentDeleteSuccess(data){
-			console.log(data);
+			if(data.res){
+				alert('댓글 삭제가 완료됐습니다.');
+			}else{
+				alert('댓글 삭제에 실패했습니다.');
+			}
+			getCommentList(cri);
 		}
 		
 		function ajaxPost(async, dataObj, url, success){
