@@ -100,6 +100,14 @@ public class BoardServiceImp implements BoardService{
 			return;
 		dbBoard.setBd_del("Y");
 		boardDao.updateBoard(dbBoard);
+		
+		ArrayList<FileVO> fileList = boardDao.selectFileList(bd_num);
+		if(fileList == null || fileList.size() == 0)
+			return ;
+		for(FileVO tmp : fileList) {
+			UploadFileUtils.deleteFile(uploadPath, tmp.getFi_name());
+			boardDao.deleteFile(tmp.getFi_num());
+		}
 	}
 
 	@Override
