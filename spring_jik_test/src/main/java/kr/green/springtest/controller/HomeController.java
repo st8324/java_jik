@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.green.springtest.service.BoardService;
 import kr.green.springtest.service.MemberService;
 import kr.green.springtest.vo.MemberVO;
 
@@ -74,6 +75,22 @@ public class HomeController {
 	public Map<Object,Object> idCheck(@RequestBody MemberVO member){
 		HashMap<Object, Object> map = new HashMap<Object, Object>();
     map.put("check", memberService.idCheck(member));
+    return map;
+	}
+	
+	@RequestMapping(value="/find", method=RequestMethod.GET)
+	public ModelAndView findGet(ModelAndView mv){
+    mv.setViewName("/main/find");
+    return mv;
+	}
+	
+	@RequestMapping(value="/ajax/find/id")
+	@ResponseBody
+	public Map<Object,Object> findId(@RequestBody MemberVO member){
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		System.out.println(member);
+    String id = memberService.getId(member);
+    map.put("id", id);
     return map;
 	}
 }

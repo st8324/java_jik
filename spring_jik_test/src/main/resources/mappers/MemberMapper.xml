@@ -10,4 +10,8 @@
   	insert into member(me_id, me_pw, me_gender, me_birth, me_email)
   	values(#{m.me_id},#{m.me_pw},#{m.me_gender},#{m.me_birth},#{m.me_email})
   </insert>
+  <select id="selectId" resultType="String">
+  	select me_id from member 
+  		where me_email = #{m.me_email} and me_birth = #{m.me_birth_str}
+  </select>
 </mapper>

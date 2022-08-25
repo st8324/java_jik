@@ -9,4 +9,6 @@ public interface MemberService {
 	public MemberVO login(MemberVO member);
 
 	public Object idCheck(MemberVO member);
+
+	public String getId(MemberVO member);
 }
