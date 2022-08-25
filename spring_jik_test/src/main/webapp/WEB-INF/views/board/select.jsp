@@ -53,6 +53,12 @@
 				<a href="<c:url value="/board/update/${board.bd_num}"></c:url>" class="btn btn-outline-success">수정</a>
 				<a href="<c:url value="/board/delete/${board.bd_num}"></c:url>" class="btn btn-outline-success">삭제</a>
 			</c:if>
+			<div class="form-group">
+			  <label for="">첨부파일</label>
+			  <c:forEach items="${fileList}" var="fi">
+				  <a href="<c:url value="/file${fi.fi_name }"></c:url>" class="form-control" download="${fi.fi_ori_name}">${fi.fi_ori_name }</a>
+			  </c:forEach>
+		  </div>
 			<hr>
 			<div class="list-comment">
 				<div class="media border p-3">

@@ -86,4 +86,7 @@
 		insert into file(fi_bd_num, fi_ori_name, fi_name)
 		 values(#{fi.fi_bd_num},#{fi.fi_ori_name},#{fi.fi_name})
 	</insert>
+	<select id="selectFileList" resultType="kr.green.springtest.vo.FileVO">
+		select * from file where fi_bd_num = #{bd_num}
+	</select>
 </mapper>
