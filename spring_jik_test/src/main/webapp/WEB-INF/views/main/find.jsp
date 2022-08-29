@@ -45,6 +45,8 @@
 </div>
 <script type="text/javascript">
 	$(function(){
+		$('[href="#${type}"').click();
+		
 		$('.btn-find-id').click(function(){
 			let me_email = $('#id .me_email').val();
 			let me_birth = $('#id .me_birth').val();

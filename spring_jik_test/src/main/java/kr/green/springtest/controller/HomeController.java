@@ -79,7 +79,8 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/find", method=RequestMethod.GET)
-	public ModelAndView findGet(ModelAndView mv){
+	public ModelAndView findGet(ModelAndView mv, String type){
+		mv.addObject("type", type);
     mv.setViewName("/main/find");
     return mv;
 	}
