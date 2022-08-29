@@ -11,4 +11,6 @@ public interface MemberDAO {
 	public void insertMember(@Param("m")MemberVO member);
 
 	public String selectId(@Param("m")MemberVO member);
+
+	public void updateMember(@Param("m")MemberVO user);
 }
