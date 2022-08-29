@@ -12,7 +12,7 @@
 			<if test="cri.searchType != 'all'">
 				and ${cri.searchType} like concat('%', #{cri.search}, '%')
 			</if>
-			order by bd_num desc 
+			order by bd_ori_num desc, bd_order asc
 			limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectBoard" resultType="kr.green.springtest.vo.BoardVO">
@@ -22,10 +22,21 @@
 		update board set bd_views = bd_views+1 where bd_num = #{bd_num} and bd_del = 'N'
 	</update>
 	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="b.bd_num">
-		insert into board(bd_title, bd_content, bd_me_id, bd_ori_num, bd_depth)
-			select #{b.bd_title},#{b.bd_content},#{b.bd_me_id},ifnull(max(bd_num),0)+1,1 
+		insert into board(bd_title, bd_content, bd_me_id, bd_ori_num, bd_depth, bd_order)
+		<if test="b.bd_ori_num == 0">
+			select #{b.bd_title},#{b.bd_content},#{b.bd_me_id},ifnull(max(bd_num),0)+1,1,1
 			from board
+		</if>
+		<if test="b.bd_ori_num != 0">
+			values(#{b.bd_title},#{b.bd_content},#{b.bd_me_id},#{b.bd_ori_num},
+				#{b.bd_depth}+1, #{b.bd_order}+1) 
+		</if>
 	</insert>
+	<update id="updateOrderBoard">
+		update board set bd_order = bd_order + 1 
+			where bd_ori_num = #{bo.bd_ori_num} and bd_order > #{bo.bd_order}
+	</update>
+	
 	<update id="updateBoard">
 		update board set 
 			bd_title = #{b.bd_title}, 

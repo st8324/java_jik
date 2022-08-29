@@ -49,16 +49,18 @@
 			  <label for="">내용:</label>
 			  <textarea class="form-control" rows="10" readonly>${board.bd_content}</textarea>
 			</div>
-			<c:if test="${board.bd_me_id == user.me_id }">
-				<a href="<c:url value="/board/update/${board.bd_num}"></c:url>" class="btn btn-outline-success">수정</a>
-				<a href="<c:url value="/board/delete/${board.bd_num}"></c:url>" class="btn btn-outline-success">삭제</a>
-			</c:if>
 			<div class="form-group">
 			  <label for="">첨부파일</label>
 			  <c:forEach items="${fileList}" var="fi">
 				  <a href="<c:url value="/file${fi.fi_name }"></c:url>" class="form-control" download="${fi.fi_ori_name}">${fi.fi_ori_name }</a>
 			  </c:forEach>
 		  </div>
+		  
+		  <c:if test="${board.bd_me_id == user.me_id }">
+				<a href="<c:url value="/board/update/${board.bd_num}"></c:url>" class="btn btn-outline-success">수정</a>
+				<a href="<c:url value="/board/delete/${board.bd_num}"></c:url>" class="btn btn-outline-success">삭제</a>
+			</c:if>
+			<a href="<c:url value="/board/insert?bd_ori_num=${board.bd_ori_num}&bd_depth=${board.bd_depth}&bd_order=${board.bd_order}"></c:url>" class="btn btn-outline-success">답글</a>
 			<hr>
 			<div class="list-comment">
 				<div class="media border p-3">

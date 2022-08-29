@@ -19,6 +19,7 @@ public class BoardVO {
 	private int bd_depth;
 	private int bd_views;
 	private String bd_del = "N";
+	private int bd_order;
 	
 	public String getBd_reg_date_str() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

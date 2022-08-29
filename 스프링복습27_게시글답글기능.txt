@@ -1,0 +1,49 @@
+게시글 답글 기능
+
+0. BoardVO
+ - bd_order 멤버변수 추가
+
+1. select.jsp
+ - 답급버튼을 추가
+   > 링크 : /board/insert?ori_bd_num=게시글번호&bd_depth=게시글깊이&bd_order=게시글순서
+
+2. 보드서비스/임플
+ - 메소드 수정
+  > insertBoard
+  > 게시글을 추가하기전 bd_order를 업데이트 해줌 - bd_ori_num가 같은 게시글중에서
+    - 보드다오에게 일을시킴
+    - 매개변수 : 게시글 정보
+    - 리턴타입 : 없음
+    - 기능 : bd_ori_num가 주어진 bd_ori_num와 같고 bd_order가 주어진 bd_order보다 큰 게시글의 bd_order를 1증가
+       => 답글이든 그냥 게시글이든 등록된 최신순으로 정렬
+
+3. 보드다오/매퍼
+ - 메소드 추가 및 update태그, 쿼리 구현
+ - bd_ori_num가 주어진 bd_ori_num와 같고 bd_order가 주어진 bd_order보다 큰 게시글의 bd_order를 1증가
+
+4. 보드매퍼
+ - 기존 insertBoard 쿼리문을 수정
+  > bd_ori_num가 0인 경우와 0이 아닌 경우로 나누어서 작업해야함
+  > bd_ori_num이 0인 경우 - select를 이용하여 insert해야함(이미 작업됨, <if>태그만 추가하면됨)
+  > bd_ori_num가 0이 아닌 경우 - values를 이용하여 추가하면 됨
+    - bd_depth는 +1, bd_order+1을 해줌
+
+ - 기존 selectBoardList 쿼리문 수정
+  > 정렬을 수정 : order by
+  > 정렬 순서는 bd_ori_num 내림차순, bd_oder 오름차순
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
