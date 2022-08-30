@@ -44,10 +44,29 @@
 			$(this).parent().remove();
 		})
 		$('#sn').summernote({
-		  placeholder: 'Hello Bootstrap 4',
-		  tabsize: 2,
-		  height: 400
-		});
+			  placeholder: 'Hello Bootstrap 4',
+			  tabsize: 2,
+			  height: 400,
+			  callbacks: {
+			    onImageUpload: function(files) {
+			    	let data = new FormData();
+						data.append('file', files[0]);
+						let thisObj = $(this)
+						$.ajax({
+							data : data,
+							type : 'post',
+							url : '<%=request.getContextPath()%>/board/img/upload',
+							contentType : false,
+							processData : false,
+							dataType: "json",
+							success : function(data){
+								let url = '<%=request.getContextPath()%>/simg' + data.url;
+								thisObj.summernote('insertImage', url);		
+							}
+						})
+			    }
+			  }
+			});
 	})
 	</script>
 </body>
