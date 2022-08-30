@@ -17,6 +17,11 @@
 			<div class="form-group">
 			  <input type="password" class="form-control" name="me_pw" placeholder="비밀번호">
 			</div>
+			<div class="form-check">
+			  <label class="form-check-label">
+			    <input type="checkbox" class="form-check-input" value="true" name="autoLogin">자동로그인
+			  </label>
+			</div>
 			<button class="btn btn-outline-success col-12 mb-3">전송</button>
 		</form>	
 		<a href="<c:url value="/find?type=id"></c:url>">아이디 찾기</a>/

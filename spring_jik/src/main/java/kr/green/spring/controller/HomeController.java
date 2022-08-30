@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +68,7 @@ public class HomeController {
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public ModelAndView loginPost(ModelAndView mv, MemberVO member){
 		MemberVO dbMember = memberService.login(member);
-		System.out.println("로그인 중 : " + dbMember);
+		
 		mv.addObject("user", dbMember);
     mv.setViewName("redirect:/");
     return mv;
@@ -87,8 +88,9 @@ public class HomeController {
 		return mv;
 	}
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public ModelAndView logoutGet(ModelAndView mv, HttpSession session) {
-		session.removeAttribute("user");
+	public ModelAndView logoutGet(ModelAndView mv, HttpServletRequest request, 
+			HttpServletResponse response) {
+		memberService.logout(request, response);
 		mv.setViewName("redirect:/");
 		return mv;
 	}

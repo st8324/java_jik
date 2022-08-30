@@ -1,14 +1,20 @@
 package kr.green.spring.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.WebUtils;
 
 import kr.green.spring.dao.MemberDAO;
 import kr.green.spring.vo.MemberVO;
@@ -67,7 +73,7 @@ public class MemberServiceImp implements MemberService {
 		//가입된 아이디가 아니면
 		if(dbMember == null)
 			return null;
-		
+		dbMember.setAutoLogin(member.isAutoLogin());
 		//아이디, 비번이 일치하는 경우
 		//matches(암호화안된비번, 암호화된비번)
 		if(passwordEncoder.matches(member.getMe_pw(), dbMember.getMe_pw()))
@@ -179,6 +185,43 @@ public class MemberServiceImp implements MemberService {
 			user.setMe_pw(encPw);
 		}
 		memberDao.updateMember(user);
+	}
+
+	@Override
+	public void keepLogin(String me_id, String me_session_id, Date me_session_limit) {
+		if(me_id == null || me_session_id == null || me_session_limit == null)
+			return;
+		memberDao.updateMemberSession(me_id, me_session_id, me_session_limit);
+	}
+
+	@Override
+	public MemberVO autoLogin(String session_id) {
+		if(session_id == null)
+			return null;
+		return memberDao.selectMemberBySession(session_id);
+	}
+
+	@Override
+	public void logout(HttpServletRequest request, HttpServletResponse response) {
+		if(request == null)
+			return;
+		HttpSession session = request.getSession();
+		
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user == null)
+			return ;
+		session.removeAttribute("user");
+		
+		if(response == null)
+			return;
+		
+		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+		if(loginCookie == null)
+			return ;
+		loginCookie.setPath("/");
+		loginCookie.setMaxAge(0);
+		response.addCookie(loginCookie);
+		keepLogin(user.getMe_id(), null, null);
 	}
 	
 }
