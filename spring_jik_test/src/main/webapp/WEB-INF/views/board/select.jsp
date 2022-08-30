@@ -71,6 +71,7 @@
 			      	<textarea class="form-control" rows="" cols=""></textarea>
 			      </div>
 			    </div>
+			    <button class="btn btn-outline-danger" style="display: block">답글</button>
 			    <div class="btn-box">
 			    	<button class="btn btn-outline-danger" style="display: block">수정</button>
 			    	<button class="btn btn-outline-success  mt-1" style="display: block">삭제</button>
@@ -173,6 +174,23 @@
 				ajaxPost(false, obj, '/ajax/comment/insert', commentInsertSuccess);
 				
 			})
+			//댓글에 있는 답글 버튼 클릭
+			$(document).on('click','.btn-co-reply',function(){
+				str = ''
+				str += '<div class="media p-3 box-reply">'
+		    str +=  '<div class="media-body">'
+			  str +=    '<div class="form-group">'
+				str +=		  '<textarea class="form-control" rows="5" name="co_reply_content"></textarea>'
+				str +=		'</div>'
+		    str +=  '</div>'
+		    str +=  '<div class="box-btn">'
+		    str +=  	'<button class="btn btn-outline-danger" style="display: block">등록</button>'
+		    str +=		'<button class="btn btn-outline-success  mt-1" style="display: block">취소</button>'
+		    str +=  '</div>'
+		    str += '</div>' 
+		    $(this).parent().siblings('.media-body').append(str);
+		    $(this).parent().hide();//답글,수정,삭제버튼 감춤
+			})
 			
 			getCommentList(cri);
 		})
@@ -228,6 +246,7 @@
 			  str +=     '<p>'+co.co_content+'</p>';      
 			  str +=   '</div>';
 			  str +=   '<div class="btn-box">'
+			  str +=   '<button data-orinum="'+co.co_ori_num+'" data-depth="'+co.co_depth+'" data-order="'+co.co_order+'" class="btn btn-outline-danger btn-co-reply" style="display: block">답글</button>'
 			  if(co.co_me_id == '${user.me_id}'){
 					str +=	 	'<button data-target="'+co.co_num+'" class="btn btn-outline-danger btn-co-update" style="display: block">수정</button>';
 					str +=   	'<button data-target="'+co.co_num+'" class="btn btn-outline-success btn-co-delete mt-1" style="display: block">삭제</button>';
