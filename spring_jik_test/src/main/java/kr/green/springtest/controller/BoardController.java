@@ -154,4 +154,5 @@ public class BoardController {
 		map.put("res", res);
     return map;
 	}
+	
 }

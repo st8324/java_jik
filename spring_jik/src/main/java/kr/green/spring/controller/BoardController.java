@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -189,5 +190,14 @@ public class BoardController {
 		boolean res = boardService.updateComment(comment, user);
 		map.put("res", res);
 		return map;
+	}
+
+	@RequestMapping(value="/board/img/upload")
+	@ResponseBody
+	public Map<Object,Object> boardImageUpload(@RequestParam("file") MultipartFile file){
+		HashMap<Object, Object> map = new HashMap<Object, Object>();
+		String url = boardService.uploadImage(file);
+		map.put("url", url);
+    return map;
 	}
 }

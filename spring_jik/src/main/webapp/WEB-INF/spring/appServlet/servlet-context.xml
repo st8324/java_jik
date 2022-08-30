@@ -17,7 +17,7 @@
 	<resources mapping="/resources/**" location="/resources/" />
 	<!-- file:/// ==> 프로젝트 외부 폴더 -->
 	<resources mapping="/file/**" location="file:///D:/git/uploadfiles/" />
-
+	<resources mapping="/simg/**" location="file:///D:/git/img/" />
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

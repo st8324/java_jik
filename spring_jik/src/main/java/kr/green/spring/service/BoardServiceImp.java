@@ -23,6 +23,7 @@ public class BoardServiceImp implements BoardService {
 	BoardDAO boardDao;
 	
 	private String uploadPath = "D:\\git\\uploadfiles";
+	private String imgUploadPath = "D:\\git\\img";
 
 	@Override
 	public void insertBoard(BoardVO board, MemberVO user, MultipartFile[] files) {
@@ -286,6 +287,18 @@ public class BoardServiceImp implements BoardService {
 				e.printStackTrace();
 			}
 			
+		}
+	}
+
+	@Override
+	public String uploadImage(MultipartFile file) {
+		if(file == null || file.getOriginalFilename().length() == 0)
+			return null;
+		try {
+			return UploadFileUtils.uploadFile(imgUploadPath, file.getOriginalFilename(), file.getBytes());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 }
