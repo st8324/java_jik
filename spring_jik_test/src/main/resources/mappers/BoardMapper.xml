@@ -73,12 +73,17 @@
 	</update>
 	<insert id="insertComment">
 		insert into comments(co_me_id, co_bd_num, co_content, co_ori_num, co_depth, co_order)
-		select #{co.co_me_id}, #{co.co_bd_num}, #{co.co_content}, ifnull(max(co_num),0)+1, 1, 1
-			from comments
+		<if test="co.co_ori_num == 0">
+			select #{co.co_me_id}, #{co.co_bd_num}, #{co.co_content}, ifnull(max(co_num),0)+1, 1, 1
+				from comments
+		</if>
+		<if test="co.co_ori_num != 0">
+			values(#{co.co_me_id}, #{co.co_bd_num}, #{co.co_content}, #{co.co_ori_num}, #{co.co_depth}+1, #{co.co_order}+1)
+		</if>
 	</insert>
 	<select id="selectCommetList" resultType="kr.green.springtest.vo.CommentVO">
 		select * from comments where co_bd_num = #{bd_num} 
-			order by co_num desc
+			order by co_ori_num desc, co_order asc
 			limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectCommentTotalCount" resultType="int">
