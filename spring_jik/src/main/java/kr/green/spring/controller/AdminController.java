@@ -1,5 +1,7 @@
 package kr.green.spring.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +22,8 @@ public class AdminController {
 	@RequestMapping(value="/admin/user/list", method=RequestMethod.GET)
 	public ModelAndView adminUserListGet(ModelAndView mv, HttpSession session) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
-		
+		ArrayList<MemberVO> list = memberService.getMemberList(user);
+		mv.addObject("list",list);
 		mv.setViewName("/admin/user/list");
 		return mv;
 	}

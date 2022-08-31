@@ -31,4 +31,6 @@ public interface MemberService {
 
 	void logout(HttpServletRequest request, HttpServletResponse response);
 
+	ArrayList<MemberVO> getMemberList(MemberVO user);
+
 }

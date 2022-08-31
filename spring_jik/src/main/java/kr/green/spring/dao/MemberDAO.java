@@ -23,4 +23,6 @@ public interface MemberDAO {
 
 	MemberVO selectMemberBySession(@Param("session_id")String session_id);
 
+	ArrayList<MemberVO> selectMemberList(@Param("me_authority")int me_authority);
+
 }

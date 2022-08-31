@@ -223,5 +223,14 @@ public class MemberServiceImp implements MemberService {
 		response.addCookie(loginCookie);
 		keepLogin(user.getMe_id(), null, null);
 	}
+
+	@Override
+	public ArrayList<MemberVO> getMemberList(MemberVO user) {
+		if(user == null)
+			return null;
+		if(user.getMe_authority() < 8)
+			return null;
+		return memberDao.selectMemberList(user.getMe_authority());
+	}
 	
 }
