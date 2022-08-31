@@ -232,5 +232,27 @@ public class MemberServiceImp implements MemberService {
 			return null;
 		return memberDao.selectMemberList(user.getMe_authority());
 	}
+
+	@Override
+	public boolean updateAuthority(MemberVO member, MemberVO user) {
+		if(member == null || user == null)
+			return false;
+		//화면에서 권한 숫자를 수정하여 접근한 경우를 처리
+		if(member.getMe_authority() >= user.getMe_authority())
+			return false;
+		
+		MemberVO dbMember = memberDao.selectMember(member.getMe_id());
+		//화면에서 아이디를 수정하여 접근한 경우를 처리
+		if(dbMember == null || dbMember.getMe_authority() >= user.getMe_authority())
+			return false;
+		
+		//접근 권한이 없는 회원이 접근한 경우를 처리(혹시나)
+		if(user.getMe_authority() < 8) 
+			return false;
+		
+		dbMember.setMe_authority(member.getMe_authority());
+		memberDao.updateMember(dbMember);
+		return true;
+	}
 	
 }
