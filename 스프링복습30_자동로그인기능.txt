@@ -1,0 +1,95 @@
+자동로그인 기능
+
+1. login.jsp
+ - 자동로그인 체크박스 추가
+  > name 지정
+
+2. MemberVO
+ - 멤버변수를 추가
+  > 타입 : boolean
+  > 변수명 : autoLogin
+
+3. 멤버서비스임플
+ - 메소드 수정
+  > login 메소드에 자동로그인 체크 여부를 user(db에서 가져온 회원 정보)에 추가
+
+4. LoginInterceptor
+ - @Autowired로 MemberService 객체 추가
+ - 세션에 회원 정보를 추가(이미 구현된 코드) 후 자동로그인이 체크되어 있으면 
+  > 쿠키를 생성하고, (코드 참고)
+  > response에 쿠키를 추가 후,  (코드 참고)
+  > DB에 업데이트(멤버서비스)
+   - 매개변수 : 아이디, 세션아이디, 세션만료일
+   - 리턴타입 : 없음
+
+5. 멤버서비스/임플
+ - 메소드 추가
+  > 매개변수 중 id만 null체크
+  > 다오에게 회원정보 중 세션id와 limit 수정하라고 요청
+    > 매개변수 : 아이디, 세션아이디, 세션만료일
+    > 리턴타입 : 없음
+
+6. 멤버다오/매퍼
+ - 메소드 추가 및 쿼리구현
+  > update 태그 및 쿼리 이용
+
+-- 자동로그인 적용
+
+7. AutoLoginInterceptor
+ - 클래스 추가, preHandle 메소드
+  > request에 있는 session에 있는 회원 정보를 가져옴
+  > 가져온 회원 정보가 null이면
+    - WebUtils를 이용하여 loginCookie 정보를 가져옴
+    - loginCookie가 null이 아니면
+     > loginCookie에 있는 value를 가져와서 session_id에 저장
+      > 멤버서비스에게 session_id를 주면서 회원 정보를 가져오라고 시킴
+       > 가져온 회원정보가 null이 아니면 세션에 회원 정보를 추가
+
+8. 멤버서비스/임플
+ - 메소드 추가
+  > session_id null체크
+  > 멤버다오에게 session_id를 주면서 회원정보 달라고 요청
+
+9. 멤버다오/매퍼
+ - 메소드 추가
+  > select 태그 및 쿼리문
+  > 현재시간보다 me_session_limit가 나중이고, session_id와 일치하는 회원 정보를 가져옴
+
+10. servlet-context.xml
+ - interceptor 등록
+ - 경로 지정
+
+---- 로그아웃
+
+11. 홈컨트롤러
+ - logout 메소드 수정
+  > 매개변수 : HttpSession 제거, HttpServletRequest, HttpServletResponse 객체 추가
+   > 기존 로그아웃 코드 삭제
+   > 멤버서비스에게 일을 시킴
+     - 매개변수 : request, response
+     - 기능 : 로그아웃
+
+12. 멤버서비스/임플
+ - 메소드 추가
+  > 매개변수 null체크
+  > request안, session에서 회원 정보 가져옴
+  > 회원 정보가 없으면 종료
+  > session에 있는 회원정보 삭제
+  > request에서 loginCookie 정보를 가져옴
+  > 가져온 쿠키가 null이면 종료
+  > 쿠키의 path를 /
+  > 쿠키의 유지시간을 0으로
+  > 쿠키를 response에 추가 
+  > 멤버다오에게 아이디, 세션아이디(null), 세션만료시간(null)을 주고 업데이트하라고 요청
+
+
+     
+
+
+
+
+
+
+
+
+

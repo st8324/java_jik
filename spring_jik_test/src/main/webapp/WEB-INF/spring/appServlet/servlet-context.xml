@@ -46,7 +46,13 @@
 		class="kr.green.springtest.interceptor.GuestInterceptor"></beans:bean>
 	<beans:bean id="redirectInterceptor" 
 		class="kr.green.springtest.interceptor.RedirectInterceptor"></beans:bean>
+	<beans:bean id="autoLoginInterceptor" 
+		class="kr.green.springtest.interceptor.AutoLoginInterceptor"></beans:bean>
 	<interceptors>
+		<interceptor>
+      <mapping path="/**"/>
+      <beans:ref bean="autoLoginInterceptor"/>
+    </interceptor>
     <interceptor>
       <mapping path="/login"/>
       <beans:ref bean="loginInterceptor"/>

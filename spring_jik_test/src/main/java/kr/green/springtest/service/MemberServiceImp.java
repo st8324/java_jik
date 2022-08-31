@@ -1,5 +1,7 @@
 package kr.green.springtest.service;
 
+import java.util.Date;
+
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,6 +53,8 @@ public class MemberServiceImp implements MemberService {
 		
 		if(user == null)
 			return null;
+		
+		user.setAutoLogin(member.isAutoLogin());
 		
 		if(passwordEncoder.matches(member.getMe_pw(), user.getMe_pw()))
 			return user;
@@ -143,5 +147,19 @@ public class MemberServiceImp implements MemberService {
 		
 		memberDao.updateMember(user);
 		return true;
+	}
+
+	@Override
+	public void updateMemberSession(String me_id, String session_id, Date session_limit) {
+		if(me_id == null)
+			return ;
+		memberDao.updateMemberSession(me_id, session_id, session_limit);
+	}
+
+	@Override
+	public MemberVO getMember(String session_id) {
+		if(session_id == null)
+			return null;
+		return memberDao.selectMemberBySession(session_id);
 	}
 }

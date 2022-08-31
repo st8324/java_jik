@@ -1,5 +1,7 @@
 package kr.green.springtest.service;
 
+import java.util.Date;
+
 import kr.green.springtest.vo.MemberVO;
 
 public interface MemberService {
@@ -15,4 +17,8 @@ public interface MemberService {
 	public boolean findPw(MemberVO member);
 
 	public boolean updateMember(MemberVO member, MemberVO user);
+
+	public void updateMemberSession(String me_id, String id, Date session_limit);
+
+	public MemberVO getMember(String session_id);
 }
