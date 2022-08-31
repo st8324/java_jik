@@ -1,0 +1,36 @@
+게시글 쓰기/수정/상세 써머노트 적용하기
+
+1. insert.jsp
+ - 써머노트 이용을 위한 script, link를 추가
+ - 내용 입력하는 textarea에 id를 추가
+ - 스크립트에 써머노트 샘플코드 복붙
+
+2. update.jsp
+ - 써머노트 이용을 위한 script, link를 추가
+ - 내용 입력하는 textarea에 id를 추가
+ - 스크립트에 써머노트 샘플코드 복붙
+
+3. select.jsp
+ - 내용을 보여주는 textarea태그 대신 div태그로 수정하고 height를 auto로 지정(선택 : min-height를 지정)
+
+-- 써머노트를 통해 이미지를 추가했을 때 이미지를 서버에 업로드 하고, 업로드한 이미지를 써머노트에 추가하는 작업
+
+4. insert.jsp
+ - 스크립트에 있는 써머노트에 callback, onImageUpload를 추가
+ - ajax를 이용하여 업로드 함(이전 프로젝트 코드 참고)
+
+5. 보드컨트롤러
+ - 메소드 추가(4번에서 추가한 ajax)
+ - 화면에서 보내준 첨부파일을 보드서비스에게 주면서 업로드하고 업로드한 경로를 알려달라고 요청
+ - 경로를 map에 담아 화면에 전달
+
+6. 보드서비스/서비스임플
+ - 이미지를 저장할 imgUploadPath를 추가
+ - 메소드 추가(5번에서 추가한)
+  > 매개변수 null체크
+  > UploadFileUtils클래스에 있는 upload를 이용하여 업로드 후 업로드한 경로를 반환
+
+7. sevlet-context.xml
+ - /경로 맵핑
+
+

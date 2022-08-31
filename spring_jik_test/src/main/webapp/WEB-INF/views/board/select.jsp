@@ -47,7 +47,7 @@
 			</div>
 			<div class="form-group">
 			  <label for="">내용:</label>
-			  <textarea class="form-control" rows="10" readonly>${board.bd_content}</textarea>
+			  <div class="form-control" style="height:auto; min-height: 400px">${board.bd_content}</div>
 			</div>
 			<div class="form-group">
 			  <label for="">첨부파일</label>

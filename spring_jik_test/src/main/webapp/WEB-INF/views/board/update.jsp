@@ -15,6 +15,8 @@
 	color : red;
 }
 </style>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 </head>
 <body>
 <c:if test="${board.bd_del == 'N' }">
@@ -57,6 +59,12 @@
 			$(this).parents('.form-group').append(str2);
 			$(this).parent().remove();
 		})
+		
+		$('#bd_content').summernote({
+      placeholder: 'Hello Bootstrap 4',
+      tabsize: 2,
+      height: 400
+   	});
 	})
 </script>
 </body>
