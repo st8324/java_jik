@@ -1,5 +1,6 @@
 package kr.green.springtest.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.apache.ibatis.annotations.Param;
@@ -19,4 +20,6 @@ public interface MemberDAO {
 	public void updateMemberSession(@Param("me_id")String me_id, @Param("session_id")String session_id, @Param("session_limit")Date session_limit);
 
 	public MemberVO selectMemberBySession(@Param("session_id")String session_id);
+
+	public ArrayList<MemberVO> selectMemberList(@Param("me_authority")int me_authority);
 }
