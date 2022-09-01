@@ -3,12 +3,17 @@ package kr.green.springtest.service;
 import java.util.Date;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.WebUtils;
 
 import kr.green.springtest.dao.MemberDAO;
 import kr.green.springtest.vo.MemberVO;
@@ -161,5 +166,25 @@ public class MemberServiceImp implements MemberService {
 		if(session_id == null)
 			return null;
 		return memberDao.selectMemberBySession(session_id);
+	}
+
+	@Override
+	public void logout(HttpServletRequest request, HttpServletResponse response) {
+		if(request == null || response == null)
+			return;
+		
+		HttpSession session = request.getSession();
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user == null)
+			return;
+		session.removeAttribute("user");
+		
+		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+		if(loginCookie == null)
+			return;
+		loginCookie.setPath("/");
+		loginCookie.setMaxAge(0);
+		response.addCookie(loginCookie);
+		memberDao.updateMemberSession(user.getMe_id(), null, null);
 	}
 }
