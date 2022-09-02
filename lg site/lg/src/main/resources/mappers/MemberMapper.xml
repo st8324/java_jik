@@ -3,5 +3,8 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.green.lg.dao.MemberDAO">
-
+	<insert id="insertMember">
+		insert into member(me_email, me_pw, me_birth, me_post_code, me_addr, me_addr_detail, me_code)
+		values(#{me_email},#{me_pw},#{me_birth},#{me_post_code},#{me_addr},#{me_addr_detail},#{me_code})
+	</insert>
 </mapper>
