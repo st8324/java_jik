@@ -21,4 +21,5 @@ public class MemberVO {
 	private int me_pos;
 	private int me_pos_count;
 	private int me_authority;
+	private boolean autoLogin;
 }
