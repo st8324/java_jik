@@ -6,5 +6,7 @@ public interface MemberService {
 
 	boolean signup(MemberVO member);
 
+	boolean isUser(MemberVO member);
+
 	
 }

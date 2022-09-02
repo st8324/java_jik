@@ -43,5 +43,15 @@ public class MemberServiceImp implements MemberService {
 		return randomStr;
 	}
 
+	@Override
+	public boolean isUser(MemberVO member) {
+		if(member == null || member.getMe_email() == null)
+			return false;
+		MemberVO dbMember = memberDao.selectMember(member.getMe_email());
+		if(dbMember != null)
+			return false;
+		return true;
+	}
+
 	
 }
