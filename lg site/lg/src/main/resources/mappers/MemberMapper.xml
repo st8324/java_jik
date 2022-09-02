@@ -10,4 +10,10 @@
 	<select id="selectMember" resultType="kr.green.lg.vo.MemberVO">
 		select * from member where me_email = #{me_email}
 	</select>
+	<update id="updatePos">
+		update member set me_pos = #{me_pos} where me_email = #{me_email}
+	</update>
+	<update id="updatePosCount">
+		update member set me_pos_count = me_pos_count + 1 where me_email = #{me_email}
+	</update>
 </mapper>
