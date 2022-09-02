@@ -111,4 +111,20 @@ public class MemberServiceImp implements MemberService {
 		return false;
 	}
 
+	@Override
+	public MemberVO login(MemberVO member) {
+		if(member == null || member.getMe_email() == null || member.getMe_pw() == null)
+			return null;
+		MemberVO user = memberDao.selectMember(member.getMe_email());
+		if(user == null)
+			return null;
+		
+		if(user.getMe_pos() != 1)
+			return null;
+		
+		if(passwordEncoder.matches(member.getMe_pw(), user.getMe_pw()))
+			return user;
+		return null;
+	}
+
 }

@@ -11,4 +11,6 @@ public interface MemberService {
 	boolean sendEmail(String title, String content, String writer);
 
 	boolean emailActive(MemberVO member);
+
+	MemberVO login(MemberVO member);
 }

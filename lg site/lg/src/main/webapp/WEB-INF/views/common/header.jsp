@@ -28,10 +28,14 @@
       	<li class="nav-item dropdown member">
 			    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa-regular fa-user"></i></a>
 			    <div class="dropdown-menu">
-			      <a class="dropdown-item" href="<c:url value="/signup"></c:url>">회원가입</a>
-			      <a class="dropdown-item" href="<c:url value="/login"></c:url>">로그인</a>
-			      <a class="dropdown-item" href="<c:url value="/mypage"></c:url>">회원정보수정</a>
-			      <a class="dropdown-item" href="<c:url value="/logout"></c:url>">로그아웃</a>
+			    	<c:if test="${user == null }">
+				      <a class="dropdown-item" href="<c:url value="/signup"></c:url>">회원가입</a>
+				      <a class="dropdown-item" href="<c:url value="/login"></c:url>">로그인</a>
+			      </c:if>
+			      <c:if test="${user != null }">
+				      <a class="dropdown-item" href="<c:url value="/mypage"></c:url>">회원정보수정</a>
+				      <a class="dropdown-item" href="<c:url value="/logout"></c:url>">로그아웃</a>
+			      </c:if>
 			    </div>
 			  </li>
       	<li class="nav-item">
