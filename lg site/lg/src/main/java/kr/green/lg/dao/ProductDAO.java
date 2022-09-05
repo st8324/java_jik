@@ -2,6 +2,7 @@ package kr.green.lg.dao;
 
 import java.util.ArrayList;
 
+import kr.green.lg.pagination.Criteria;
 import kr.green.lg.vo.CategoryVO;
 import kr.green.lg.vo.ProductVO;
 
@@ -16,5 +17,7 @@ public interface ProductDAO {
 	CategoryVO selectCategoryByCa_code(String ca_code);
 
 	void updateCategory(CategoryVO category);
+
+	ArrayList<ProductVO> selectProductList(Criteria cri);
 
 }

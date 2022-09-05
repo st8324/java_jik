@@ -19,4 +19,9 @@
 	<update id="updateCategory">
 		update category set ca_count = ca_count+1 where ca_name = #{ca_name}
 	</update>
+	<select id="selectProductList" resultType="kr.green.lg.vo.ProductVO">
+		select * from product 
+		order by pr_ca_name
+		limit #{pageStart}, #{perPageNum} 
+	</select>
 </mapper>
