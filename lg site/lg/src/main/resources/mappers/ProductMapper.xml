@@ -9,4 +9,14 @@
 	<select id="selectCategoryList" resultType="kr.green.lg.vo.CategoryVO">
 		select * from category
 	</select>
+	<insert id="insertProduct">
+		insert into product(pr_code, pr_thumb, pr_title, pr_content, pr_spec, pr_price, pr_ca_name)
+		values(#{pr_code},#{pr_thumb},#{pr_title},#{pr_content},#{pr_spec},#{pr_price},#{pr_ca_name})
+	</insert>
+	<select id="selectCategoryByCa_code" resultType="kr.green.lg.vo.CategoryVO">
+		select * from category where ca_code = #{ca_code}
+	</select>
+	<update id="updateCategory">
+		update category set ca_count = ca_count+1 where ca_name = #{ca_name}
+	</update>
 </mapper>
