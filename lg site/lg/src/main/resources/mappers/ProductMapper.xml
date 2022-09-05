@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.green.lg.dao.ProductDAO">
+	<insert id="insertCategory">
+		insert into category(ca_name, ca_code) values(#{ca_name}, #{ca_code})
+	</insert>
+	<select id="selectCategoryList" resultType="kr.green.lg.vo.CategoryVO">
+		select * from category
+	</select>
+</mapper>
