@@ -22,4 +22,6 @@ public interface ProductService {
 
 	ProductVO selectProduct(String pr_code);
 
+	boolean deleteProduct(String pr_code);
+
 }
