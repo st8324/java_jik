@@ -19,6 +19,7 @@
         <th>코드</th>
         <th>제목</th>
         <th>가격</th>
+        <th>기능</th>
       </tr>
     </thead>
     <tbody>
@@ -29,8 +30,14 @@
 	        </td>
 	        <td>${pro.pr_ca_name}</td>
 	        <td>${pro.pr_code}</td>
-	        <td>${pro.pr_title}</td>
+	        <td>
+	        	<a href="<c:url value="/product/select?pr_code=${pro.pr_code}"></c:url>">${pro.pr_title}</a>
+	        </td>
 	        <td>${pro.pr_price}</td>
+	        <td>
+	        	<a class="btn btn-outline-danger" href="<c:url value="/product/update?pr_code=${pro.pr_code}"></c:url>">수정</a>
+	        	<a class="btn btn-outline-warning" href="<c:url value="/product/delete?pr_code=${pro.pr_code}"></c:url>">삭제</a>
+	        </td>
 	      </tr>
       </c:forEach>
     </tbody>
