@@ -43,23 +43,41 @@
     </tbody>
   </table>
   <ul class="pagination justify-content-center">
-  	<li class="page-item"><a class="page-link" href="javascript:void(0);">처음</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">이전</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">1</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">다음</a></li>
-    <li class="page-item"><a class="page-link" href="javascript:void(0);">마지막</a></li>
+  	<li class="page-item <c:if test="${!pm.prev}">disabled</c:if>">
+  		<a class="page-link" href="<c:url value="/admin/product/list?page=1&search=${pm.cri.search}&pr_ca_name=${pm.cri.pr_ca_name}"></c:url>">처음</a>
+  	</li>
+  	<li class="page-item <c:if test="${!pm.prev}">disabled</c:if>">
+  		<a class="page-link" href="<c:url value="/admin/product/list?page=${pm.startPage-1}&search=${pm.cri.search}&pr_ca_name=${pm.cri.pr_ca_name}"></c:url>">이전</a>
+  	</li>
+  	
+  	<c:forEach begin="${pm.startPage }" end="${pm.endPage }" var="i">
+    	<li class="page-item <c:if test="${pm.cri.page == i}">active</c:if>">
+    		<a class="page-link" href="<c:url value="/admin/product/list?page=${i}&search=${pm.cri.search}&pr_ca_name=${pm.cri.pr_ca_name}"></c:url>">${i}</a>
+    	</li>
+    </c:forEach>
+
+    <li class="page-item <c:if test="${!pm.next}">disabled</c:if>">
+    	<a class="page-link " href="<c:url value="/admin/product/list?page=${pm.endPage+1}&search=${pm.cri.search}&pr_ca_name=${pm.cri.pr_ca_name}"></c:url>">다음</a>
+    </li>
+    <li class="page-item <c:if test="${!pm.next}">disabled</c:if>">
+    	<a class="page-link" href="<c:url value="/admin/product/list?page=${pm.finalPage}&search=${pm.cri.search}&pr_ca_name=${pm.cri.pr_ca_name}"></c:url>">마지막</a>
+    </li>
   </ul>
   <form>
   	<div class="input-group mb-3">
-  		<select class="form-control">
-  			<option>카테고리</option>
+  		<select class="form-control" name="pr_ca_name">
+  			<option value="">카테고리</option>
+  			<c:forEach items="${cl}" var="ca">
+  				<option <c:if test="${pm.cri.pr_ca_name == ca.ca_name}">selected</c:if> >${ca.ca_name}</option>
+  			</c:forEach>
   		</select>
-		  <input type="text" class="form-control" placeholder="Search">
+		  <input type="text" class="form-control" placeholder="제품 제목 또는 제품 코드로 검색하세요." name="search" value="${pm.cri.search}">
 		  <div class="input-group-append">
-		    <button class="btn btn-success" type="submit">Go</button>
+		    <button class="btn btn-success" type="submit">검색</button>
 		  </div>
 		</div>
   </form>
 </div>
+
 </body>
 </html>

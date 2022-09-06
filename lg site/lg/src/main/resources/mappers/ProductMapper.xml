@@ -21,7 +21,14 @@
 	</update>
 	<select id="selectProductList" resultType="kr.green.lg.vo.ProductVO">
 		select * from product 
+		where (pr_title like concat('%',#{search},'%') or pr_code like concat('%',#{search},'%'))
+			and pr_ca_name like concat('%',#{pr_ca_name},'%')
 		order by pr_ca_name
 		limit #{pageStart}, #{perPageNum} 
+	</select>
+	<select id="selectProductTotalCount" resultType="int">
+		select count(*) from product 
+		where (pr_title like concat('%',#{search},'%') or pr_code like concat('%',#{search},'%'))
+			and pr_ca_name like concat('%',#{pr_ca_name},'%')
 	</select>
 </mapper>

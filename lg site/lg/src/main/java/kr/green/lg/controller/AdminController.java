@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.lg.pagination.Criteria;
+import kr.green.lg.pagination.PageMaker;
 import kr.green.lg.service.MessageService;
 import kr.green.lg.service.ProductService;
 import kr.green.lg.vo.CategoryVO;
@@ -50,8 +51,13 @@ public class AdminController {
 	}
 	@RequestMapping(value = "/admin/product/list", method = RequestMethod.GET)
 	public ModelAndView productListGet(ModelAndView mv, Criteria cri) {
+		cri.setPerPageNum(2);
 		ArrayList<ProductVO> list = productService.selectProductList(cri);
-		
+		int totalCount = productService.getProductTotalCount(cri);
+		PageMaker pm = new PageMaker(totalCount, 3, cri);
+		ArrayList<CategoryVO> categoryList = productService.getCategoryList();
+		mv.addObject("cl", categoryList);
+		mv.addObject("pm", pm);
 		mv.addObject("list", list);
 		mv.setViewName("/admin/productList");
 		return mv;

@@ -73,4 +73,11 @@ public class ProductServiceImp implements ProductService {
 			cri = new Criteria();
 		return productDao.selectProductList(cri);
 	}
+
+	@Override
+	public int getProductTotalCount(Criteria cri) {
+		if(cri == null)
+			cri = new Criteria();
+		return productDao.selectProductTotalCount(cri);
+	}
 }
