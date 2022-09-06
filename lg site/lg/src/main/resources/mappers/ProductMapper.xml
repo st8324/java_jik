@@ -37,4 +37,14 @@
 	<delete id="deleteProduct">
 		delete from product where pr_code = #{pr_code}
 	</delete>
+	<update id="updateProduct">
+		update product
+			set
+				pr_thumb = #{pr_thumb},
+				pr_title = #{pr_title},
+				pr_content = #{pr_content},
+				pr_spec = #{pr_spec},
+				pr_price = #{pr_price}
+			where pr_code= #{pr_code}
+	</update>
 </mapper>

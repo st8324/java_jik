@@ -87,4 +87,22 @@ public class AdminController {
 		mv.setViewName("redirect:/admin/product/list");
 		return mv;
 	}
+	@RequestMapping(value = "/admin/product/update", method = RequestMethod.GET)
+	public ModelAndView productUpdateGet(ModelAndView mv, String pr_code) {
+		ProductVO product = productService.selectProduct(pr_code);
+		mv.addObject("pr", product);
+		mv.setViewName("/admin/productUpdate");
+		return mv;
+	}
+	@RequestMapping(value = "/admin/product/update", method = RequestMethod.POST)
+	public ModelAndView productUpdatePost(ModelAndView mv, ProductVO product, MultipartFile file
+			,HttpServletResponse response) {
+		boolean res = productService.updateProduct(product, file);
+		if(res) 
+			messageService.message(response, "제품을 수정했습니다.", "/lg/admin/product/list");
+		else
+			messageService.message(response, "제품을 수정하지 못했습니다.", "/lg/admin/product/list");
+		mv.setViewName("/admin/productUpdate");
+		return mv;
+	}
 }
