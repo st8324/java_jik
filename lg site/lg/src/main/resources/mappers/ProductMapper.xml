@@ -31,4 +31,7 @@
 		where (pr_title like concat('%',#{search},'%') or pr_code like concat('%',#{search},'%'))
 			and pr_ca_name like concat('%',#{pr_ca_name},'%')
 	</select>
+	<select id="selectProduct" resultType="kr.green.lg.vo.ProductVO">
+		select * from product where pr_code = #{pr_code}
+	</select>
 </mapper>

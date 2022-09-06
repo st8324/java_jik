@@ -26,7 +26,7 @@
     	<c:forEach items="${list}" var="pro">
 	      <tr>
 	        <td>
-	        	<img alt="제품이미지" src="<c:url value="/product/img${pro.pr_thumb}"></c:url>" width="150" height="150">
+	        	<img alt="제품이미지" src="<c:url value="${pro.pr_thumb_url}"></c:url>" width="150" height="150">
 	        </td>
 	        <td>${pro.pr_ca_name}</td>
 	        <td>${pro.pr_code}</td>
