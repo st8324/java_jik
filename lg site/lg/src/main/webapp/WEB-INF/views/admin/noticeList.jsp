@@ -44,6 +44,7 @@ form.btn{
 	        	<form class="btn btn-outline-warning" action="<c:url value="/board/delete"></c:url>"  method="post">
 	        		<button class="btn-del">삭제</button>
 	        		<input type="hidden" name="bd_num" value="${bo.bd_num}">
+	        		<input type="hidden" name="bd_type" value="${bo.bd_type}">
 	        	</form>
 	        </td>
 	      </tr>

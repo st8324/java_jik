@@ -15,4 +15,8 @@ public interface BoardDAO {
 
 	int selectBoardTotalCount(@Param("cri")Criteria cri, @Param("bd_type")String bd_type);
 
+	BoardVO selectBoard(Integer bd_num);
+
+	int deleteBoard(Integer bd_num);
+
 }

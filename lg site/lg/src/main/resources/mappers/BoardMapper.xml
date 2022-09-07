@@ -20,5 +20,11 @@
 		select count(*) from board
 			where bd_type = #{bd_type} and bd_title like concat('%',#{cri.search},'%')
 	</select>
+	<select id="selectBoard" resultType="kr.green.lg.vo.BoardVO">
+		select * from board where bd_num = #{bd_num}
+	</select>
+	<delete id="deleteBoard">
+		delete from board where bd_num = #{bd_num}
+	</delete>
 </mapper>
 
