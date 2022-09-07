@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.green.lg.pagination.Criteria;
 import kr.green.lg.vo.BoardVO;
+import kr.green.lg.vo.FileVO;
 
 public interface BoardDAO {
 
@@ -20,5 +21,7 @@ public interface BoardDAO {
 	int deleteBoard(Integer bd_num);
 
 	int updateBoard(BoardVO dbBoard);
+
+	void insertFile(FileVO fileVo);
 
 }

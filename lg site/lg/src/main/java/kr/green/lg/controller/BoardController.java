@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.green.lg.pagination.Criteria;
@@ -56,6 +57,22 @@ public class BoardController {
 		mv.addObject("list", list);
 		mv.addObject("bd_type", bd_type);
 		mv.setViewName("/board/list");
+		return mv;
+	}
+	@RequestMapping(value = "/board/insert", method = RequestMethod.GET)
+	public ModelAndView boardInsertGet(ModelAndView mv) {
+		mv.setViewName("/board/insert");
+		return mv;
+	}
+	@RequestMapping(value = "/board/insert", method = RequestMethod.POST)
+	public ModelAndView boardSelectGet(ModelAndView mv, BoardVO board, HttpSession session, 
+			MultipartFile []files, HttpServletResponse response) {
+		MemberVO user = (MemberVO) session.getAttribute("user");
+		boolean res = boardService.insertBoard(board, user, files);
+		if(res)
+			messageService.message(response, "게시글을 등록했습니다.", "/lg/product/select?pr_code="+board.getBd_pr_code());
+		else
+			messageService.message(response, "게시글 등록에 실패했습니다.", "/lg/product/select?pr_code="+board.getBd_pr_code());
 		return mv;
 	}
 }

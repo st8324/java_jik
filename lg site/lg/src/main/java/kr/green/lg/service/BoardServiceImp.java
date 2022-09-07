@@ -4,17 +4,22 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.green.lg.dao.BoardDAO;
 import kr.green.lg.pagination.Criteria;
+import kr.green.lg.utils.UploadFileUtils;
 import kr.green.lg.vo.BoardVO;
+import kr.green.lg.vo.FileVO;
 import kr.green.lg.vo.MemberVO;
 
 @Service
 public class BoardServiceImp implements BoardService {
 	@Autowired
 	BoardDAO boardDao;
-
+	
+	String uploadPath = "D:\\git\\uploadfiles";
+	
 	@Override
 	public boolean insertBoard(BoardVO board, MemberVO user, String bd_type) {
 		if(board == null || 
@@ -94,5 +99,30 @@ public class BoardServiceImp implements BoardService {
 		dbBoard.setBd_content(board.getBd_content());
 		dbBoard.setBd_secret(board.getBd_secret());
 		return boardDao.updateBoard(dbBoard) == 1 ? true : false;
+	}
+
+	@Override
+	public boolean insertBoard(BoardVO board, MemberVO user ,MultipartFile[] files) {
+		if(board == null || board.getBd_type() == null || board.getBd_pr_code() == null)
+			return false;
+		try {
+			return insertBoard(board, user, board.getBd_type());
+		}catch(Exception e) {}
+		finally {
+			if(files == null || files.length == 0)
+				return true;
+			for(MultipartFile file : files) {
+				if(file.getOriginalFilename().length() == 0)
+					continue;
+				try {
+					String fi_name = UploadFileUtils.uploadFileUUID(uploadPath, file.getOriginalFilename(), file.getBytes());
+					FileVO fileVo = new FileVO(file.getOriginalFilename(), fi_name, board.getBd_num());
+					boardDao.insertFile(fileVo);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return true;
 	}
 }
