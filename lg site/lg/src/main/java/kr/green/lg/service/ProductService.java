@@ -32,4 +32,6 @@ public interface ProductService {
 
 	int updateLikes(LikesVO likes);
 
+	ArrayList<ProductVO> selectProductListByLikes(MemberVO user);
+
 }

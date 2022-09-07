@@ -57,4 +57,11 @@
 	<delete id="deleteLikes">
 		delete from likes where li_pr_code = #{li_pr_code} and li_me_email = #{li_me_email}
 	</delete>
+	<select id="selectProductListByLikes" resultType="kr.green.lg.vo.ProductVO">
+		select * from product 
+			join likes 
+				on pr_code = li_pr_code 
+			where
+				li_me_email = #{me_email}
+	</select>
 </mapper>
