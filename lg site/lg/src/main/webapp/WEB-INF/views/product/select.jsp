@@ -15,14 +15,28 @@
 	text-align: center; font-size : 50px; line-height: 148px;
 	cursor: pointer; box-sizing: border-box;
 }
-
+.fa-regular{
+	line-height: 1;
+}
+.display-none{
+	display: none;
+}
+.likes{
+	color : red; cursor: pointer;
+}
 </style>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 </head>
 <body>
 <div class="container">
-	<h2>제품 상세</h2>
+	<h2 class="clearfix">
+		<span class="float-left">제품 상세</span> 
+		
+		<i class="fa-regular fa-heart float-right likes <c:if test="${li != null }">display-none</c:if>"></i>
+		<i class="fa-solid fa-heart float-right likes likes-ok <c:if test="${li == null }">display-none</c:if>"></i>
+		
+	</h2>
 	<div class="clearfix">
 		<div class="float-left" style="width:auto; height: auto">
 			<img id="preview" width="150" height="150" src="<c:url value="${p.pr_thumb_url}"></c:url>">
@@ -50,5 +64,34 @@
 	  <div class="form-control" style="height:auto">${p.pr_spec }</div>
 	</div>
 </div>
+<script type="text/javascript">
+$(function(){
+	$('.likes').click(function(){
+		let li_me_email = '${user.me_email}';
+		if(li_me_email == ''){
+			alert('로그인이 필요한 서비스입니다.');
+			return;
+		}
+		let li_pr_code = '${p.pr_code}';
+		let likes = {
+				li_me_email : li_me_email,
+				li_pr_code : li_pr_code
+		}
+		ajaxPost(false, likes, '/likes', function(data){
+			if(data.res == 0){
+				$('.likes').removeClass('display-none');
+				$('.likes-ok').addClass('display-none');
+				alert('찜한 제품을 취소했습니다.')
+			}else if(data.res == 1){
+				$('.likes').addClass('display-none');
+				$('.likes-ok').removeClass('display-none');
+				alert('해당 제품을 찜했습니다.');
+			}else{
+				alert('잘못된 접근입니다.')
+			}
+		})
+	})
+})
+</script>
 </body>
 </html>

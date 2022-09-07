@@ -12,6 +12,8 @@ import kr.green.lg.dao.ProductDAO;
 import kr.green.lg.pagination.Criteria;
 import kr.green.lg.utils.UploadFileUtils;
 import kr.green.lg.vo.CategoryVO;
+import kr.green.lg.vo.LikesVO;
+import kr.green.lg.vo.MemberVO;
 import kr.green.lg.vo.ProductVO;
 
 @Service
@@ -124,5 +126,30 @@ public class ProductServiceImp implements ProductService {
 			}
 		}
 		return productDao.updateProduct(product) == 1 ? true : false;
+	}
+
+	@Override
+	public LikesVO getLikes(String pr_code, MemberVO user) {
+		if(pr_code == null || pr_code.length() != 6 || user == null)
+			return null;
+		
+		return productDao.selectLikes(pr_code, user.getMe_email());
+	}
+
+	@Override
+	public int updateLikes(LikesVO likes) {
+		if(likes == null || 
+				likes.getLi_pr_code() == null ||
+				likes.getLi_pr_code().length() != 6 || 
+				likes.getLi_me_email() == null)
+			return -1;
+		LikesVO dbLikes = 
+				productDao.selectLikes(likes.getLi_pr_code(), likes.getLi_me_email());
+		if(dbLikes == null) {
+			productDao.insertLikes(likes);
+			return 1;
+		}
+		productDao.deleteLikes(likes);
+		return 0;
 	}
 }

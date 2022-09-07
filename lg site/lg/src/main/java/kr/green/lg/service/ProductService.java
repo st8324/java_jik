@@ -6,6 +6,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.green.lg.pagination.Criteria;
 import kr.green.lg.vo.CategoryVO;
+import kr.green.lg.vo.LikesVO;
+import kr.green.lg.vo.MemberVO;
 import kr.green.lg.vo.ProductVO;
 
 public interface ProductService {
@@ -25,5 +27,9 @@ public interface ProductService {
 	boolean deleteProduct(String pr_code);
 
 	boolean updateProduct(ProductVO product, MultipartFile file);
+
+	LikesVO getLikes(String pr_code, MemberVO user);
+
+	int updateLikes(LikesVO likes);
 
 }

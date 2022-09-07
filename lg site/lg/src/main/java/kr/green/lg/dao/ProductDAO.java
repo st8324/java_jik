@@ -2,8 +2,11 @@ package kr.green.lg.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Param;
+
 import kr.green.lg.pagination.Criteria;
 import kr.green.lg.vo.CategoryVO;
+import kr.green.lg.vo.LikesVO;
 import kr.green.lg.vo.ProductVO;
 
 public interface ProductDAO {
@@ -27,5 +30,11 @@ public interface ProductDAO {
 	int deleteProduct(String pr_code);
 
 	int updateProduct(ProductVO product);
+
+	LikesVO selectLikes(@Param("pr_code")String pr_code, @Param("me_email")String me_email);
+
+	void insertLikes(LikesVO likes);
+
+	void deleteLikes(LikesVO likes);
 
 }

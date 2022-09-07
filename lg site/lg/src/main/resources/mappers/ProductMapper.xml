@@ -47,4 +47,14 @@
 				pr_price = #{pr_price}
 			where pr_code= #{pr_code}
 	</update>
+	<select id="selectLikes" resultType="kr.green.lg.vo.LikesVO">
+		select * from likes 
+			where li_pr_code = #{pr_code} and li_me_email = #{me_email}
+	</select>
+	<insert id="insertLikes">
+		insert into likes(li_pr_code, li_me_email) values(#{li_pr_code},#{li_me_email})
+	</insert>
+	<delete id="deleteLikes">
+		delete from likes where li_pr_code = #{li_pr_code} and li_me_email = #{li_me_email}
+	</delete>
 </mapper>
