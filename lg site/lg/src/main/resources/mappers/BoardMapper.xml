@@ -26,5 +26,12 @@
 	<delete id="deleteBoard">
 		delete from board where bd_num = #{bd_num}
 	</delete>
+	<update id="updateBoard">
+		update board set
+			bd_title = #{bd_title},
+			bd_content = #{bd_content},
+			bd_secret = #{bd_secret}
+		where bd_num = #{bd_num}
+	</update>
 </mapper>
 

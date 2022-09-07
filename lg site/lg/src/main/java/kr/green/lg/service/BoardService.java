@@ -18,4 +18,8 @@ public interface BoardService {
 
 	String getDeleteRedirectURL(String bd_type);
 
+	BoardVO getBoard(Integer bd_num);
+
+	boolean updateBoard(BoardVO board, MemberVO user);
+
 }

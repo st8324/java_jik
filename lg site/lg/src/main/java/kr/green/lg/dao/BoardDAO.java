@@ -19,4 +19,6 @@ public interface BoardDAO {
 
 	int deleteBoard(Integer bd_num);
 
+	int updateBoard(BoardVO dbBoard);
+
 }
