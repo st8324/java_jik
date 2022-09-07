@@ -44,6 +44,11 @@
 	        	<a class="nav-link" href="<c:url value="/admin"></c:url>">관리자</a>
 	      	</li>
       	</c:if>
+      	<c:if test="${user.me_authority != 10 }">
+	      	<li class="nav-item">
+	        	<a class="nav-link" href="<c:url value="/board/list?bd_type=NOTICE"></c:url>">공지사항</a>
+	      	</li>
+      	</c:if>
     	</ul>
 		</div> 
 	</div> 
