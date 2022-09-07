@@ -17,7 +17,10 @@
       <a class="nav-link" href="<c:url value="/admin/product/list"></c:url>">제품</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link 3</a>
+      <a class="nav-link" href="<c:url value="/admin/notice/list"></c:url>">공지사항</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<c:url value="/admin/qna/list"></c:url>">QnA</a>
     </li>
   </ul>
 </nav>
