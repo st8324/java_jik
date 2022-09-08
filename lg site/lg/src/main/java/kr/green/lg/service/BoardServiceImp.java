@@ -97,11 +97,12 @@ public class BoardServiceImp implements BoardService {
 		if(dbBoard == null) 
 			return false;
 
-		if(user.getMe_authority() != 10 && !board.getBd_me_email().equals(user.getMe_email()))
+		if(user.getMe_authority() != 10 && !dbBoard.getBd_me_email().equals(user.getMe_email()))
 			return false;
 		dbBoard.setBd_title(board.getBd_title());
 		dbBoard.setBd_content(board.getBd_content());
 		dbBoard.setBd_secret(board.getBd_secret());
+		board.setBd_pr_code(dbBoard.getBd_pr_code());
 		return boardDao.updateBoard(dbBoard) == 1 ? true : false;
 	}
 
@@ -109,24 +110,60 @@ public class BoardServiceImp implements BoardService {
 	public boolean insertBoard(BoardVO board, MemberVO user ,MultipartFile[] files) {
 		if(board == null || board.getBd_type() == null || board.getBd_pr_code() == null)
 			return false;
-		try {
-			return insertBoard(board, user, board.getBd_type());
-		}catch(Exception e) {}
-		finally {
-			if(files == null || files.length == 0)
-				return true;
-			for(MultipartFile file : files) {
-				if(file.getOriginalFilename().length() == 0)
+		
+		boolean res= insertBoard(board, user, board.getBd_type());
+		
+		if(!res)
+			return false;
+		
+		insertFiles(files, board.getBd_num());
+		return true;
+	}
+
+	@Override
+	public boolean isWriter(BoardVO board, MemberVO user) {
+		if(board == null || user == null)
+			return false;
+		return board.getBd_me_email().equals(user.getMe_email());
+	}
+
+	@Override
+	public ArrayList<FileVO> getFileList(Integer bd_num) {
+		if(bd_num == null)
+			return null;
+		return boardDao.selectFileList(bd_num);
+	}
+
+	@Override
+	public boolean updateBoard(BoardVO board, MemberVO user, MultipartFile[] files, int[]nums) {
+		boolean res = updateBoard(board, user);
+		if(!res)
+			return false;
+		if(nums != null && nums.length != 0) {
+			for(int fi_num : nums) {
+				FileVO fileVo = boardDao.selectFile(fi_num);
+				if(fileVo == null || board.getBd_num() != fileVo.getFi_bd_num())
 					continue;
-				try {
-					String fi_name = UploadFileUtils.uploadFileUUID(uploadPath, file.getOriginalFilename(), file.getBytes());
-					FileVO fileVo = new FileVO(file.getOriginalFilename(), fi_name, board.getBd_num());
-					boardDao.insertFile(fileVo);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				UploadFileUtils.deleteFile(uploadPath, fileVo.getFi_name());
+				boardDao.deleteFile(fi_num);
 			}
 		}
+		insertFiles(files, board.getBd_num());
 		return true;
+	}
+	private void insertFiles(MultipartFile[] files, int bd_num) {
+		if(files == null || files.length == 0)
+			return ;
+		for(MultipartFile file : files) {
+			if(file.getOriginalFilename().length() == 0)
+				continue;
+			try {
+				String fi_name = UploadFileUtils.uploadFileUUID(uploadPath, file.getOriginalFilename(), file.getBytes());
+				FileVO fileVo = new FileVO(file.getOriginalFilename(), fi_name, bd_num);
+				boardDao.insertFile(fileVo);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

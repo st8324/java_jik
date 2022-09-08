@@ -24,4 +24,10 @@ public interface BoardDAO {
 
 	void insertFile(FileVO fileVo);
 
+	ArrayList<FileVO> selectFileList(Integer bd_num);
+
+	FileVO selectFile(int fi_num);
+
+	void deleteFile(int fi_num);
+
 }

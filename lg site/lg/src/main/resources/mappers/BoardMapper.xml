@@ -48,5 +48,14 @@
 	<insert id="insertFile">
 		insert into file(fi_name, fi_ori_name, fi_bd_num) values(#{fi_name}, #{fi_ori_name}, #{fi_bd_num})
 	</insert>
+	<select id="selectFileList" resultType="kr.green.lg.vo.FileVO">
+		select * from file where fi_bd_num = #{bd_num}
+	</select>
+	<select id="selectFile" resultType="kr.green.lg.vo.FileVO">
+		select * from file where fi_num = #{fi_num}
+	</select>
+	<delete id="deleteFile">
+		delete from file where fi_num = #{fi_num}
+	</delete>
 </mapper>
 
