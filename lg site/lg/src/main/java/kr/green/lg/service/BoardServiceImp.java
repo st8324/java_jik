@@ -63,7 +63,14 @@ public class BoardServiceImp implements BoardService {
 		if(user.getMe_authority() != 10 && !board.getBd_me_email().equals(user.getMe_email()))
 			return false;
 		
-		return boardDao.deleteBoard(bd_num) == 1 ? true : false;
+		ArrayList<FileVO> fileList = boardDao.selectFileList(bd_num);
+		if(fileList != null && fileList.size() != 0) {
+			for(FileVO fileVo : fileList) {
+				deleteFile(fileVo);
+			}
+		}
+		int res = boardDao.deleteBoard(bd_num);
+		return res == 1 ? true : false;
 	}
 
 	@Override
@@ -142,10 +149,9 @@ public class BoardServiceImp implements BoardService {
 		if(nums != null && nums.length != 0) {
 			for(int fi_num : nums) {
 				FileVO fileVo = boardDao.selectFile(fi_num);
-				if(fileVo == null || board.getBd_num() != fileVo.getFi_bd_num())
+				if(fileVo == null || fileVo.getFi_bd_num() != board.getBd_num())
 					continue;
-				UploadFileUtils.deleteFile(uploadPath, fileVo.getFi_name());
-				boardDao.deleteFile(fi_num);
+				deleteFile(fileVo);
 			}
 		}
 		insertFiles(files, board.getBd_num());
@@ -165,5 +171,11 @@ public class BoardServiceImp implements BoardService {
 				e.printStackTrace();
 			}
 		}
+	}
+	private void deleteFile(FileVO fileVo) {
+		if(fileVo == null)
+			return;
+		UploadFileUtils.deleteFile(uploadPath, fileVo.getFi_name());
+		boardDao.deleteFile(fileVo.getFi_num());
 	}
 }
