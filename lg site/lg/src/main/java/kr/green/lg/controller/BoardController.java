@@ -48,6 +48,8 @@ public class BoardController {
 	@RequestMapping(value = "/board/select", method = RequestMethod.GET)
 	public ModelAndView boardSelectGet(ModelAndView mv, Integer bd_num) {
 		BoardVO board = boardService.getBoard(bd_num);
+		ArrayList<FileVO> fileList = boardService.getFileList(bd_num);
+		mv.addObject("fileList", fileList);
 		mv.addObject("bo", board);
 		mv.setViewName("/board/select");
 		return mv;
