@@ -67,11 +67,15 @@ public class BoardServiceImp implements BoardService {
 	}
 
 	@Override
-	public String getDeleteRedirectURL(String bd_type) {
+	public String getDeleteRedirectURL(String bd_type, Integer bd_num) {
 		if(bd_type.equals("NOTICE"))
 			return "/lg/admin/notice/list";
-		else if(bd_type.equals("QNA"))
-			return "";
+		else if(bd_type.equals("QNA")) {
+			BoardVO board = boardDao.selectBoard(bd_num);
+			if(board == null)
+				return "/lg/product/list";
+			return "/lg/product/select?pr_code="+board.getBd_pr_code();
+		}
 		return null;
 	}
 

@@ -8,7 +8,7 @@ public class Criteria {
 	private int perPageNum;
 	private String search;
 	private String pr_ca_name;
-
+	
 	public Criteria() {
 		page = 1;
 		perPageNum = 10;
